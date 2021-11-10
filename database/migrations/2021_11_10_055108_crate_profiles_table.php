@@ -18,7 +18,6 @@ class CrateProfilesTable extends Migration
             $table->foreignId('user_id')->constrained('id')->on('users')->comment('users : primary id');
             $table->string('first_name', 50);
             $table->string('last_name', 50);
-            $table->string('email_id', 150)->unique();
             $table->integer('verified_account')->comment('0: Not verified, 1: Verified')->default(0);
             $table->integer('gender')->comment('0: Unassigned, 1: Male, 2: Female, 3: Other')->nullable();
             $table->integer('status')->default(1);
