@@ -25,4 +25,40 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function ageGroup()
+    {
+        return view('age_group');
+    }
+
+    public function yourHearing()
+    {
+        return view('your_hearing');
+    }
+
+    public function introduction()
+    {
+        return view('introduction');
+    }
+
+    public function situations()
+    {
+        return view('situations');
+    }
+
+    public function yourSolution()
+    {
+        return view('your_solution');
+    }
+
+    public function styles()
+    {
+        return view('styles');
+    }
+
+    public function resources()
+    {
+        return view('resources');
+    }
+    
 }
