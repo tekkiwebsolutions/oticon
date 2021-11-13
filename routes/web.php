@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/validate_email', [App\Http\Controllers\UserController::class, 'validate_email'])->name('validate_email');
+
+
 Route::get('/age_group', [App\Http\Controllers\HomeController::class, 'ageGroup'])->name('ageGroup');
 Route::get('/your_hearing', [App\Http\Controllers\HomeController::class, 'yourHearing'])->name('yourHearing');
 Route::get('/introduction', [App\Http\Controllers\HomeController::class, 'introduction'])->name('introduction');

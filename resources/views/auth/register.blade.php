@@ -12,7 +12,7 @@
                 <div class="login-section register-section">
                     <h1>Create your account</h1>
                     <p class="login-subheading">Single device to solve your hearing problem</p>
-                    <form class="login-form" id="registerForm" method="POST" action="{{ route('register') }}">
+                    <form class="login-form" id="registerForm" method="POST" action="{{ route('register') }}" role="form">
                         @csrf
                         <div class="row form-row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-12 position-relative">
@@ -26,30 +26,25 @@
                         </div>
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                                <input type="text" class="form-control textbox" id="occupation" placeholder="Occupation">
+                                <input type="text" class="form-control textbox" id="occupation" placeholder="Occupation" name="occupation">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/occupation-icon.png"></span>
                             </div>
                         </div>
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                                <input type="text" class="form-control textbox" id="location" placeholder="Location">
+                                <input type="text" class="form-control textbox" id="location" placeholder="Location" name="location">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/location-icon.png"></span>
                             </div>
                         </div>
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                                <input type="email" class="form-control textbox" id="email" placeholder="Email Address" name="email">
+                                <input type="text" class="form-control textbox" id="email" placeholder="Email Address" name="email">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/mail-icon.png"></span>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                                <input type="email" class="form-control textbox" id="confirmemail" placeholder="Confirm Email Address">
+                                <input type="text" class="form-control textbox" id="confirmemail" placeholder="Confirm Email Address" name="email_confirm">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/mail-icon.png"></span>
                             </div>
                         </div>
@@ -57,16 +52,11 @@
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
                                 <input type="password" class="form-control textbox" id="password" placeholder="Password" name="password">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/lock-icon.png"></span>
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                                <input type="password" class="form-control textbox" id="confirmpassword" placeholder="Confirm Password" name="password_confirmation">
+                                <input type="password" class="form-control textbox" id="confirmpassword" placeholder="Confirm Password" name="password_confirm">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/lock-icon.png"></span>
                             </div>
                         </div>
@@ -102,6 +92,79 @@
         </div>
     </div>
     <script>
-        $("#registerForm").validate();
+        $.validator.addMethod('email', function (value, element) {
+            return this.optional(element) || /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
+        }, 'Please enter a valid Email address');
+        
+        $("#registerForm").validate({
+            rules: {
+                first_name: {
+                    required: true,
+                    minlength: 3
+                },
+                last_name: {
+                    required: true,
+                    minlength: 3
+                },
+                email : { 
+                    email : true, 
+                    required: true,
+                    remote: {
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: "/validate_email",
+                        type: "POST",
+                        dataType: "JSON",
+                        data:
+                        {
+                            email: function()
+                            {
+                                return $('#registerForm :input[name="email"]').val();
+                            }
+                        }
+                    }
+                },
+                email_confirm: {
+                    email: true,
+                    required: true,
+                    equalTo: "#email"
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                password_confirm: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                name: {
+                    required: "This field is required",
+                    minlength: "Please provide correct name"
+                },
+                last_name: {
+                    required: "This field is required",
+                    minlength: "Please provide correct name"
+                },
+                password: {
+                    required: "This field is required",
+                    minlength: "Your password must be at least 6 characters long"
+                },
+                password_confirm: {
+                    equalTo: "Password does not match"
+                },
+                email: {
+                    required: "This field is required",
+                    email: "Please enter a valid Email address",
+                    remote: jQuery.validator.format("{0} is already taken.")
+                },
+                email_confirm: {
+                    equalTo: "Email does not match"
+                }
+            }
+        });
     </script>
 @endsection
