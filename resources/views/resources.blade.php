@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('layouts.sidebar')
+@include('layouts.right_sidebar')
 <html>
     <body>
         Resources.
