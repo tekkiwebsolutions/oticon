@@ -95,7 +95,10 @@
         $.validator.addMethod('email', function (value, element) {
             return this.optional(element) || /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
         }, 'Please enter a valid Email address');
-        
+        $.validator.addMethod('password_check', function(value, element) {
+            return this.optional(element) || (value.match(/[a-zA-Z]/) && value.match(/[0-9]/));
+        },
+        'Password must contain at least one numeric and one alphabetic character.');
         $("#registerForm").validate({
             rules: {
                 first_name: {
@@ -109,21 +112,21 @@
                 email : { 
                     email : true, 
                     required: true,
-                    remote: {
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: "/validate_email",
-                        type: "POST",
-                        dataType: "JSON",
-                        data:
-                        {
-                            email: function()
-                            {
-                                return $('#registerForm :input[name="email"]').val();
-                            }
-                        }
-                    }
+                    // remote: {
+                    //     headers: {
+                    //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    //     },
+                    //     url: "/validate_email",
+                    //     type: "POST",
+                    //     dataType: "JSON",
+                    //     data:
+                    //     {
+                    //         email: function()
+                    //         {
+                    //             return $('#registerForm :input[name="email"]').val();
+                    //         }
+                    //     }
+                    // }
                 },
                 email_confirm: {
                     email: true,
@@ -132,6 +135,7 @@
                 },
                 password: {
                     required: true,
+                    password_check: true,
                     minlength: 6
                 },
                 password_confirm: {
@@ -151,6 +155,7 @@
                 },
                 password: {
                     required: "This field is required",
+                    // password_check: "Password must contain at least 1 number and 1 character",
                     minlength: "Your password must be at least 6 characters long"
                 },
                 password_confirm: {
@@ -159,7 +164,7 @@
                 email: {
                     required: "This field is required",
                     email: "Please enter a valid Email address",
-                    remote: jQuery.validator.format("{0} is already taken.")
+                    // remote: jQuery.validator.format("{0} is already taken.")
                 },
                 email_confirm: {
                     equalTo: "Email does not match"
