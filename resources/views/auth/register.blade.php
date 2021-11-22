@@ -89,13 +89,15 @@
                                 <input type="password" class="form-control textbox" id="confirmpassword" placeholder="Confirm Password" name="password_confirm">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/lock-icon.png"></span>
                             </div>
-                        </div>
+                        </div><br>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12">
-                                <div class="custom-checkbox">
-                                    <input type="checkbox" id="agree">
-                                    <label for="agree">I agree to the Terms of Use</label>
+                                <div class=" custom-checkbox checkbox checkbox-success checkbox-inline">
+                                    <input type="checkbox" name="checkTerms" value="1" id='checkTerms'>
+                                    <label for="checkTerms" class="checkboxTerm">I agree to the <a href="#">Terms of Use</a></label>
+                                     
                                 </div>
+
                             </div>
                         </div>
                         <button type="submit" class="btn btn-login">Login</button>
@@ -125,9 +127,14 @@
         $.validator.addMethod('email', function (value, element) {
             return this.optional(element) || /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(value);
         }, 'Please enter a valid Email address');
+        $.validator.addMethod('password_check', function(value, element) {
+            return this.optional(element) || (value.match(/[a-zA-Z]/) && value.match(/[0-9]/));
+        },
+        'Password must contain at least one numeric and one alphabetic character.');
         
         $("#registerForm").validate({
             rules: {
+                
                 first_name: {
                     required: true,
                     minlength: 3
@@ -139,7 +146,7 @@
                 email : { 
                     email : true, 
                     required: true,
-                    remote: {
+                    /*remote: {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -153,7 +160,7 @@
                                 return $('#registerForm :input[name="email"]').val();
                             }
                         }
-                    }
+                    }*/
                 },
                 email_confirm: {
                     email: true,
@@ -162,13 +169,18 @@
                 },
                 password: {
                     required: true,
+                    password_check: true,
                     minlength: 6
                 },
                 password_confirm: {
                     required: true,
                     minlength: 6,
                     equalTo: "#password"
-                }
+                },
+                checkTerms: {
+                    required: true, 
+                } 
+                
             },
             messages: {
                 name: {
@@ -193,6 +205,9 @@
                 },
                 email_confirm: {
                     equalTo: "Email does not match"
+                },
+                checkTerms: {
+                    required: "Please check Terms of Use"
                 }
             }
         });

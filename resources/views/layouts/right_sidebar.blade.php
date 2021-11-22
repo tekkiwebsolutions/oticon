@@ -10,9 +10,9 @@
             <li><a href="{{ route('yourSolution') }}">Your Hearing</a></li>
             <li><a href="#">Hearing Technology</a>
                 <ul class="sub-navigation">
-                    <li><a href="#">Types of Hearing Technology</a></li>
+                    <li><a href="#">Types of Hearing<br> Technology</a></li>
                     <li><a href="#">Styles of Hearing aids</a></li>
-                    <li><a href="#">Features of Hearing Technology</a></li>
+                    <li><a href="#">Features of Hearing<br> Technology</a></li>
                     <li><a href="#">Hearing Assistive Technology</a></li>
                 </ul>
             </li>

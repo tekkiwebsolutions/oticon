@@ -65,5 +65,10 @@ class HomeController extends Controller
     {
         return view('resources');
     }
+    public function reports()
+    {
+        return view('reports');
+    }
+    
     
 }
