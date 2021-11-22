@@ -50,5 +50,5 @@ Auth::routes(['verify' => true]);
 Route::post('/unique_email', [App\Http\Controllers\UserController::class, 'unique_email'])->name('unique_email');
 
 Route::get('/email/verify', function () {
-    return view('auth.verify-email');
+    return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
