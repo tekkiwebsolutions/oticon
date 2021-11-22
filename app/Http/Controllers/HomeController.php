@@ -31,6 +31,11 @@ class HomeController extends Controller
         return view('age_group');
     }
 
+    public function aboutHearing()
+    {
+        return view('about_hearing');
+    }
+
     public function yourHearing()
     {
         return view('your_hearing');
@@ -60,5 +65,10 @@ class HomeController extends Controller
     {
         return view('resources');
     }
+    public function reports()
+    {
+        return view('reports');
+    }
+    
     
 }

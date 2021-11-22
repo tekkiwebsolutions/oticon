@@ -15,13 +15,13 @@ class CrateSiteSettingsTable extends Migration
     {
         Schema::create('site_settings', function (Blueprint $table) {
             $table->id();
-            $table->text('about_page');
-            $table->text('contact_page');
-            $table->text('privacy_policy');
-            $table->string('logo');
-            $table->text('terms_of_use');
-            $table->string('quick_links');
-            $table->string('copyright');
+            $table->text('about_page')->nullable();
+            $table->text('contact_page')->nullable();
+            $table->text('privacy_policy')->nullable();
+            $table->string('logo')->nullable();
+            $table->text('terms_of_use')->nullable();
+            $table->string('quick_links')->nullable();
+            $table->string('copyright')->nullable();
             $table->timestamps();
         });
     }
