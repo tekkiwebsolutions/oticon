@@ -146,11 +146,11 @@
                 email : { 
                     email : true, 
                     required: true,
-                    /*remote: {
+                    remote: {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "/validate_email",
+                        url: "/unique_email",
                         type: "POST",
                         dataType: "JSON",
                         data:
@@ -160,7 +160,7 @@
                                 return $('#registerForm :input[name="email"]').val();
                             }
                         }
-                    }*/
+                    }
                 },
                 email_confirm: {
                     email: true,
@@ -202,7 +202,7 @@
                 email: {
                     required: "This field is required",
                     email: "Please enter a valid Email address",
-                    // remote: jQuery.validator.format("{0} is already taken.")
+                    remote: jQuery.validator.format("{0} is already taken.")
                 },
                 email_confirm: {
                     equalTo: "Email does not match"

@@ -16,25 +16,20 @@
                 <a href="{{ route('login') }}">Login</a>
                 <span><a href="#"><img alt="" src="images/login-icon.png"></a></span>
                 @else
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
+                <div class="dropdown">
+                    <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img alt="{{ Auth::user()->email }}" src="images/login-icon.png">
+                    </a>
 
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">My Profile</a></li>
+                        <li><a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                    </ul>
+                </div>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form> 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                    <span><a href="#"><img alt="{{ Auth::user()->email }}" src="images/login-icon.png"></a></span>
-
-                    
-                    
-                    <div>
-                        
-                    </div>
+                <!-- <span><a href="#"><img alt="{{ Auth::user()->email }}" src="images/login-icon.png"></a></span> -->
                 @endguest
             </div>
         </div>
