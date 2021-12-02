@@ -8,4 +8,5 @@
     </ul>
     <div class="copyright">Copyright &#169; 2021. Oticon. All Rights Reserved. </div>
 </div>
+@include('cookies')
 @endsection

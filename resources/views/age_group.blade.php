@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-<div class="header-wrapper">
+<!--<div class="header-wrapper">
     <div class="container">
         <div class="row position-relative">
             <div class="font-adj d-flex position-absolute">
@@ -13,9 +13,11 @@
             </div>
         </div>
     </div>
-</div>
-
+</div>-->
+@include('layouts.header')
 @section('content')
+
+
 <div class="content-wrapper-full">
     <div class="container">
         <div class="row">
@@ -72,3 +74,5 @@
 @include('layouts.footer')
 
 @endsection
+
+

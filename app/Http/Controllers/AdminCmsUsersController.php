@@ -36,6 +36,9 @@ class AdminCmsUsersController extends CBController {
 		// $this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Please leave empty if not change");
 		$this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Please leave empty if not change");
 		$this->form[] = array("label"=>"Password Confirmation","name"=>"password_confirmation","type"=>"password","help"=>"Please leave empty if not change");
+		
+		$this->form[] = ['label'=>'2Fector Authentication','name'=>'2f_auth','type'=>'radio','dataenum'=>'0|Disable;1|Enable'];
+
 		# END FORM DO NOT REMOVE THIS LINE
 				
 	}

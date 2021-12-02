@@ -16,16 +16,19 @@
     <!-- Styles -->
     <link href="{{ asset('style/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('style/custom.css') }}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
     <!-- jQuery validation -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+	<script src="https://crlcu.github.io/multiselect/dist/js/multiselect.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js'></script>	
 </head>
 <body>
     <div id="app">
@@ -78,4 +81,20 @@
         </main>
     </div>
 </body>
+
+<script>
+    $(document).ready(function() {
+        $(".font-adj a").click(function () {
+            $(".font-adj a").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+    $(document).ready(function() {
+        $(".person-time ").click(function () {
+            $(".person-time").removeClass("person-time-active");
+            $(this).addClass("person-time-active");
+        });
+    });
+</script>
+
 </html>

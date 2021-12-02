@@ -36,7 +36,9 @@
                     <div class="col-lg-12 col-md-12 col-12 pb-4">
                         <div class='all-reports'>
                             <div class="all-reports-inner">
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                            <a href="{{ route('resources') }}" class="text-decoration-none">
+                                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                            </a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
                             <a href='#' class='download-pdf'><img src='images/pdf-icon.png'/><span>download pdf</span></a>
                             </div>
@@ -44,7 +46,9 @@
 
                         <div class='all-reports'>
                             <div class='all-reports-inner'>
+                            <a href="{{ route('resources') }}" class="text-decoration-none">
                             <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                            </a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
                             <a href='#' class='download-pdf'><img src='images/pdf-icon.png'/><span>download pdf</span></a>
                             </div>
@@ -52,7 +56,8 @@
 
                         <div class='all-reports '>
                            <div class='all-reports-inner highlighted'>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                           <a href="{{ route('resources') }}" class="text-decoration-none">
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
                             <a href='#' class='read_more'><span>Read More</span></a>
                             </div>
@@ -60,7 +65,8 @@
 
                         <div class='all-reports'>
                             <div class='all-reports-inner'>
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+                            <a href="{{ route('resources') }}" class="text-decoration-none">
+                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></a>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
                             <a href='#' class='download-pdf'><img src='images/pdf-icon.png'/><span>download pdf</span></a>
                             </div>

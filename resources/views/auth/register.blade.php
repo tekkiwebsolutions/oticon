@@ -146,11 +146,11 @@
                 email : { 
                     email : true, 
                     required: true,
-                    /*remote: {
+                    remote: {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "/validate_email",
+                        url: "/unique_email",
                         type: "POST",
                         dataType: "JSON",
                         data:
@@ -160,7 +160,7 @@
                                 return $('#registerForm :input[name="email"]').val();
                             }
                         }
-                    }*/
+                    }
                 },
                 email_confirm: {
                     email: true,
@@ -193,6 +193,7 @@
                 },
                 password: {
                     required: "This field is required",
+                    // password_check: "Password must contain at least 1 number and 1 character",
                     minlength: "Your password must be at least 6 characters long"
                 },
                 password_confirm: {
