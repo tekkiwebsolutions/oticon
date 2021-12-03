@@ -25,11 +25,11 @@
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
-                        <div class="about-hearing-thumb"><img alt="" class="img-fluid" src="images/about-hearing-thumb.png">
+                        <div class="about-hearing-thumb" style="display: none;"><img alt="" class="img-fluid" src="images/about-hearing-thumb.png">
                         </div>
-                        <div class="about-hearing-thumb" style="display:none;"><img alt="" class="img-fluid" src="images/about-hearing-small.png">
+                        <div class="about-hearing-thumb"><img alt="" class="img-fluid" src="images/about-hearing-small.png">
                         </div>
-                        <div class="about-hearing-large"><img alt="" class="img-fluid" src="images/about-hearing.png">
+                        <div class="about-hearing-large" style="display:none;"><img alt="" class="img-fluid" src="images/about-hearing.png">
                             <span class="hearing_icon_1"><i class="fa fa-plus">
                                 <p class="tooltiptext">lorem a</p></i>
                             </span>
@@ -97,7 +97,7 @@
                                 <p class="tooltiptext">lorem v</p></i>
                             </span>
                         </div>
-                        <div class="brain_ad-large" style="display: none;"><img alt="" class="img-fluid" src="images/brain_ad.png">
+                        <div class="brain_ad-large"><img alt="" class="img-fluid" src="images/brain_ad.png">
                             <span class="brain_ad_1"><i class="fa fa-plus">
                                 <p class="tooltiptext">lorem a</p></i>
                             </span>

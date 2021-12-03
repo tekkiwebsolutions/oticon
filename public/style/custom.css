@@ -499,8 +499,7 @@
 
   .navigation li a:hover {
      /* font-family: 'SohoGothic';*/
-     font-size: 15px;
-     font-weight: 800;
+     font-size: 16px;
   }
     a.active img {
         border: 2px solid #c6168d;
@@ -531,7 +530,7 @@
 
   a.cta-btn {
       display: inline-block;
-      padding: 10px 25px 12px;
+      padding: 10px 25px;
       color: #fff;
       background-color: #c6168d;
       text-transform: uppercase;
@@ -584,7 +583,11 @@
       align-items: center;
       padding-left: 5px;
   }
-
+  .person-time a {
+        display: flex;
+       align-items: center;
+       text-decoration: none;
+   }
   .person-time span {
       padding-left: 10px;
       font-size: 15px;
@@ -954,19 +957,23 @@
    }
 
    .save-selection-btn {
-       float: right;
-       background-color:#c6168d;
-       padding:15px 35px;
-       border-radius: 0;
-       color: #fff;
-       font-size: 15px;
-       font-weight: 600;
-       text-transform: uppercase;
+    float: right;
+   background-color: #c6168d;
+   padding: 10px 35px;
+   border-radius: 0;
+   color: #fff;
+   font-size: 15px;
+   font-weight: 600;
+   text-transform: uppercase;
+   margin-top: 10px;
+   border: 1px solid #c6168d;
+
    }
 
    .save-selection-btn:hover {
-       color: #fff;
-       background-color: #;
+     background-color: transparent;
+    border: 1px solid #de22a1;
+    color: #de22a1;
    }
 
    .style-image-row {
@@ -1402,8 +1409,8 @@
           margin-bottom: 25px;
       }
 
-      .about-hearing-large {
-          margin-bottom: 50px;
+      .about-hearing-large, .brain_ad-large {
+          margin-bottom: 50px;display: inline-block;position: relative ;
       }
       .tech-description {
         padding-left: 20px;
@@ -1900,7 +1907,7 @@ font-weight: 600;
         font-weight: 600;
     }
     .message {
-        height: 114px !important;
+        height: 114px;resize: none;
     }
     /* .multi-selected .col-md-5 {
         width: 48%;
@@ -2042,6 +2049,345 @@ font-weight: 600;
     select#multiselect1_to option {
         border: none;
     }
+
+/* mandeep code start here */
+.circle:hover {
+    right: 5px;
+    -webkit-transition: all cubic-bezier(.4,0,.2,1) .2s;
+    -o-transition: all cubic-bezier(.4,0,.2,1) .2s;
+    transition: all cubic-bezier(.4,0,.2,1) .2s;
+}
+  #cookiePopup {
+    background: linear-gradient(to bottom,rgba(30,30,30,.95) 0,rgba(0,0,0,.95) 100%);
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 10pt;
+    left: 0;
+    line-height: 1.5;
+    margin: 0;
+    padding: 7px;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    bottom: 0px;
+    opacity: 1;
+  }
+  #cookiePopup p{
+        float: left;
+        margin: 4px 0 0 20px;
+        padding: 0;
+        color: #fff;
+  }
+  #cookiePopup button{
+    background-color: #de22a1;
+    color: #fff;border:1px solid #de22a1;
+    cursor: pointer;
+    display: inline-block;
+    float: right;
+    font-weight: 700;
+    line-height: 1;
+    margin-right: 20px;
+    padding: 5px 10px;
+    position: relative;
+    text-decoration: none;
+  }
+  #cookiePopup button:hover{background-color: transparent;
+border: 1px solid #de22a1;
+}
+.about-hearing-large span i, .brain_ad-large span i {
+    color: #fff;
+}
+.about-hearing-large span, .brain_ad-large span{
+display: inline-block;
+width: 22px;
+height: 22px;
+border-radius: 100px;
+border: 3px solid #fff;
+line-height: 15px;
+margin: 0;
+padding: 0;
+text-align: center;
+font-size: 10px;cursor: pointer;
+background: #c6168d;
+}
+.about-hearing-large span:hover .tooltiptext, .brain_ad-large span:hover .tooltiptext{
+  visibility: visible;
+}
+.about-hearing-large span .tooltiptext, .brain_ad-large span .tooltiptext{
+visibility: hidden;
+width: auto;
+background-color: #000;
+color: #fff;
+text-align: center;
+border-radius: 6px;
+padding: 7px 0;
+visibility: hidden;
+position: absolute;
+z-index: 1;
+left: -45px;font-family: 'OpenSans';
+font-weight: 400;
+top: 20px;
+min-width: 100px;
+border-radius: 100px;
+font-size: 14px;
+}
+.about-hearing-large span i, .brain_ad-large span i{position: relative;font-size: 9px;}
+.hearing_icon_1 {
+ position: absolute;
+bottom: 5%;
+left: 15%;
+}
+.hearing_icon_2 {
+ position: absolute;
+bottom: 30%;
+left: 22%;
+}
+.hearing_icon_3 {
+    position: absolute;
+    top: -9%;
+    left: 9%;
+}
+.hearing_icon_4 {
+    position: absolute;
+   top: 9%;
+left: 4.5%;
+}
+.hearing_icon_5 {
+       position: absolute;
+    top: 13%;
+    left: 14%;
+}
+.hearing_icon_6 {
+    position: absolute;
+   top: 5%;
+left: 31.5%;
+}
+.hearing_icon_7 {
+    position: absolute;
+    top: 38%;
+left: 37%;
+}
+.hearing_icon_8 {
+    position: absolute;
+  top: 47%;
+left: 41%;
+}
+.hearing_icon_9 {
+    position: absolute;
+   top: 75%;
+left: 38%;
+}
+.hearing_icon_10 {
+    position: absolute;
+    top: 89%;
+    left: 35.5%;
+}
+.hearing_icon_11 {
+    position: absolute;
+    top: 16%;
+    left: 48%;
+}
+.hearing_icon_12 {
+    position: absolute;
+    top: 26%;
+    left: 57%;
+}
+.hearing_icon_13 {
+    position: absolute;
+    top: 21%;
+    left: 61%;
+}
+.hearing_icon_14 {
+    position: absolute;
+    top: 12%;
+    left: 67.5%;
+}
+.hearing_icon_15 {
+    position: absolute;
+   top: 31%;
+left: 65%;
+}
+.hearing_icon_16 {
+    position: absolute;
+    top: 38%;
+left: 69.5%;
+}
+.hearing_icon_17 {
+    position: absolute;
+    top: 44%;
+    left: 55%;
+}
+.hearing_icon_18 {
+    position: absolute;
+    top: 56%;
+left: 65%;
+}
+.hearing_icon_19 {
+    position: absolute;
+   top: 76%;
+left: 82%;
+}
+.hearing_icon_20 {
+    position: absolute;
+ top: 25%;
+left: 73%;
+}
+.hearing_icon_21 {
+    position: absolute;
+   top: 28%;
+left: 83%;
+}
+.hearing_icon_22 {
+    position: absolute;
+  top: 10%;
+left: 96.5%;
+}
+.brain_ad_1 {
+ position: absolute;
+    bottom: 19%;
+    left: 27%;
+}
+.brain_ad_2 {
+ position: absolute;
+bottom: 26%;
+    left: 9%;
+}
+.brain_ad_3 {
+    position: absolute;
+  bottom: 40%;
+    left: 31%;
+}
+.brain_ad_4 {
+    position: absolute;
+bottom: 46%;
+    left: 27%;
+}
+.brain_ad_5 {
+       position: absolute;
+   top: 23%;
+    left: 19%;
+}
+.brain_ad_6 {
+    position: absolute;
+     top: 33%;
+    left: 39%;
+}
+.brain_ad_7 {
+    position: absolute;
+   top: 55%;
+    left: 48%;
+}
+.brain_ad_8 {
+    position: absolute;
+ top: 63%;
+    left: 60%
+}
+.brain_ad_9 {
+    position: absolute;
+     top: 52%;
+    left: 66%;
+}
+.brain_ad_10 {
+    position: absolute;
+    top: 45%;
+    left: 61%;
+}
+.brain_ad_11 {
+    position: absolute;
+  top: 40%;
+    left: 50%;
+}
+.brain_ad_12 {
+    position: absolute;
+       top: 37%;
+    left: 54%;
+}
+.brain_ad_13 {
+    position: absolute;
+       top: 31%;
+    left: 63%;
+}
+.brain_ad_14 {
+    position: absolute;
+        top: 40%;
+    left: 69%;
+}
+.brain_ad_15 {
+    position: absolute;
+      top: 43%;
+    left: 82%;
+}
+#multiselect1 option {
+    cursor: pointer;
+}
+.ms-selectable {
+    padding: 20px 23px;
+    border-radius: 0;
+    border: solid 1px #d2d0ca;
+    font-family: 'OpenSans';
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 20px;min-height: 350px;
+    background-color: transparent;
+}
+.ms-selectable ul li, .ms-selection ul li {
+    margin-bottom: 8px;
+    border-bottom: 1px solid #d4d1cc;
+    padding: 11px 0;
+    color: #152040;position: relative;
+    font-weight: 500;cursor: pointer;
+    list-style: none;
+}
+.ms-selectable ul, .ms-selection ul {
+    padding: 0;
+}
+.ms-selectable ul li span:after {
+    content: '\f0fe';
+    font-family: 'Font Awesome 5 Pro';
+    color: #152040;
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+}
+.ms-selection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45%;
+    padding: 20px 23px;
+    border-radius: 0;
+    border: solid 1px #d2d0ca;
+    font-family: 'OpenSans';
+    font-size: 14px;
+    margin-bottom: 20px;min-height: 350px;
+    background-color: transparent;
+}
+.ms-selection ul li span:after{
+content: '\f410';
+    font-family: 'Font Awesome 5 Pro';
+    color: #fe6714;
+    position: absolute;
+    right: 0;
+    font-size: 15px;
+}
+.ms-selection ul li {
+    width: 90%;
+    float: right;
+}
+.ms-selection ul li span:before {
+    content: '';
+    background-image: url(/images/dotline.png);
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 15%;
+    padding: 15px;
+    left: -10%;
+}
+.navigation li .active {
+    font-weight: bold;
+}
+
+    /* media query */
+
     @media only screen and (min-width: 1920px) {
     .checkbox-ideal .col-lg-3 {
         width: 20%;

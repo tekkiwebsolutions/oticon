@@ -31,7 +31,7 @@
                                     <div class='multi-selected'>
                                         <div class="row">
                                             <div class="col-md-5">
-                                            <select name="to[]" id="multiselect1_to" class="form-controls" size="8" multiple="multiple"></select>
+                                           <!--  <select name="to[]" id="multiselect1_to" class="form-controls" size="8" multiple="multiple"></select> -->
 
                                             </div>
 
@@ -54,18 +54,15 @@
                                     </div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4 col-offset-8' style="margin: 0 auto;">
                                     <button type="submit" type='sumbit' class='btn-common submit-button' value="Submit">Submit</button>
-                                    </div>
-                                    <div class='col-md-6'>
-                                        <button type='sumbit' class='btn-common save-template' value="Save Template">Save Template </button>
                                     </div>
                                 </div>
 
                                 <script type="text/javascript">
                                 jQuery(document).ready(function($) {
-                                    $('#multiselect1').multiselect();
-                                    $('#multiselect2').multiselect();
+                                    $('#multiselect1').multiSelect();
+                                    $('#multiselect2').multiSelect();
                                 });
                                 </script>
 
