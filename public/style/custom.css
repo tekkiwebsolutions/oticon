@@ -2385,10 +2385,104 @@ content: '\f410';
 .navigation li .active {
     font-weight: bold;
 }
+.questionnaires_block h3 {
+    font-size: 20px;padding-bottom: 20px;
+    font-weight: bold;
+}
+.questionnaires_block span {
+    font-size: 17px;padding-bottom: 15px;
+    display: inline-block;
+    width: 100%;font-weight: 600;
+}
+.questionnaires_block form label {
+    margin: 0px 30px 15px 0px;
+}
+.questionnaires_block input[type="submit"] {
+    background: #c6168d;
+    border: 0px;
+    color: #fff;
+    padding: 7px 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 13px;
+    margin-top: 20px;line-height: normal;
+    border: 1px solid #c6168d;
+}
+.questionnaires_block input[type="submit"]:hover {
+    border: 1px solid #c6168d;
+    background: #fff;
+    color: #c6168d;
+}
+.suspend_bottom, .suspend_top {
+    border-bottom: 1px solid #e7e8eb;
+    padding-bottom: 25px;
+}
+.reports-page p:last-child {
+    margin-bottom: 10px;
+}
+.questionnaires_block label {
+    font-size: 14px;position: relative;
+    cursor: pointer;
+}
+.questionnaires_block form label:before {
+    position: absolute;
+    content: '';
+    width: 20px;
+    height: 20px;
+    left: 0px;
+    border-radius: 100%;
+      border: 1px solid #d4d2cc;
+    background: #fff;
+  }
+  .questionnaires_block form label input:before {
+    position: absolute;
+    top: 4px;
+    width: 12px;
+    height: 12px;
+   /* background: #c6168d;*/
+    content: '';
+    border-radius: 100%;
+    left: 4px;
+    border: #e7e8eb;
+}
+.questionnaires_block label input {
+    width: 20px;
+    margin-right: 10px;
+}
+  .questionnaires_block form .selected input:before {
+        background: #c6168d;
+  }
+  .questionnaires_block form .selected:before {
+       background: #fff;
+    border: 2px solid #c6168d;
+  }
+  .col-lg-12.col-md-12.col-12.pb-4.report_page_leftpanel::-webkit-scrollbar-thumb {
+    /* border: 2px solid #3d3d3d; */
+    /* border-radius: 100px; */
+    background: #c6168d;
+}
+.report_page_leftpanel::-webkit-scrollbar {
+    width: 7px;
+}
+.report_page_leftpanel::-webkit-scrollbar-track {
+    background: #d2d0ca;
+}
+.report_page_leftpanel {
+    height: 690px;
+    overflow: unset;
+    overflow-y: scroll;
+}
+
+
+
+
 
     /* media query */
 
     @media only screen and (min-width: 1920px) {
+     .my-account-sidebar{
+        width: 50%;
+    } 
     .checkbox-ideal .col-lg-3 {
         width: 20%;
     }
@@ -2458,11 +2552,12 @@ content: '\f410';
     }
 
   }
-  @media only screen and (min-width: 1920px) {
-    .my-account-sidebar{
-        width: 50%;
-    }
+
+  @media only screen and (max-width: 1400px) {
+    .sidebar-wrapper {
+    max-width: 320px;
   }
+}
 
 
   @media only screen and (max-width: 575px) {
