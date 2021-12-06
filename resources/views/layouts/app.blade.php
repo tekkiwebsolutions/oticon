@@ -27,10 +27,10 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/additional-methods.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
-	<script src="https://crlcu.github.io/multiselect/dist/js/multiselect.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js'></script>	
 </head>
-<body>
+<body> 
     <div id="app">
         <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -75,8 +75,8 @@
 
         <main>
             @yield('header')
-            @yield('right_sidebar')
-            @yield('content')
+            @yield('right_sidebar')              
+            @yield('content')            
             @yield('footer')
         </main>
     </div>
@@ -88,13 +88,15 @@
             $(".font-adj a").removeClass("active");
             $(this).addClass("active");
         });
-    });
-    $(document).ready(function() {
+    
         $(".person-time ").click(function () {
             $(".person-time").removeClass("person-time-active");
             $(this).addClass("person-time-active");
         });
     });
+    function changeFontSize(pxval){
+        $("p").css("font-size",pxval+'px');
+    }
 </script>
 
 </html>

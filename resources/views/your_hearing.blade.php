@@ -6,27 +6,12 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
                         <div class="graph-col">
-                            <img alt="" class="img-fluid" src="images/graph.jpg">
+                            <img alt="" class="img-fluid" src="{{ url('images/graph.jpg')}}">
                         </div>
                         <div class="filters-col">
                             <label class="filer-label">Ear Position</label>
@@ -36,14 +21,14 @@
                                         <input type="checkbox" class="custom-control-input" id="customCheckBox1">
                                         <label class="custom-control-label" for="customCheckBox1">Left</label>
                                     </div>
-                                    <a href="#" class="edit"><img alt="" class="img-fluid" src="images/edit-icon.png"></a>
+                                    <a href="#" class="edit"><img alt="" class="img-fluid" src="{{ url('images/edit-icon.png')}}"></a>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-between align-items-center filter-text-col position-relative">
                                     <div class="custom-control custom-checkbox">
                                         <input type="checkbox" class="custom-control-input" id="customCheckBox2">
                                         <label class="custom-control-label" for="customCheckBox2">Right</label>
                                     </div>
-                                    <a href="#" class="edit"><img alt="" class="img-fluid" src="images/edit-icon.png"></a>
+                                    <a href="#" class="edit"><img alt="" class="img-fluid" src="{{ url('images/edit-icon.png')}}"></a>
                                 </div>
                             </div>
                             <label class="filer-label mt-4">Choose any sound</label>
@@ -51,37 +36,37 @@
                                 <div class="form-check custom-radio pet-icon">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
-                                        <img alt="" class="img-fluid" src="images/pet-icon-selected.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/pet-icon-selected.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                                     <label class="form-check-label" for="flexRadioDefault2">
-                                        <img alt="" class="img-fluid" src="images/bus-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/bus-icon.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
                                     <label class="form-check-label" for="flexRadioDefault3">
-                                        <img alt="" class="img-fluid" src="images/bird-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/bird-icon.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
                                     <label class="form-check-label" for="flexRadioDefault4">
-                                        <img alt="" class="img-fluid" src="images/bird-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/bird-icon.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
                                     <label class="form-check-label" for="flexRadioDefault5">
-                                        <img alt="" class="img-fluid" src="images/phone-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/phone-icon.png')}}" >
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
                                     <label class="form-check-label" for="flexRadioDefault6">
-                                        <img alt="" class="img-fluid" src="images/tap-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/tap-icon.png')}}">
                                     </label>
                                 </div>
                             </div>
@@ -91,19 +76,19 @@
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
                                     <label class="form-check-label" for="flexRadioDefault7">
-                                        <img alt="" class="img-fluid" src="images/male-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/male-icon.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
                                     <label class="form-check-label" for="flexRadioDefault8">
-                                        <img alt="" class="img-fluid" src="images/female-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/female-icon.png')}}">
                                     </label>
                                 </div>
                                 <div class="form-check custom-radio">
                                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
                                     <label class="form-check-label" for="flexRadioDefault9">
-                                        <img alt="" class="img-fluid" src="images/kid-icon.png">
+                                        <img alt="" class="img-fluid" src="{{ url('images/kid-icon.png')}}">
                                     </label>
                                 </div>
                             </div>

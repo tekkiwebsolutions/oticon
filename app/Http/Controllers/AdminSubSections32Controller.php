@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAgeGroupController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminSubSections32Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,36 +25,31 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "age_group";
+			$this->table = "sub_sections";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Slug","name"=>"slug"];
-			$this->col[] = ["label"=>"Image","name"=>"image","image"=>true];
-			$this->col[] = ["label"=>"Icon Image","name"=>"icon_image","image"=>true];
+			$this->col[] = ["label"=>"Situations Sectioned Id","name"=>"situations_sectioned_id","join"=>"situations_sectioned,title"];
 			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
+			$this->col[] = ["label"=>"Soud","name"=>"soud"];
+			$this->col[] = ["label"=>"Impairment Sound","name"=>"impairment_sound"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Slug','name'=>'slug','type'=>'text','validation'=>'required','width'=>'col-sm-9','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
-			$this->form[] = ['label'=>'Image','name'=>'image','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Icon-image','name'=>'icon_image','type'=>'upload','validation'=>'required','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Situations Sectioned Id','name'=>'situations_sectioned_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'situations_sectioned,title'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Soud','name'=>'soud','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Impairment Sound','name'=>'impairment_sound','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Image','name'=>'image','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
-			//$this->form[] = ['label'=>'Icon-image','name'=>'icon-image','type'=>'upload','validation'=>'required','width'=>'col-sm-9','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10','dataenum'=>'Active; Inactive'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Situations Sectioned Id','name'=>'situations_sectioned_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'situations_sectioned,title'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Soud','name'=>'soud','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Impairment Sound','name'=>'impairment_sound','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

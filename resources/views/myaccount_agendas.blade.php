@@ -25,7 +25,7 @@
                             <a href=''><img src='images/close.png' class='img-fluid'/></a>
                         </div>
                         <div class='agendas'>
-                        <a href='#' class='create_agenda'>Create Agenda </a>
+                        <a href="{{route('myaccount_agendas_create')}}" class='create_agenda'>Create Agenda </a>
                         <table class="table table-reponsive table-data myaccount-agendas">
                         <thead>
                             <tr>
@@ -44,7 +44,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>
@@ -53,7 +52,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>
@@ -62,7 +60,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>
@@ -71,7 +68,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>
@@ -80,7 +76,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>
@@ -89,7 +84,6 @@
                             <td>20 Jun, 2021</td>
                             <td><p>Lorem ipsum dolor sit amet</p></td>
                             <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/next.png'/></td>
                             <td class='icons'><a href='#'><img src='images/edit.png'/></td>
                             <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
                             </tr>

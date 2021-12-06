@@ -5,23 +5,9 @@
 
 <div class="content-wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+        <div class="row">    
+        @include('layouts.left_sidebar')
+             
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="d-flex category-row">
                     <a href="#" class="category-col position-relative">

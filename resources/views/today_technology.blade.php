@@ -6,22 +6,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-6">
@@ -34,12 +19,12 @@
                 <div class='row'>
                 <div class="row pr-0">
                     <div class="col-lg-12 col-md-12 col-12 main-banner-tech">
-                        <img alt="" class="img-fluid" src="images/today-technology-main.jpg" with="100%">
+                        <img alt="" class="img-fluid" src="{{ url('images/today-technology-main.jpg')}}" with="100%">
                         <div class="main-volume">
-                            <img src='images/speaker.png' class="img-fluid icon-large"/>
-                            <img src='images/speaker-icon-one.png' class="img-fluid icon-one" />
-                            <img src='images/icon-second.png' class="img-fluid icon-second" />
-                            <img src='images/speaker-third.png' class="img-fluid icon-third" />
+                            <img src="{{ url('images/speaker.png')}}" class="img-fluid icon-large"/>
+                            <img src="{{ url('images/speaker-icon-one.png')}}" class="img-fluid icon-one" />
+                            <img src="{{ url('images/icon-second.png')}}" class="img-fluid icon-second" />
+                            <img src="{{ url('images/speaker-third.png')}}" class="img-fluid icon-third" />
                         </div>
                     </div>
                 </div>

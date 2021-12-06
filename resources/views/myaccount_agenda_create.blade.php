@@ -17,21 +17,23 @@
             <div class="col-lg-10 col-md-10 col-12 center-area side-content-account">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 mx-auto">
-                            <h2 class='text-center heading'>Create Agenda</h2>
-                           <div class='agenda-form'>
+                        <h2 class='text-center heading'>Create Agenda</h2>
+                        <form method="POST" action="{{ url('save_agendas') }}"  novalidate >
+                            @csrf
+                            <div class='agenda-form'>
                                 <div class='agenda-box-shadow'>
-                                    <input type="input" class="form-controls" placeholder="Agenda Name">
-                                    <select class="form-controls" aria-label="Default select">
+                                    <input type="input" class="form-controls" placeholder="Agenda Name" name="title">
+                                    <select class="form-controls" aria-label="Default select" name="client_name">
                                         <option selected>Select</option>
                                         <option value="1">test@gmail.com</option>
                                         <option value="2">test23@gmail.com</option>
                                     </select>
-                                    <textarea class="form-controls message" id="exampleFormControlTextarea1" rows="3" placeholder="Description"></textarea>
+                                    <textarea class="form-controls message" id="exampleFormControlTextarea1" name="description" rows="3" placeholder="Description"></textarea>
                                     <label>Agenda By Section</label>
                                     <div class='multi-selected'>
                                         <div class="row">
                                             <div class="col-md-5">
-                                            <select name="to[]" id="multiselect1_to" class="form-controls" size="8" multiple="multiple"></select>
+                                           <!--  <select name="to[]" id="multiselect1_to" class="form-controls" size="8" multiple="multiple"></select> -->
 
                                             </div>
 
@@ -41,7 +43,7 @@
                                             </div>
 
                                             <div class="col-md-5">
-                                            <select name="from[]" id="multiselect1" class="form-controls" size="8" multiple="multiple">
+                                            <select name="selections[]" id="multiselect1" class="form-controls" size="8" multiple="multiple">
                                                     <option value="Introduction">Introduction</option>
                                                     <option value="About Hearing">About Hearing</option>
                                                     <option value="Your Hearing">Your Hearing</option>
@@ -54,23 +56,16 @@
                                     </div>
                                 </div>
                                 <div class='row'>
-                                    <div class='col-md-6'>
+                                    <div class='col-md-4 col-offset-8' style="margin: 0 auto;">
                                     <button type="submit" type='sumbit' class='btn-common submit-button' value="Submit">Submit</button>
-                                    </div>
-                                    <div class='col-md-6'>
-                                        <button type='sumbit' class='btn-common save-template' value="Save Template">Save Template </button>
                                     </div>
                                 </div>
 
-                                <script type="text/javascript">
-                                jQuery(document).ready(function($) {
-                                    $('#multiselect1').multiselect();
-                                    $('#multiselect2').multiselect();
-                                });
-                                </script>
+                                
 
                             </div>
-                     </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -78,8 +73,14 @@
     </div>
 </div>
 
-
-
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+    $('#multiselect1').multiSelect();
+    $('#multiselect2').multiSelect();
+});
+</script>
 @include('layouts.footer')
 
 @endsection
+
+

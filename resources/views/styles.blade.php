@@ -6,22 +6,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-6">
@@ -36,7 +21,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="custom-selectbox styles-custom-selectbox position-relative">
-                                    <span><img alt="" class="img-fluid" src="images/male-thumb.jpg"></span>
+                                    <span><img alt="" class="img-fluid" src="{{ url('images/male-thumb.jpg')}}" ></span>
                                     <select class="form-select" aria-label="Default select">
                                         <option selected>Male</option>
                                         <option value="1">One</option>
@@ -47,7 +32,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="custom-selectbox styles-custom-selectbox position-relative">
-                                    <span><img alt="" class="img-fluid" src="images/female-thumb.jpg"></span>
+                                    <span><img alt="" class="img-fluid" src="{{ url('images/female-thumb.jpg')}}" ></span>
                                     <select class="form-select" aria-label="Default select">
                                         <option selected>Ethnicity: German</option>
                                         <option value="1">One</option>
@@ -79,7 +64,7 @@
                 </div>
                 <div class="row style-image-row">
                     <div class="col-lg-6 col-md-6 col-12 style-image-col">
-                        <img alt="" class="img-fluid" src="images/style-image.jpg">
+                        <img alt="" class="img-fluid" src="{{ url('images/style-image.jpg')}}" >
                         <div class="custom-range-slider">
                             <input type="range" class="form-range" id="myRange">
                         </div>
@@ -92,7 +77,7 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. </p>
                             </div>
                             <div class="style-detail-thumb">
-                                <span class="image-thumb"><img alt="" class="img-fluid" src="images/image-thumb.jpg"></span>
+                                <span class="image-thumb"><img alt="" class="img-fluid" src="{{ url('images/image-thumb.jpg')}}" ></span>
                                 <a href="#" class="color-thumb black-color"></a>
                                 <a href="#" class="color-thumb light-brown-color"></a>
                                 <a href="#" class="color-thumb medium-brown-color"></a>

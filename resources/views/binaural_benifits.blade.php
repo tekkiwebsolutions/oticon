@@ -6,22 +6,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-6">
@@ -40,11 +25,11 @@
                         //const fillPattern = ctx.createPattern(img, 'repeat');
                        // img.src = 'images/ears.png';
                        var yourImage = new Image()
-                       yourImage.src ='/images/ears.png';
+                       yourImage.src = "{{ url('/images/ears.png')}}";
                        var binauralimage = new Image()
-                       binauralimage.src ='images/Binaural-Fitting.png';
+                       binauralimage.src = "{{ url('images/Binaural-Fitting.png')}}"; 
                        var Normalimg = new Image()
-                       Normalimg.src ='images/third-icon.png';
+                       Normalimg.src = "{{ url('images/third-icon.png')}}";  
 
                         var data = {
                             labels: labels,
