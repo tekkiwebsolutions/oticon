@@ -66,7 +66,11 @@ Route::group(['middleware' => ['verified']], function() {
 
     Route::get('/myaccount_agendas_create', [App\Http\Controllers\HomeController::class, 'myaccount_agendas_create'])->name('myaccount_agendas_create');
 
+    Route::get('/myaccount_agendas_edit/{id}', [App\Http\Controllers\HomeController::class, 'myaccount_agendas_edit'])->name('myaccount_agendas_edit');
+
     Route::post('/save_agendas', [App\Http\Controllers\HomeController::class, 'save_agendas'])->name('save_agendas');
+
+    Route::get('/delete_agendas/{id}', [App\Http\Controllers\HomeController::class, 'delete_agendas'])->name('delete_agendas');
 
     Route::get('/myaccount_media', [App\Http\Controllers\HomeController::class, 'myaccount_media'])->name('myaccount_media');
     Route::get('/myaccount', [App\Http\Controllers\HomeController::class, 'myaccount'])->name('myaccount');
@@ -96,8 +100,5 @@ Route::post('getSubsectionDetail', [App\Http\Controllers\CommonController::class
 Route::get('pagination', [App\Http\Controllers\CommonController::class, 'pagination'])->name('pagination');
 
 Route::get('generatepdf', [App\Http\Controllers\PDFController::class, 'generatePDF']);
-// echo url()->current();
 
-// echo url()->full();
-// echo url()->current();
  

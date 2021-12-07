@@ -2,21 +2,29 @@
 <div class="sidebar-wrapper">
     <div class="sidebar-inner">
         <ul class="navigation">
-            <li><a href="{{ route('introductionCat', $ageCatUrl) }}" class="active">About This Tool</a></li>
-            <li><a href="{{ route('aboutHearingEar', $ageCatUrl) }}">How to Use This Tool</a></li>
-            @guest<li><a href="#">Login/sign Up</a></li>@endguest
-            <li><a href="{{ route('situations', $ageCatUrl) }}">Hearing and Hearing Loss</a></li>
-            <li><a href="#">Listening Environments</a></li>
-            <li><a href="{{ route('yourHearingCat', $ageCatUrl ) }}">Your Hearing</a></li>
-            <li><a href="{{ route('binaural_benifits', $ageCatUrl ) }}">Hearing Technology</a>
+            <li><a href="{{ route('introductionCat', $ageCatUrl) }}" class="@if($curruntpage=='introduction') active @endif" >About This Tool</a></li>
+
+            <li><a href="{{ route('aboutHearingEar', $ageCatUrl) }}" class="@if($curruntpage=='about_hearing') active @endif" >How to Use This Tool</a></li>
+
+            @guest<li><a href="#" class="@if($curruntpage=='about_hearing') active @endif" >Login/sign Up</a></li>@endguest
+
+            <li><a href="{{ route('situations', $ageCatUrl) }}" class="@if($curruntpage=='situations') active @endif" >Hearing and Hearing Loss</a></li>
+
+            <li><a href="#" class="@if($curruntpage=='about_hearingaaa') active @endif" >Listening Environments</a></li>
+
+            <li><a href="{{ route('yourHearingCat', $ageCatUrl ) }}" class="@if($curruntpage=='your_hearing') active @endif" >Your Hearing</a></li>
+
+            <li><a href="{{ route('binaural_benifits', $ageCatUrl ) }}" class="@if($curruntpage=='binaural_benifits') active @endif" >Hearing Technology</a>
                 <ul class="sub-navigation">
-                    <li><a href="{{ route('technologyHistory', $ageCatUrl ) }}">Types of Hearing<br> Technology</a></li>
-                    <li><a href="{{ route('styles', $ageCatUrl ) }}">Styles of Hearing aids</a></li>
-                    <li><a href="{{ route('todayTechnology', $ageCatUrl ) }}">Features of Hearing<br> Technology</a></li>
-                    <li><a href="#">Hearing Assistive Technology</a></li>
+                    <li><a href="{{ route('technologyHistory', $ageCatUrl ) }}" class="@if($curruntpage=='technologyhistory') active @endif" >Types of Hearing<br> Technology</a></li>
+                    <li><a href="{{ route('styles', $ageCatUrl ) }}" class="@if($curruntpage=='styles') active @endif" >Styles of Hearing aids</a></li>
+                    <li><a href="{{ route('todayTechnology', $ageCatUrl ) }}" class="@if($curruntpage=='today_technology') active @endif" >Features of Hearing<br> Technology</a></li>
+                    <li><a href="#" class="@if($curruntpage=='about_hearingaaa') active @endif" >Hearing Assistive Technology</a></li>
                 </ul>
             </li>
-            <li><a href="{{ route('reports', $ageCatUrl ) }}">Personalized Reports</a></li>
+
+            <li><a href="{{ route('reports', $ageCatUrl ) }}" class="@if($curruntpage=='reports') active @endif" >Personalized Reports</a></li>
+
         </ul>
     </div>
 </div>

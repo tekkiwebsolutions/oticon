@@ -5,8 +5,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
-
+use PDF;
 class HomeController extends Controller
 {
     /**
@@ -158,17 +159,21 @@ class HomeController extends Controller
     }
 
     public function myaccounts_reports(){
-        return view('myaccounts_reports');
+        $data = "";
+        return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','data'=>$data]);
     }
-    public function myaccount_agendas(){
-        return view ('myaccount_agendas');
-    }
+    public function myaccount_agendas(Request $request){
+        /*$agendas = DB::table('agendas')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();*/
+
+        $agendas = Agenda::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(1);
+        return view('myaccount_agendas',['curruntpage'=>'myaccount_agendas','agendas'=>$agendas]);
+    } 
+
+     
 
     public function save_agendas(Request $request){
+
         $data = $request->input();
-        echo"<pre>";
-        print_r($data);
-        echo"</pre>";
         $rules = [
 			'title' => 'required|string|min:3'
 		];
@@ -181,14 +186,42 @@ class HomeController extends Controller
 		else{
             $data = $request->input();
 			try{
-				$agenda = new Agenda;
-                $agenda->user_id = Auth::user()->id ;
-                $agenda->title = $data['title'];
-                $agenda->client_name = $data['client_name'];
-				$agenda->description = $data['description'];
-				$agenda->sectionss = implode(",", $data['selections']);
-				$agenda->save();
-				return redirect('myaccount_agendas_create')->with('status',"Insert successfully");
+                if(isset($data['agenda_id']) && $data['agenda_id'] >0){                      
+                    Agenda::where('id', $data['agenda_id'])
+                    ->update(['title' => $data['title'],'client_name' => $data['client_name'],'description' => $data['description'],'sectionss' => implode(",", $data['selections'])]);
+                    $lastInsertedId= $data['agenda_id'];
+                } else{
+                    $agenda = new Agenda;
+                    $agenda->user_id = Auth::user()->id ;
+                    $agenda->title = $data['title'];
+                    $agenda->client_name = $data['client_name'];
+                    $agenda->description = $data['description'];
+                    $agenda->sectionss = implode(",", $data['selections']);
+                    $agenda->save();
+                    $lastInsertedId= $agenda->id;
+                }
+
+
+                $data = [
+                    'title' => 'Welcome to Oticon',
+                    'date' => date('m/d/Y')
+                ];
+
+                $filename = "oticonagenda_".$lastInsertedId;
+                $path = storage_path('pdf/agendas');
+
+                if(!File::exists($path)) {
+                    File::makeDirectory($path, $mode = 0755, true, true);
+
+                } 
+                $pdf = PDF::loadView('pdf.agendapdf', $data)->save(''.$path.'/'.$filename.'.pdf');              ;
+
+                $pdf->download(''.$filename.'.pdf');
+
+                Agenda::where('id', $lastInsertedId)->update(['pdf' => 'pdf/agendas/'.$filename.'.pdf']);
+
+
+				return redirect('myaccount_agendas')->with('status',"Insert successfully");
 			}
 			catch(Exception $e){
 				return redirect('myaccount_agendas_create')->with('failed',"operation failed");
@@ -196,11 +229,18 @@ class HomeController extends Controller
 		}
     }
     
+    public function delete_agendas(Request $request){
+        Agenda::where('id',$request->id)->delete();
+        return redirect('myaccount_agendas')->with('status',"Deleted successfully");
+    }
     public function myaccount_media(){
-        return view('myaccount_media');
+        $data = "";
+        return view('myaccount_media',['curruntpage'=>'myaccount_media','data'=>$data]);
+        
     }
     public function myaccount(){
-        return view('myaccount');
+        $data = "";
+        return view('myaccount',['curruntpage'=>'myaccount','data'=>$data]);
     }
     public function product_categories(){
         return view('product_categories');
@@ -209,14 +249,16 @@ class HomeController extends Controller
         return view('product_listing');
     }
     public function myaccount_agendas_create(){
-        return view('myaccount_agenda_create');
+        $data = "";
+        return view('myaccount_agenda_create',['curruntpage'=>'myaccount_agendas','data'=>$data]);
     }
-    
-    public function getSessionData(Request $request){
-        $request->session()->put('ageCat', 1);
+    public function myaccount_agendas_edit(Request $request){
+        $data = Agenda::where('id','=',$request->id)->first();
+        // echo"<pre>";
+        // print_r($data);
+        // echo"</pre>";
+        return view('myaccount_agenda_create',['curruntpage'=>'myaccount_agendas','data'=>$data]);
 
-        //$data = $request->session()->all();
-
-       echo session('ageCat');
     }
+     
 }

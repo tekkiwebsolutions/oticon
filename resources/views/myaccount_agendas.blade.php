@@ -2,18 +2,19 @@
 @include('layouts.header')
 
 @section('content')
+<?php 
+$i=1; 
+if(isset($_GET['page']) && $_GET['page']>1){
+    $i= (($_GET['page']-1)*10)+1; 
+}
 
+
+
+?>
 <div class="content-wrap">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area sidebar-myaccount">
-                <ul class='my-account-sidebar'>
-                    <li class=''><a href='#'><img src='images/reports-myaccount-icon.png'/><span>Reports</span></a></li>
-                    <li class='active'><a href='#'><img src='images/save-agends-icon.png'/><span>Saved <br>Agendas</span></a></li>
-                    <li class=''><a href='#'><img src='images/my-media-icon.png'/><span>My Media</span></a></li>
-                    <li class=''><a href='#'><img src='images/my-account-sidebar-icon.png'/><span>My Account</span></a></li>
-                </ul>
-            </div>
+            @include('layouts.reports_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area side-content-account">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
@@ -39,54 +40,35 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <td scope="row">01</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
-                            <tr>
-                            <td scope="row">02</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
-                            <tr>
-                            <td scope="row">03</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
-                            <tr>
-                            <td scope="row">04</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
-                            <tr>
-                            <td scope="row">05</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
-                            <tr>
-                            <td scope="row">06</td>
-                            <td>20 Jun, 2021</td>
-                            <td><p>Lorem ipsum dolor sit amet</p></td>
-                            <td><a href="#" class='file-text'><img src='images/pdf-icon.png'/>sample.pdf</a></td>
-                            <td class='icons'><a href='#'><img src='images/edit.png'/></td>
-                            <td class=' icons'><a href='#'><img src='images/delete.png'/></td>
-                            </tr>
+                            @if(!empty($agendas) && $agendas->count())
+                            @foreach($agendas as $agenda)
+                                <tr>
+                                    <td scope="row">{{$i}}</td>
+                                    <td>{{date("d M, Y", strtotime($agenda->created_at))}}</td>
+                                    <td>{{$agenda->title}}</td>
+                                    <td>
+                                        <a href="{{url($agenda->pdf)}}" class='file-text'>
+                                            <img src='images/pdf-icon.png'/>sample.pdf
+                                        </a>
+                                    </td>
+                                    <td class='icons'>
+                                        <a href="{{route('myaccount_agendas_edit',$agenda->id)}}">
+                                            <img src='images/edit.png'/>
+                                        </a>
+                                    </td>
+                                    <td class=' icons'>
+                                        <a href="{{route('delete_agendas', $agenda->id)}}">
+                                            <img src='images/delete.png'/>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <?php $i++; ?>
+                            @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="10">There are no data.</td>
+                                </tr>
+                            @endif
                         </tbody>
                         </table>
                         </div>
@@ -95,6 +77,7 @@
             </div>
             <div class='row'>
                 <div class='col-md-12 col-lg-12'>
+                {!! $agendas->links() !!}
                 <ul class='pagination-myaccount'>
                             <li class='previous-icon'><a href='#'><img src='images/previous-icon.png'/></a></li>
                             <li class='active'><a href=''>1</a></li>

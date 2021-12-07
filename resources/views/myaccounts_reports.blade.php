@@ -6,14 +6,7 @@
 <div class="content-wrap">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area sidebar-myaccount">
-                <ul class='my-account-sidebar'>
-                    <li class='active'><a href='#'><img src='images/reports-myaccount-icon.png'/><span>Reports</span></a></li>
-                    <li class=''><a href='#'><img src='images/save-agends-icon.png'/><span>Saved <br>Agendas</span></a></li>
-                    <li class=''><a href='#'><img src='images/my-media-icon.png'/><span>My Media</span></a></li>
-                    <li class=''><a href='#'><img src='images/my-account-sidebar-icon.png'/><span>My Account</span></a></li>
-                </ul>
-            </div>
+            @include('layouts.reports_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area side-content-account">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">

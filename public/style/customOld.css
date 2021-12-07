@@ -2448,6 +2448,8 @@ content: '\f410';
 .questionnaires_block label input {
     width: 20px;
     margin-right: 10px;
+    position: unset !important;
+    left: unset !important;
 }
   .questionnaires_block form .selected input:before {
         background: #c6168d;
@@ -2471,6 +2473,16 @@ content: '\f410';
     height: 690px;
     overflow: unset;
     overflow-y: scroll;
+}
+.navigation li .active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: -110px;
+    width: 40px;
+    height: 4px;
+    background-color: #c6168d;
 }
 
 
