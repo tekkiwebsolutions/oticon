@@ -9,7 +9,6 @@ if(isset($_GET['page']) && $_GET['page']>1){
 }
 
 
-
 ?>
 <div class="content-wrap">
     <div class="container-fluid">
@@ -42,13 +41,14 @@ if(isset($_GET['page']) && $_GET['page']>1){
                         <tbody>
                             @if(!empty($agendas) && $agendas->count())
                             @foreach($agendas as $agenda)
+                            <?php  $pdfName= explode('agendas/', $agenda->pdf); ?>
                                 <tr>
                                     <td scope="row">{{$i}}</td>
                                     <td>{{date("d M, Y", strtotime($agenda->created_at))}}</td>
                                     <td>{{$agenda->title}}</td>
                                     <td>
-                                        <a href="{{url($agenda->pdf)}}" class='file-text'>
-                                            <img src='images/pdf-icon.png'/>sample.pdf
+                                        <a href="{{url($agenda->pdf)}}" class='file-text' target="_blank" >
+                                            <img src='images/pdf-icon.png'/>{{$pdfName[1]}}
                                         </a>
                                     </td>
                                     <td class='icons'>
@@ -76,9 +76,9 @@ if(isset($_GET['page']) && $_GET['page']>1){
                 </div>
             </div>
             <div class='row'>
-                <div class='col-md-12 col-lg-12'>
+                <div class='col-md-12 col-lg-12 pagination_bar'>
                 {!! $agendas->links() !!}
-                <ul class='pagination-myaccount'>
+                <!-- <ul class='pagination-myaccount'>
                             <li class='previous-icon'><a href='#'><img src='images/previous-icon.png'/></a></li>
                             <li class='active'><a href=''>1</a></li>
                             <li class=''><a href='#'>2</a></li>
@@ -86,7 +86,7 @@ if(isset($_GET['page']) && $_GET['page']>1){
                             <li class=''>...</li>
                             <li class=''><a href='#'>12</a></li>
                             <li class='next-icon'><a href='#'><img src='images/next-icon.png'/></a></li>
-                        </ul>
+                        </ul> -->
                 </div>
             </div>
         </div>

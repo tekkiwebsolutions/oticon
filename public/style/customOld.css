@@ -665,8 +665,8 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.2);
   }
 
-  .about-hearing-large img {
-      margin-top:-13%;
+  .about-hearing-large img, .brain_ad-large img {
+      margin-top:-13%;max-width: 75%;
   }
 
   .situtation-filter-row {
@@ -2098,11 +2098,11 @@ border: 1px solid #de22a1;
 }
 .about-hearing-large span, .brain_ad-large span{
 display: inline-block;
-width: 22px;
-height: 22px;
+width: 20px;
+height: 20px;
 border-radius: 100px;
 border: 3px solid #fff;
-line-height: 15px;
+line-height: 13px;
 margin: 0;
 padding: 0;
 text-align: center;
@@ -2134,187 +2134,187 @@ font-size: 14px;
 .hearing_icon_1 {
  position: absolute;
 bottom: 5%;
-left: 15%;
+    left: 11%;
 }
 .hearing_icon_2 {
  position: absolute;
-bottom: 30%;
-left: 22%;
+bottom: 33%;
+    left: 16%;
 }
 .hearing_icon_3 {
     position: absolute;
-    top: -9%;
-    left: 9%;
+    top: -19%;
+    left: 7%;
 }
 .hearing_icon_4 {
     position: absolute;
-   top: 9%;
-left: 4.5%;
+  top: 0%;
+    left: 3.2%;
 }
 .hearing_icon_5 {
        position: absolute;
-    top: 13%;
-    left: 14%;
+    top: 7%;
+    left: 10%;
 }
 .hearing_icon_6 {
     position: absolute;
-   top: 5%;
-left: 31.5%;
+  top: -4%;
+    left: 23%;
 }
 .hearing_icon_7 {
     position: absolute;
-    top: 38%;
-left: 37%;
+      top: 32%;
+    left: 28%;
 }
 .hearing_icon_8 {
     position: absolute;
-  top: 47%;
-left: 41%;
+top: 43%;
+    left: 31%;
 }
 .hearing_icon_9 {
     position: absolute;
-   top: 75%;
-left: 38%;
+   top: 71%;
+    left: 28%;
 }
 .hearing_icon_10 {
     position: absolute;
-    top: 89%;
-    left: 35.5%;
+    top: 88%;
+    left: 26.5%;
 }
 .hearing_icon_11 {
     position: absolute;
-    top: 16%;
-    left: 48%;
+   top: 9%;
+    left: 35%;
 }
 .hearing_icon_12 {
     position: absolute;
-    top: 26%;
-    left: 57%;
+       top: 20%;
+    left: 42.5%;
 }
 .hearing_icon_13 {
     position: absolute;
-    top: 21%;
-    left: 61%;
+   top: 14%;
+    left: 45.5%;
 }
 .hearing_icon_14 {
     position: absolute;
-    top: 12%;
-    left: 67.5%;
+    top: 5%;
+    left: 50.5%;
 }
 .hearing_icon_15 {
     position: absolute;
-   top: 31%;
-left: 65%;
+      top: 24%;
+    left: 49%;
 }
 .hearing_icon_16 {
     position: absolute;
-    top: 38%;
-left: 69.5%;
+   top: 33%;
+    left: 52%
 }
 .hearing_icon_17 {
     position: absolute;
-    top: 44%;
-    left: 55%;
+        top: 40.5%;
+    left: 41.5%;
 }
 .hearing_icon_18 {
     position: absolute;
-    top: 56%;
-left: 65%;
+        top: 50%;
+    left: 48.5%;
 }
 .hearing_icon_19 {
     position: absolute;
-   top: 76%;
-left: 82%;
+  top: 70%;
+    left: 60%;
 }
 .hearing_icon_20 {
     position: absolute;
- top: 25%;
-left: 73%;
+top: 18%;
+    left: 55%;
 }
 .hearing_icon_21 {
     position: absolute;
-   top: 28%;
-left: 83%;
+ top: 22%;
+    left: 62%;
 }
 .hearing_icon_22 {
     position: absolute;
-  top: 10%;
-left: 96.5%;
+ top: 3%;
+    right: 25%;
 }
 .brain_ad_1 {
  position: absolute;
-    bottom: 19%;
-    left: 27%;
+ bottom: 22%;
+ left: 20%;
 }
 .brain_ad_2 {
  position: absolute;
-bottom: 26%;
-    left: 9%;
+ bottom: 32%;
+ left: 7%;
 }
 .brain_ad_3 {
     position: absolute;
-  bottom: 40%;
-    left: 31%;
+    bottom: 48%;
+    left: 23%;
 }
 .brain_ad_4 {
     position: absolute;
-bottom: 46%;
-    left: 27%;
+    bottom: 57%;
+    left: 20%;
 }
 .brain_ad_5 {
        position: absolute;
-   top: 23%;
-    left: 19%;
+       top: 4%;
+    left: 14%;
 }
 .brain_ad_6 {
     position: absolute;
-     top: 33%;
-    left: 39%;
+    top: 15%;
+    left: 29%;
 }
 .brain_ad_7 {
     position: absolute;
-   top: 55%;
-    left: 48%;
+    top: 44%;
+    left: 36%;
 }
 .brain_ad_8 {
     position: absolute;
- top: 63%;
-    left: 60%
+    top: 53%;
+    left: 45%;
 }
 .brain_ad_9 {
     position: absolute;
-     top: 52%;
-    left: 66%;
+    top: 39%;
+    left: 50%;
 }
 .brain_ad_10 {
     position: absolute;
-    top: 45%;
-    left: 61%;
+    top: 32%;
+    left: 46%;
 }
 .brain_ad_11 {
     position: absolute;
-  top: 40%;
-    left: 50%;
+    top: 25%;
+    left: 37%;
 }
 .brain_ad_12 {
     position: absolute;
-       top: 37%;
-    left: 54%;
+    top: 21%;
+    left: 41%;
 }
 .brain_ad_13 {
     position: absolute;
-       top: 31%;
-    left: 63%;
+    top: 10%;
+    left: 47%;
 }
 .brain_ad_14 {
     position: absolute;
-        top: 40%;
-    left: 69%;
+    top: 25%;
+    left: 52%;
 }
 .brain_ad_15 {
     position: absolute;
-      top: 43%;
-    left: 82%;
+    top: 28%;
+    left: 61%;
 }
 #multiselect1 option {
     cursor: pointer;
@@ -2484,7 +2484,7 @@ content: '\f410';
     height: 4px;
     background-color: #c6168d;
 }
-
+ 
 
 
 

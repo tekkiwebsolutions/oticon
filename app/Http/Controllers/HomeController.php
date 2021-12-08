@@ -165,7 +165,7 @@ class HomeController extends Controller
     public function myaccount_agendas(Request $request){
         /*$agendas = DB::table('agendas')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();*/
 
-        $agendas = Agenda::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(1);
+        $agendas = Agenda::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
         return view('myaccount_agendas',['curruntpage'=>'myaccount_agendas','agendas'=>$agendas]);
     } 
 
@@ -203,12 +203,16 @@ class HomeController extends Controller
 
 
                 $data = [
-                    'title' => 'Welcome to Oticon',
-                    'date' => date('m/d/Y')
+                    'title' => 'Oticon',
+                    'date' => date('m/d/Y'),
+                    'name' => $data['title'],
+                    'client_name' => $data['client_name'],
+                    'description' => $data['description'],
+                    'secton' => implode(",", $data['selections'])
                 ];
 
                 $filename = "oticonagenda_".$lastInsertedId;
-                $path = storage_path('pdf/agendas');
+                $path = storage_path('app/uploads/pdf/agendas');
 
                 if(!File::exists($path)) {
                     File::makeDirectory($path, $mode = 0755, true, true);
@@ -218,7 +222,7 @@ class HomeController extends Controller
 
                 $pdf->download(''.$filename.'.pdf');
 
-                Agenda::where('id', $lastInsertedId)->update(['pdf' => 'pdf/agendas/'.$filename.'.pdf']);
+                Agenda::where('id', $lastInsertedId)->update(['pdf' => 'uploads/pdf/agendas/'.$filename.'.pdf']);
 
 
 				return redirect('myaccount_agendas')->with('status',"Insert successfully");
@@ -261,4 +265,19 @@ class HomeController extends Controller
 
     }
      
+    public function about_us(){
+        return view('about_us');
+    }
+
+    public function policy(){
+        return view('policy');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function term(){
+        return view('term');
+    }
 }

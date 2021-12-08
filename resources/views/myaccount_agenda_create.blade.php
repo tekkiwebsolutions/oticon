@@ -25,15 +25,11 @@ if(isset($data->sectionss)){
                                 <div class='agenda-box-shadow'>
                                     <input type="input" class="form-controls" placeholder="Agenda Name" name="title" 
                                     value="@if(isset($data->title)){{$data->title}}@endif">
-                                    <select class="form-controls" aria-label="Default select" name="client_name">
-                                        <option >Select</option>
-                                        <option value="1" 
-                                        @if(isset($data->client_name) &&  $data->client_name == "1") selected @endif 
-                                        >test@gmail.com</option>
-                                        <option value="2"
-                                        @if(isset($data->client_name) && $data->client_name == "2") selected @endif
-                                        >test23@gmail.com</option>
-                                    </select>
+                                    
+
+                                    <input type="input" class="form-controls" placeholder="Client Name" name="client_name" 
+                                    value="@if(isset($data->client_name)){{$data->client_name}}@endif">
+
                                     <textarea class="form-controls message" id="exampleFormControlTextarea1" name="description" rows="3" placeholder="Description">@if(isset($data->description)){{$data->description}}@endif</textarea>
                                     <label>Agenda By Section</label>
                                     <div class='multi-selected'>

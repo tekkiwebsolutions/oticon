@@ -117,6 +117,7 @@
                 res = JSON.parse(res);
                 $("#withImpairment").attr('src',res.withImpairment);
                 $("#withoutImpairment").attr('src',res.withoutImpairment);
+                pauseMyAudio();
             }
         });
      });

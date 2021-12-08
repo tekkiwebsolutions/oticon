@@ -2484,7 +2484,100 @@ content: '\f410';
     height: 4px;
     background-color: #c6168d;
 }
- 
+.pagination_bar nav {
+    margin: 0 auto;
+    display: table;
+}
+.pagination_bar nav ul li{ 
+margin-right:10px;
+}
+.pagination_bar nav ul li a, .pagination_bar nav ul li span {
+    border: 0px;
+    color: #000;
+    font-weight: bold;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border: 1px solid #f9e7f3;
+    border-radius: 100%;
+}
+.pagination_bar nav ul li span:focus, .pagination_bar nav ul li a:focus{
+    box-shadow: none;background: transparent;
+    color: #000;
+}
+.pagination_bar nav ul li a:hover, .pagination_bar nav ul li span:hover {
+    background: transparent;
+    color: #000;
+}
+.pagination_bar nav .page-item:not(:first-child) .page-link {
+    margin-left: 0px;
+}
+.pagination_bar nav ul .active a, .pagination_bar nav ul .active span {
+    background: #f9e7f3 !important;
+    border-radius: 100%;
+    line-height: 40px;
+    height: 40px;
+    width: 40px;
+    padding: 0;
+    text-align: center;
+    color: #c6168d !important;
+    font-weight: bold;
+    border-color: #f9e7f3 !important;
+}
+.pagination_bar nav ul li:first-child a:before, .pagination_bar nav ul li:first-child span:before {
+    content: '';
+    background: url(/images/previous-icon.png);
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 85%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+.pagination_bar nav ul .disabled:last-child span:after {
+    content: '';
+    background: url(/images/next-icon-light.png);
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 85%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;}
+    .pagination_bar nav ul .disabled:first-child span:before {
+        content: '';
+        background: url(/images/previous-icon-light.png);
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 85%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;}   
+.pagination_bar nav ul li:last-child a:after, .pagination_bar nav ul li:last-child span:after {
+    content: '';
+    background: url(/images/next-icon.png);
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 85%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+.pagination_bar nav ul li:first-child a, .pagination_bar nav ul li:first-child span, .pagination_bar nav ul li:last-child span, .pagination_bar nav ul li:last-child a {
+    background: transparent;
+    border: 0;
+    font-size: 0;
+}
 
 
 

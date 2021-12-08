@@ -97,6 +97,14 @@ Route::post('getSectionDetail', [App\Http\Controllers\CommonController::class, '
 
 Route::post('getSubsectionDetail', [App\Http\Controllers\CommonController::class, 'getSubsectionDetail'])->name('getSubsectionDetail');
 
+Route::get('/about_us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('about_us');
+
+Route::get('/policy', [App\Http\Controllers\HomeController::class, 'policy'])->name('policy');
+
+Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
+
+Route::get('/term', [App\Http\Controllers\HomeController::class, 'term'])->name('term');
+
 Route::get('pagination', [App\Http\Controllers\CommonController::class, 'pagination'])->name('pagination');
 
 Route::get('generatepdf', [App\Http\Controllers\PDFController::class, 'generatePDF']);
