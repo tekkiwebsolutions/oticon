@@ -34,7 +34,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 hearing_block">
                         <label class="mb-2">Hearing Impairment</label>
                         <div class="d-flex">
                             <div class="form-check custom-radio">

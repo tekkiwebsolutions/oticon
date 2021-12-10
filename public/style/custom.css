@@ -1243,6 +1243,9 @@
         line-height: 1.3;
         margin-bottom: 10px;
     }
+	.all-reports h3:hover {
+		color: #c6168d;
+	}
     .download-pdf span {
       font-size: 13px;
       text-decoration: none;
@@ -1277,7 +1280,7 @@
         border-left: 3px solid #6f6d6a;
     }
 
-    a.read_more {
+    .read_more {
       display: inline-block;
       background: #c6168d;
       color: white;
@@ -1287,7 +1290,7 @@
       text-decoration: none;
       border:1px solid #c6168d;
     }
-    a.read_more:hover, a.read_more:hover span {
+    .read_more:hover, .read_more:hover span {
         background-color: transparent;
         color: #c6168d;
       }
@@ -2343,10 +2346,13 @@ top: 18%;
 .ms-selectable ul li span:after {
     content: '\f0fe';
     font-family: 'Font Awesome 5 Pro';
-    color: #152040;
+    color: #c6168d;
     position: absolute;
     right: 0;
     font-size: 15px;
+}
+.ms-selectable ul li:hover span:after{
+  color: #000;
 }
 .ms-selection {
     position: absolute;
@@ -2364,10 +2370,13 @@ top: 18%;
 .ms-selection ul li span:after{
 content: '\f410';
     font-family: 'Font Awesome 5 Pro';
-    color: #fe6714;
+    color: #000;
     position: absolute;
     right: 0;
     font-size: 15px;
+}
+.ms-selection ul li:hover span:after{
+  color: #c6168d;
 }
 .ms-selection ul li {
     width: 90%;
@@ -2688,18 +2697,17 @@ div#canvas_id{position: relative;}
   @media only screen and (min-width: 1420px) {
     .about-hearing-large span, .brain_ad-large span {
         display: inline-block;
-        width: 30px;
-        height: 30px;
+        width: 23px;
+        height: 23px;
         border-radius: 100%;
         border: 5px solid #ffffffbf;
-        line-height: 23px;
+        line-height: 13px;
         margin: 0;
         padding: 0;
         text-align: center;
         cursor: pointer;
         background: #c6168d;
     }
-    .about-hearing-large span i, .brain_ad-large span i{font-size: 12px;}
     .brain_ad_13 {  
         top: 11%;
         left: 47.5%;
@@ -2707,16 +2715,20 @@ div#canvas_id{position: relative;}
     .hearing_icon_4 {
         left: 3.3%;
     }
+    .hearing_icon_9 {
+        top: 73%;
+        left: 28%;
+    }
     .hearing_icon_10 {
         top: 89%;
-        left: 27%;
-  }
+        left: 26.5%;
+    }
   .hearing_icon_17 {
     left: 41%;
   }
   .hearing_icon_11 {
-    top: 10%;
-    left: 36%;
+    top: 8%;
+    left: 35%;
   }
   .hearing_icon_13 {
     top: 15%;
@@ -2734,7 +2746,8 @@ div#canvas_id{position: relative;}
     left: 60%;
 }
 .hearing_icon_2 {
-    left: 17%;
+    left: 16.5%;
+    bottom: 33%;
 }
 .hearing_icon_21 {
     top: 23%;
@@ -2754,6 +2767,259 @@ div#canvas_id{position: relative;}
     .sidebar-wrapper {
     max-width: 320px;
   }
+}
+
+@media only screen and (max-width: 1024px) {
+    .graph-col {
+    width: calc(100% - 210px);
+    }
+    .filters-col {
+    width: 200px;
+    padding: 10px 20px;
+    }
+    .sound-col .custom-radio{width: 50%}
+    .my_account_rep thead tr th:nth-child(4) {
+        width: 30% !important;
+    }
+    .my_account_rep thead tr th:nth-child(3) {
+        width: 20% !important;
+    }
+    .table-data.myaccount-agendas thead tr th:nth-last-child(6) {
+        width: 20% !important;
+    }
+    .dashboard-icons{padding: 50% 0;}
+    .sidebar-wrapper {
+        max-width: 250px;
+        padding: 30px 10px 30px 20px;
+    }
+    .content-wrapper {
+        width: calc(100% - 300px);
+    }
+    .navigation li .active:before{left: -70px;}
+    .center-area .img_area, .center-area .text_area {
+        width: 100%;
+    }
+    .center-area .text_area{
+    padding-top: 30px;
+    text-align: justify
+    }
+    .center-area .text_area a {
+        margin-bottom: 30px;
+    }
+    .center-area {
+        padding-right:50px;
+    }
+    .about-hearing-large img, .brain_ad-large img {
+        margin-top: 0;
+        max-width: 100%;
+    }
+    .hearing_icon_1 {
+        bottom: 4%;
+        left: 14%;
+    }
+    .hearing_icon_2 {
+        bottom: 25%;
+        left: 21%;
+    }
+    .hearing_icon_3 {
+        top: 24%;
+        left: 4%;
+    }
+    .hearing_icon_4 {
+        top: 10%;
+        left: 8%;
+    }
+    .hearing_icon_5 {
+        top: 27%;
+        left: 13%;
+    }
+    .hearing_icon_6 {
+        top: 23%;
+        left: 31%;
+    }
+    .hearing_icon_7 {
+        top: 48%;
+        left: 36%;
+    }
+    .hearing_icon_8 {
+        top: 57%;
+        left: 40%;
+    }
+    .hearing_icon_9 {
+        bottom: 17%;
+    left: 37%;
+    top: unset;
+    }
+    .hearing_icon_10 {
+        bottom: 5%;
+        left: 35%;
+        top: unset;
+    }
+    .hearing_icon_11 {
+        top: 30%;
+        left: 47%;
+    }
+    .hearing_icon_12 {
+        top: 38%;
+        left: 56%;
+    }
+    .hearing_icon_13 {
+        top: 34%;
+        left: 61%;
+    }
+    .hearing_icon_14 {
+        top: 28%;
+        left: 67%;
+    }
+    .hearing_icon_15 {
+        top: 42%;
+        left: 64%;
+    }
+    .hearing_icon_16 {
+        top: 49%;
+        left: 69%;
+    }
+    .hearing_icon_17 {
+        top: 56%;
+        left: 55%;
+    }
+    .hearing_icon_18 {
+        top: 62%;
+        left: 65%;
+    }
+    .hearing_icon_19 {
+        top: unset;
+        left: unset;
+        bottom: 16%;
+        right: 16%;
+    }
+    .hearing_icon_20 {
+        top: 37%;
+        left: 73%;
+    }
+    .hearing_icon_21 {
+        top: 40.5%;
+        left: unset;
+        right: 13%;
+    }
+    .hearing_icon_22 {
+        top: 26%;
+        right: 0%;
+    }
+    .brain_ad_1 {
+        bottom: 17%;
+        left: 26%;
+    }
+    .brain_ad_2 {
+        bottom: 25%;
+        left: 8%;
+    }
+    .brain_ad_3 {
+        bottom: 37%;
+        left: 31%;
+    }
+    .brain_ad_4 {
+        bottom: 45%;
+        left: 26%;
+    }
+    .brain_ad_5 {
+        top: 23%;
+        left: 18%;
+    }
+    .brain_ad_6 {
+        top: 31%;
+        left: 38%;
+    }
+    .brain_ad_7 {
+        top: 53%;
+        left: 46%;
+    }
+    .brain_ad_8 {
+        top: 64%;
+        left: 59%;
+    }
+    .brain_ad_9 {
+        top: 51%;
+        left: 65%;
+    }
+    .brain_ad_10 {
+        top: 44%;
+        left: 60%;
+    }
+    .brain_ad_11 {
+        top: 40%;
+        left: 50%;
+    }
+    .brain_ad_12 {
+        top: 36%;
+        left: 55%;
+    }
+    .brain_ad_13 {
+        top: 28%;
+        left: 63%;
+    }
+    .brain_ad_14 {
+        top: 40%;
+        left: 68%;
+    }
+    .brain_ad_15 {
+        top: 42%;
+        left: 81%;
+    }
+    .hearing_block {
+        padding-top: 20px;
+    }
+    .situtation-filter-row {
+        margin-top: 20px;
+        margin-bottom: 0px;
+    }
+    .situtation-filter-row .col-sm-6 {
+        width: 50%;
+    }
+    .heading {
+        font-size: 19px;
+    }
+    .tech_history .tech_img, .tech_history .tech-description {
+        width: 100%;
+    }
+    .tech_history .tech-description {
+        padding-top: 20px;
+    }
+    .navigation .sub-navigation li a:before {
+        left: -90px;
+    }
+    .style-image-row{position: relative;margin-top: 20px;}
+    .style-detail-thumb {
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: 0;
+        bottom: unset;
+        float: left;
+        text-align: left;
+        width: 100%;
+        top: unset;
+    }
+    .noise-adjust {
+        width: 50%;
+        padding-top: 20px;
+    }
+
+    
+    
+
+}
+
+@media screen and (min-device-width: 769px) and (max-device-width: 1024px) { 
+    .style_row > .col-md-6 {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+    .left-area {
+        width: 25%;
+    }
+    .center-area{width: 75%;}
 }
 
 

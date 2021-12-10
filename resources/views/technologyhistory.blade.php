@@ -16,8 +16,8 @@
                        <a href="#" class="back_btn">Back</a>
                     </div>
                 </div>
-                <div class='row'>
-                    <div class='col-md-7'>
+                <div class='row tech_history'>
+                    <div class='col-md-7 tech_img'>
                         <img src="{{ url('images/tech-image.jpg')}}" class="img-fluid tech-image"/>
                     </div> 
                     <div class='col-md-5 tech-description'>

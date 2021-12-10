@@ -16,7 +16,7 @@
                        <a href="#" class="back_btn">Back</a>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row style_row">
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">

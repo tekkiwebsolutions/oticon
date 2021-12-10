@@ -10,11 +10,36 @@
             @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
-                <div class="col-lg-6 col-md-6 col-6">
+                    <div class="col-lg-6 col-md-6 col-6">
                         <h2 class="heading">Styles</h2>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 text-end">
                        <a href="{{ route('reports', $ageCatUrl ) }}"  class="back_btn">Back</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                    </div>
+
+                    <div class="col-md-3">
+                    <form action="">
+                        <select name="typeData" class="form-control" onchange = 'this.form.submit();'>
+                        <option value="DESC" <?php if ($_GET['typeData'] == 'DESC') { echo ' selected="selected"'; } ?>>Oldest</option>
+                            <option value="ASC" <?php if ($_GET['typeData'] == 'ASC') { echo ' selected="selected"'; } ?>>Newest</option>
+                        </select>
+                    </form>
+                    </div>
+                    <div class="col-md-4">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" name="searchData" value="<?php echo $_GET['searchData'] ?>" placeholder="Search here" class="form-control">
+                            </div>
+                            <div class="col-md-2">
+                                <input type="submit" class="btn btn-primary" value="Search"/>
+                            </div>
+                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row">

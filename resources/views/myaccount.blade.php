@@ -27,12 +27,22 @@
                       <p class='email-notify-label'>Email Notifications</p>
                        
                         <div class="custom-selectbox email-select">
-                            <select class="form-select" aria-label="Default select">
+						 <div class="d-flex">
+                            <div class="form-check custom-radio">
+                                <input class="form-check-input" type="radio" name="email_notification" id="flexRadioDefault1" value="1" checked="">
+                                <label class="form-check-label" for="flexRadioDefault1">Enable</label>
+                            </div>
+                            <div class="form-check custom-radio">
+                                <input class="form-check-input" type="radio" name="email_notification" id="flexRadioDefault2" value="0">
+                                <label class="form-check-label" for="flexRadioDefault2">Disable</label>
+                            </div>
+                        </div>
+                           <!--  <select class="form-select" aria-label="Default select">
                                 <option selected>Select</option>
                                 <option value="1">test@gmail.com</option>
                                 <option value="2">test23@gmail.com</option>
                                
-                            </select>
+                            </select> -->
                         </div>
                     </div>               
                     </div>

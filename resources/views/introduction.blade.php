@@ -12,10 +12,10 @@
                     <div class="col-lg-12 col-md-12 col-12"><h2 class="heading">Introduction</h2></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-12 img_area">
                         <img alt="" class="img-fluid" src="{{url($data->images)}}">
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12">
+                    <div class="col-lg-6 col-md-6 col-12 text_area">
                         <p>{{$data->description}}</p>
                         <a href="{{url('myaccount_agendas')}}" class="cta-btn">Counselling Agenda</a>
                     </div>

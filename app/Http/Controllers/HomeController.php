@@ -327,18 +327,22 @@ class HomeController extends Controller
     }
 
     public function about_us(){
-        return view('about_us');
+        $site_data = DB::table('site_settings')->first();
+        return view('about_us',['site_data'=>$site_data]);
     }
 
     public function policy(){
-        return view('policy');
+        $site_data = DB::table('site_settings')->first();
+        return view('policy',['site_data'=>$site_data]);
     }
 
     public function contact(){
-        return view('contact');
+        $site_data = DB::table('site_settings')->first();
+        return view('contact',['site_data'=>$site_data]);
     }
 
     public function term(){
-        return view('term');
+        $site_data = DB::table('site_settings')->first();
+        return view('term',['site_data'=>$site_data]);
     }
 }

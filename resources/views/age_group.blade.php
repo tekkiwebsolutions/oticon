@@ -31,7 +31,7 @@
             $circleImg = array('circle-pink.png','circle-peach.png','circle-green.png');
             $i=0;  ?>
             @foreach($ageCatData as $ageCat)  
-            <div class="col-lg-4 col-md-4 col-12">
+            <div class="col-lg-4 col-md-4 col-12 age_group_anchor">
                 <a href="{{url('introduction/'.$ageCat->slug)}}">
 
                 <div class="age-group-col  @if ($i%2 == 1) shape-two @else shape-one @endif  position-relative">
