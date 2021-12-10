@@ -47,19 +47,19 @@
                              <h3>Questionnaires</h3>
                              <div class="suspend_top">
                             <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim.</span>
-                            <label><input type='checkbox' name="mycheckbox[]">Extremely Satisfied</label>
-                            <label><input type='checkbox'name="mycheckbox[]">Somewhat Satisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Neither Satisfied or dissatisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Somewhat dissatisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Extremely dissatisfied</label>
+                            <label><input type='radio' name="radio">Extremely Satisfied</label>
+                            <label><input type='radio'name="radio">Somewhat Satisfied</label>
+                            <label><input type='radio' name="radio">Neither Satisfied or dissatisfied</label>
+                            <label><input type='radio' name="radio">Somewhat dissatisfied</label>
+                            <label><input type='radio' name="radio">Extremely dissatisfied</label>
                             </div>
                             <div class="suspend_bottom">
                             <span>Suspendisse nec sapien enim.</span>
-                            <label><input type='checkbox' name="mycheckbox[]">Extremely Satisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Somewhat Satisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Neither Satisfied or dissatisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Somewhat dissatisfied</label>
-                            <label><input type='checkbox' name="mycheckbox[]">Extremely dissatisfied</label>
+                            <label><input type='radio' name="radio">Extremely Satisfied</label>
+                            <label><input type='radio' name="radio">Somewhat Satisfied</label>
+                            <label><input type='radio' name="radio">Neither Satisfied or dissatisfied</label>
+                            <label><input type='radio' name="radio">Somewhat dissatisfied</label>
+                            <label><input type='radio' name="radio">Extremely dissatisfied</label>
                             </div>
                             <input type="submit" name='suspend_submit' value="Submit">
                         </form>
@@ -71,15 +71,12 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function(){
-            $(".questionnaires_block input").prop("checked", false);
-            $(".questionnaires_block input").click(function () {
 
-             if ($(this).is(":checked")) {
-             $(this).parent().addClass("selected");
-            } else {
-                $(this).parent().removeClass("selected");
-            }
-            })
+            $('.questionnaires_block input').click(function() {
+          $('.questionnaires_block input:not(:checked)').parent().removeClass("selected");
+          $('.questionnaires_block input:checked').parent().addClass("selected");
+       });
+
         })
     </script>
 </div>
