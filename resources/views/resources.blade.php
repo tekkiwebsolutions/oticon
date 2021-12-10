@@ -1,9 +1,8 @@
 @extends('layouts.app')
 @include('layouts.header')
 
-@section('content')
-<style>
-</style>
+@section('content') 
+<?php use Illuminate\Support\Facades\DB; ?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -19,36 +18,54 @@
                 </div>
                 <div class="row reports-page">
                     <div class="col-lg-12 col-md-12 col-12 pb-4">
-                        <div class="page-banner"><img alt="" class="img-fluid" src="{{ url('images/resources-banner.jpg')}}" ></div>
+                        <div class="page-banner"><img alt="" class="img-fluid" src="{{ url($resources->image)}}" ></div>
                         <div class="row">
-                            <div class="col-lg-9 col-md-9 col-12"><h3 class="resources-heading">Lorem ipsum dolor sir amet, consectetur adipiscing elit</h3></div>
-                            <div class="col-lg-3 col-md-3 col-12"><a href="#" class="download-pdf"><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a></div>
+                            <div class="col-lg-9 col-md-9 col-12"><h3 class="resources-heading">{{$resources->title}}</h3></div>
+                            @if(isset($resources->pdf_upload) && $resources->pdf_upload !="")
+                            <div class="col-lg-3 col-md-3 col-12"><a href='{{url($resources->pdf_upload)}}' class='download-pdf' target="_blank" ><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a></div>
+                            @endif
                         </div>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                        <p>{{$resources->description}}</p>
                         
+                        @if(isset($resources->url) && $resources->url !="")
+                            <a href="{{$resources->url}}" class="read_more" target="_blank" ><span>Read More</span></a>
+                        @endif
+                        @if(!empty($questionnaires) && $questionnaires->count())
                         <div class="col-lg-12 col-sm-12 col-md-12 questionnaires_block">
-                        <form actoin='' method="post">
-                             <h3>Questionnaires</h3>
-                             <div class="suspend_top">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim.</span>
-                                <label><input type='radio' name="radio">Extremely Satisfied</label>
-                                <label><input type='radio'name="radio">Somewhat Satisfied</label>
-                                <label><input type='radio' name="radio">Neither Satisfied or dissatisfied</label>
-                                <label><input type='radio' name="radio">Somewhat dissatisfied</label>
-                                <label><input type='radio' name="radio">Extremely dissatisfied</label>
+                        <br>
+                        <form method="POST" action="{{ url('save_questionnaires') }}" >
+                            @csrf
+                            <input type="hidden" value="{{$ageCatUrl}}" name="ageCatUrl">
+                            <input type="hidden" value="{{$resource_id}}" name="resource_id">
+                            <h3>Questionnaires</h3>
+                            @if(session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{session('error')}}
+                            </div> 
+                            @endif
+                            @if($errors->any())
+                            <div class="alert alert-danger" role="alert">
+                                {{$errors->first()}}
+                            </div> 
+                            @endif
+                            @if(session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{session('status')}}
+                            </div>                                
+                            @endif
+                            @foreach($questionnaires as $questionnaire)
+                            <?php  $questionnaireoptions = DB::select("select * from questionnaireoptions where questionnaires_id='".$questionnaire->id."' ORDER BY id ASC"); ?>
+                                <div class="suspend_top">
+                                    <span>{{$questionnaire->title}}</span>
+                                    @foreach($questionnaireoptions as $questionnaireoption)
+                                    <label><input type='radio' name="questionnaireoption[{{$questionnaire->id}}]" value="{{$questionnaireoption->id}}">{{$questionnaireoption->options}}</label>
+                                    @endforeach
                                 </div>
-                                <div class="suspend_bottom">
-                                <span>Suspendisse nec sapien enim.</span>
-                                <label><input type='radio' name="radio">Extremely Satisfied</label>
-                                <label><input type='radio' name="radio">Somewhat Satisfied</label>
-                                <label><input type='radio' name="radio">Neither Satisfied or dissatisfied</label>
-                                <label><input type='radio' name="radio">Somewhat dissatisfied</label>
-                                <label><input type='radio' name="radio">Extremely dissatisfied</label>
-                                </div>
-                                <input type="submit" name='suspend_submit' value="Submit">
+                            @endforeach
+                            <input type="submit" name='questionnaire_submit' value="Submit">
                             </form>
                         </div>
+                        @endif
                     </div>
 
                 </div>

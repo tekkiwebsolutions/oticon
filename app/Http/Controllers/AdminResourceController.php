@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminSiteSettingsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminResourceController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "title";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,39 +25,37 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "site_settings";
+			$this->table = "resources";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"About Page","name"=>"about_page"];
-			$this->col[] = ["label"=>"Contact Page","name"=>"contact_page"];
-			$this->col[] = ["label"=>"Privacy Policy","name"=>"privacy_policy"];
-			$this->col[] = ["label"=>"Logo","name"=>"logo","image"=>true];
-			$this->col[] = ["label"=>"Terms Of Use","name"=>"terms_of_use"];
-			$this->col[] = ["label"=>"Copyright","name"=>"copyright"];
+			$this->col[] = ["label"=>"Age Group Id","name"=>"age_group_id","join"=>"age_group,title"];
+			$this->col[] = ["label"=>"Title","name"=>"title"];
+			$this->col[] = ["label"=>"Description","name"=>"description"];
+			$this->col[] = ["label"=>"Image","name"=>"image","image"=>true];
+			$this->col[] = ["label"=>"Pdf Upload","name"=>"pdf_upload","download"=>true];
+			$this->col[] = ["label"=>"Url","name"=>"url"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Image','name'=>'image','type'=>'upload','validation'=>'required|image','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP (Recommended Dimensions: 1000*350)'];
+			$this->form[] = ['label'=>'Pdf Upload','name'=>'pdf_upload','type'=>'upload','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'required|image','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Image','name'=>'image','type'=>'upload','validation'=>'required|image','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			//$this->form[] = ['label'=>'Pdf Upload','name'=>'pdf_upload','type'=>'upload','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
 			# OLD END FORM
 
 			/* 

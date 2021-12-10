@@ -2578,6 +2578,33 @@ margin-right:10px;
     border: 0;
     font-size: 0;
 }
+.canvas_data {
+    border-left: 1px solid #cecece;
+    position: absolute;
+    top: 0;
+    left: -2%;
+    width: 100%;
+    height: 94%;
+    z-index: -1;
+    margin-top: 10px;
+}
+div#canvas_id{position: relative;}    
+.canvas_data span {
+    transform: rotate( 
+        270deg);
+            display: inline-block;
+            top: 10%;
+            position: relative;
+            left: -53px;
+            background: #fff;
+            width: auto;
+            padding: 0px 10px;
+            font-size: 15px;
+}
+.canvas_data .noisy {
+    top: 65%;
+    left: -184px;
+}
 
 
 
@@ -2657,6 +2684,71 @@ margin-right:10px;
     }
 
   }
+
+  @media only screen and (min-width: 1420px) {
+    .about-hearing-large span, .brain_ad-large span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        border: 5px solid #ffffffbf;
+        line-height: 23px;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        cursor: pointer;
+        background: #c6168d;
+    }
+    .about-hearing-large span i, .brain_ad-large span i{font-size: 12px;}
+    .brain_ad_13 {  
+        top: 11%;
+        left: 47.5%;
+    }
+    .hearing_icon_4 {
+        left: 3.3%;
+    }
+    .hearing_icon_10 {
+        top: 89%;
+        left: 27%;
+  }
+  .hearing_icon_17 {
+    left: 41%;
+  }
+  .hearing_icon_11 {
+    top: 10%;
+    left: 36%;
+  }
+  .hearing_icon_13 {
+    top: 15%;
+    left: 45.5%;
+}
+.hearing_icon_14 {
+    top: 6%;
+    left: 51%;
+}
+.hearing_icon_18 {
+    top: 51%;
+}
+.hearing_icon_19 {
+    top: 73%;
+    left: 60%;
+}
+.hearing_icon_2 {
+    left: 17%;
+}
+.hearing_icon_21 {
+    top: 23%;
+    left: 62.5%;
+}
+.hearing_icon_3 {
+    top: -17%;
+}
+.hearing_icon_15 {
+    top: 25%;
+}
+
+}
+
 
   @media only screen and (max-width: 1400px) {
     .sidebar-wrapper {

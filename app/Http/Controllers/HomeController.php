@@ -3,10 +3,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
+use App\Models\Resource;
+use App\Models\Questionnairereply;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
 use PDF;
 class HomeController extends Controller
 {
@@ -46,16 +49,12 @@ class HomeController extends Controller
 
     public function aboutHearingBrain(Request $request){
         $data = "";        
-        return view('about_hearing_brain',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'about_hearing','data'=>$data]);
-
-        //return view('about_hearing_brain');
+        return view('about_hearing_brain',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'about_hearing_brain','data'=>$data]);
     }
 
     public function aboutHearingEar(Request $request){
         $data = "";        
-        return view('about_hearing_ear',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'about_hearing','data'=>$data]);
-
-        //return view('about_hearing_ear');
+        return view('about_hearing_ear',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'about_hearing_ear','data'=>$data]);
     }
 
 
@@ -129,14 +128,44 @@ class HomeController extends Controller
 
     public function resources(Request $request)
     {
-        $data = "";        
-        return view('resources',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'resources','data'=>$data]);
+        $resources = Resource::find($request->id);
+        $questionnaires = DB::table('questionnaires')->where('resources_id', $request->id)->get();
+        return view('resources',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'reports','resources'=>$resources,'questionnaires'=>$questionnaires,'resource_id'=>$request->id]);
     }
     public function reports(Request $request)
-    {
-        $data = "";        
-        return view('reports',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'reports','data'=>$data]);
+    {        
+        $resources =  Resource::select('resources.*')
+        ->leftJoin('age_group', 'age_group.id', '=', 'resources.age_group_id')
+        ->where([['age_group.slug','LIKE',$request->ageCat]])->orderBy('id', 'DESC')->paginate(5);
+
+        $artilces = '';
+        if ($request->ajax()) {
+            foreach ($resources as $resource) {
+                $artilces.='<div class="all-reports"> 
+                <div class="all-reports-inner ';
+                if(isset($resource->url) && $resource->url !="") {$artilces.='highlighted';}                
+                $artilces.=' ">
+                <a href="'.route('resources', [$request->ageCat, $resource->id]) .'" class="text-decoration-none">
+                    <h3>'.Str::limit($resource->title, 100, ' ...').'</h3>
+                </a>
+                <p>'.Str::limit($resource->description, 250, ' ...').' </p>';
+                if(isset($resource->pdf_upload) && $resource->pdf_upload !="") {
+                    $artilces.='<p><a href="'.url($resource->pdf_upload).'" class="download-pdf" target="_blank" ><img src="'.url('images/pdf-icon.png').'" /><span>download pdf</span></a></p>';
+                
+                }
+                
+                if(isset($resource->url) && $resource->url !=""){
+                    $artilces.='<p><a href="'.$resource->url.'" class="read_more" target="_blank" ><span>Read More</span></a></p>';
+                }
+                $artilces.='</div>
+            </div>';
+            }
+            return $artilces;
+        }
+
+        return view('reports',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'reports','resources'=>$resources]);
     }
+    
     
     
     public function technologyHistory(Request $request)
@@ -172,7 +201,6 @@ class HomeController extends Controller
      
 
     public function save_agendas(Request $request){
-
         $data = $request->input();
         $rules = [
 			'title' => 'required|string|min:3'
@@ -246,11 +274,14 @@ class HomeController extends Controller
         $data = "";
         return view('myaccount',['curruntpage'=>'myaccount','data'=>$data]);
     }
-    public function product_categories(){
-        return view('product_categories');
+    public function product_categories(Request $request){
+        $data = "";
+        return view('product_categories',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','data'=>$data]);
     }
-    public function product_listing(){
-        return view('product_listing');
+    public function product_listing(Request $request){
+        $data = "";
+        return view('product_listing',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_listing','data'=>$data]);
+
     }
     public function myaccount_agendas_create(){
         $data = "";
@@ -265,6 +296,36 @@ class HomeController extends Controller
 
     }
      
+    public function save_questionnaires(Request $request){
+        $data = $request->input();
+        $rules = [
+			'questionnaireoption' => 'required'
+		];
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect('resources/'.$data['ageCatUrl'].'/'.$data['resource_id'])
+			->withInput()
+			->withErrors($validator);
+		}
+		else{
+            $data = $request->input();
+			try{
+                foreach($data['questionnaireoption'] as $question=>$answer){
+                    $que = new Questionnairereply;
+                    $que->users_id = Auth::user()->id ;
+                    $que->questionnaires_id = $question;
+                    $que->questionnaireoptions_id = $answer;
+                    $que->save();
+                }                
+
+				return redirect('resources/'.$data['ageCatUrl'].'/'.$data['resource_id'])->with('status',"Submited successfully");
+			}
+			catch(Exception $e){
+				return redirect('resources/'.$data['ageCatUrl'].'/'.$data['resource_id'])->with('failed',"operation failed");
+			}
+		}
+    }
+
     public function about_us(){
         return view('about_us');
     }

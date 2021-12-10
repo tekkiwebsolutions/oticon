@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminSiteSettingsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminQuestionnairereplies38Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,39 +25,31 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "site_settings";
+			$this->table = "questionnairereplies";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"About Page","name"=>"about_page"];
-			$this->col[] = ["label"=>"Contact Page","name"=>"contact_page"];
-			$this->col[] = ["label"=>"Privacy Policy","name"=>"privacy_policy"];
-			$this->col[] = ["label"=>"Logo","name"=>"logo","image"=>true];
-			$this->col[] = ["label"=>"Terms Of Use","name"=>"terms_of_use"];
-			$this->col[] = ["label"=>"Copyright","name"=>"copyright"];
+			$this->col[] = ["label"=>"User Email","name"=>"users_id","join"=>"users,email"];
+			$this->col[] = ["label"=>"Questionnaire","name"=>"questionnaires_id","join"=>"questionnaires,title"];
+			$this->col[] = ["label"=>"Option","name"=>"questionnaireoptions_id","join"=>"questionnaireoptions,options"];
+			$this->col[] = ["label"=>"Date","name"=>"created_at"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'textarea','validation'=>'string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Users','name'=>'users_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,first_name'];
+			$this->form[] = ['label'=>'Questionnaire','name'=>'questionnaires_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'questionnaires,title'];
+			$this->form[] = ['label'=>'Option','name'=>'questionnaireoptions_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'questionnaireoptions,options'];
+			$this->form[] = ['label'=>'Date','name'=>'created_at','type'=>'text','validation'=>'required|date','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'required|image','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Users','name'=>'users_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,first_name'];
+			//$this->form[] = ['label'=>'Questionnaire','name'=>'questionnaires_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'questionnaires,title'];
+			//$this->form[] = ['label'=>'Option','name'=>'questionnaireoptions_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'questionnaireoptions,id'];
+			//$this->form[] = ['label'=>'Date','name'=>'created_at','validation'=>'required|date','width'=>'col-sm-9'];
 			# OLD END FORM
 
 			/* 

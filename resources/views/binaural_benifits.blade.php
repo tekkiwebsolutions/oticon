@@ -19,7 +19,13 @@
                 <div class="row">
                     <div class='col-md-12 col-12'>
                     <!-- <img src='images/binaural-graph.png' class='img-fluid' width="100%"/> -->
-                    <canvas id="line-chart" width="200" height="200"></canvas>
+                    <div id='canvas_id'>
+                        <canvas id="line-chart" width="200" height="200"></canvas>
+                        <div class='canvas_data'>
+                                <span>Quiet Room</span>
+                                <span class='noisy'>Noisy Environment</span>
+                        </div>
+                    </div>
                      <script>
                         const labels = ['0%',' ','20%',' ','40%',' ','60%',' ','80%',' ','100%'];
                         //const fillPattern = ctx.createPattern(img, 'repeat');
@@ -40,7 +46,7 @@
                                     //  hidden : true,
                                     borderColor: 'rgb(126, 196, 244)',
                                     tension: 0.1,
-                                    borderWidth: 3,
+                                    borderWidth: 1,
                                     pointStyle: [yourImage],
                                     //backgroundColor:fillPattern
                                 },
@@ -51,7 +57,7 @@
 
                                     borderColor: 'rgb(198, 23, 141)',
                                     tension: 0.1,
-                                    borderWidth: 3,
+                                    borderWidth: 1,
                                     pointStyle: [binauralimage],
                                 },
                                 {
@@ -60,7 +66,8 @@
                                     fill: false,
                                     borderColor: 'rgb(102,102,102)',
                                     tension: 0.1,
-                                    borderWidth: 3,
+                                    borderWidth: 1,
+                                    height: 500,
                                     pointStyle: [Normalimg],
                                 }
 
@@ -71,7 +78,14 @@
                         const config = {
                             type: 'line',
                             data: data,
+                            
                             options: {
+                                plugins: {
+                                    legend: {
+                                        position: 'bottom',
+                                 
+                                    }
+                                },
                                 scales: {
                                     y: {
                                         ticks: {
@@ -108,7 +122,8 @@
 
                                         },
                                         }
-                                    }
+                                    },
+
                                 }
                             }
                         };

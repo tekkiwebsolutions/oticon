@@ -6,22 +6,7 @@
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-2 col-md-2 col-12 left-area">
-                <div class="left-area-inner position-relative">
-                    <div class="person-time d-flex person-time-active">
-                        <img alt="" src="images/children.jpg" class="img-fluid">
-                        <span>Children</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/teen.jpg" class="img-fluid">
-                        <span>Teen</span>
-                    </div>
-                    <div class="person-time d-flex">
-                        <img alt="" src="images/adult.jpg" class="img-fluid">
-                        <span>Adult</span>
-                    </div>
-                </div>
-            </div>
+            @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-7 col-md-7 col-7">
@@ -35,7 +20,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/design-right.png' class='img-fluid'/>
+                            <img src="{{url('images/design-right.png')}}"  class='img-fluid'/>
                             <h3>designRITE</h3>
                             </a>
                         </div>
@@ -43,7 +28,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/mini-rite.png' class='img-fluid'/>
+                            <img src="{{url('images/mini-rite.png')}}"  class='img-fluid'/>
                             <h3>miniRITE</h3>
                             </a>
                         </div>
@@ -51,7 +36,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/rite.png' class='img-fluid'/>
+                            <img src="{{url('images/rite.png' )}}"  class='img-fluid'/>
                             <h3>RITE</h3>
                             </a>
                         </div>
@@ -59,7 +44,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/mini-bite.png' class='img-fluid'/>
+                            <img src="{{url('images/mini-bite.png')}}"  class='img-fluid'/>
                             <h3>miniBTE</h3>
                             </a>
                         </div>
@@ -67,7 +52,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/bte.png' class='img-fluid'/>
+                            <img src="{{url('images/bte.png')}}"  class='img-fluid'/>
                             <h3>BTE</h3>
                             </a>
                         </div>
@@ -75,7 +60,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/bte-plus-power.png' class='img-fluid'/>
+                            <img src="{{url('images/bte-plus-power.png')}}"   class='img-fluid'/>
                             <h3>BTE Plus Power</h3>
                             </a>
                         </div>
@@ -83,7 +68,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/IIC.png' class='img-fluid'/>
+                            <img src="{{url('images/IIC.png')}}"  class='img-fluid'/>
                             <h3>IIC</h3>
                             </a>
                         </div>
@@ -91,7 +76,7 @@
                     <div class='col-md-3 col-lg-3 col-12'>
                         <div class='product_list'>
                             <a href='#'>
-                            <img src='images/cic.png' class='img-fluid'/>
+                            <img src="{{url('images/cic.png')}}"  class='img-fluid'/>
                             <h3>CIC</h3>
                             </a>
                         </div>

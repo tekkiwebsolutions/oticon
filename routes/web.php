@@ -53,7 +53,7 @@ Route::group(['middleware' => ['verified']], function() {
     Route::get('/your_solution/{ageCat}', [App\Http\Controllers\HomeController::class, 'yourSolutionCat'])->name('yourSolutionCat');
 
     Route::get('/styles/{ageCat}', [App\Http\Controllers\HomeController::class, 'styles'])->name('styles');
-    Route::get('/resources/{ageCat}', [App\Http\Controllers\HomeController::class, 'resources'])->name('resources');
+    Route::get('/resources/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'resources'])->name('resources');
     
     Route::get('/reports/{ageCat}', [App\Http\Controllers\HomeController::class, 'reports'])->name('reports');
 
@@ -70,12 +70,14 @@ Route::group(['middleware' => ['verified']], function() {
 
     Route::post('/save_agendas', [App\Http\Controllers\HomeController::class, 'save_agendas'])->name('save_agendas');
 
+    Route::post('/save_questionnaires', [App\Http\Controllers\HomeController::class, 'save_questionnaires'])->name('save_questionnaires');
+
     Route::get('/delete_agendas/{id}', [App\Http\Controllers\HomeController::class, 'delete_agendas'])->name('delete_agendas');
 
     Route::get('/myaccount_media', [App\Http\Controllers\HomeController::class, 'myaccount_media'])->name('myaccount_media');
     Route::get('/myaccount', [App\Http\Controllers\HomeController::class, 'myaccount'])->name('myaccount');
-    Route::get('/product_categories', [App\Http\Controllers\HomeController::class, 'product_categories'])->name('product_categories');
-    Route::get('/product_listing', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
+    Route::get('/product_categories/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_categories'])->name('product_categories');
+    Route::get('/product_listing/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
 });
 
 Auth::routes(['verify' => true]);

@@ -18,45 +18,31 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12 pb-4">
-                        <div class='all-reports'>
-                            <div class="all-reports-inner">
-                            <a href="{{ route('resources', $ageCatUrl) }}" class="text-decoration-none">
-                                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
-                            <a href='#' class='download-pdf'><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a>
+                    <div class="col-lg-12 col-md-12 col-12 pb-4" id="data-wrapper">
+                        @if(!empty($resources) && $resources->count())
+                            @foreach($resources as $resource)
+                            <div class='all-reports'> 
+                                <div class="all-reports-inner  @if(isset($resource->url) && $resource->url !="") highlighted @endif ">
+                                <a href="{{ route('resources', [$ageCatUrl, $resource->id]) }}" class="text-decoration-none">
+                                    <h3>{{Str::limit($resource->title, 100, ' ...')}}</h3>
+                                </a>
+                                <p>{{Str::limit($resource->description, 250, ' ...')}} </p>
+                                @if(isset($resource->pdf_upload) && $resource->pdf_upload !="")
+                                    <p><a href='{{url($resource->pdf_upload)}}' class='download-pdf' target="_blank" ><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a></p>
+                                
+                                @endif
+                                
+                                @if(isset($resource->url) && $resource->url !="")
+                                <p><a href='{{$resource->url}}' class='read_more' target="_blank" ><span>Read More</span></a></p>
+                                @endif
+                                </div>
                             </div>
-                        </div>
-
-                        <div class='all-reports'>
-                            <div class='all-reports-inner'>
-                            <a href="{{ route('resources', $ageCatUrl) }}" class="text-decoration-none">
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
-                            </a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
-                            <a href='#' class='download-pdf'><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a>
+                            @endforeach
+                        @else
+                            <div class='all-reports'> 
+                                <td colspan="10">There are no data.</td>
                             </div>
-                        </div>
-
-                        <div class='all-reports '>
-                           <div class='all-reports-inner highlighted'>
-                           <a href="{{ route('resources', $ageCatUrl) }}" class="text-decoration-none">
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
-                            <a href='#' class='read_more'><span>Read More</span></a>
-                            </div>
-                        </div>
-
-                        <div class='all-reports'>
-                            <div class='all-reports-inner'>
-                            <a href="{{ route('resources', $ageCatUrl) }}" class="text-decoration-none">
-                            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3></a>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est.</p>
-                            <a href='#' class='download-pdf'><img src="{{ url('images/pdf-icon.png')}}" /><span>download pdf</span></a>
-                            </div>
-                        </div>
-
+                        @endif
                     </div>
 
                 </div>
@@ -69,4 +55,40 @@
 
 @include('layouts.footer')
 
+<script>
+    var ENDPOINT = "{{ url('/') }}";
+    var page = 2;
+    //infinteLoadMore(page);
+
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() >= $(document).height()-100) {
+            
+            infinteLoadMore(page);
+            page++;
+        }
+    });
+
+    function infinteLoadMore(page) {
+        $.ajax({
+                url: ENDPOINT + "/reports/{{$ageCatUrl}}/?page=" + page,
+                datatype: "html",
+                type: "get",
+                beforeSend: function () {
+                    $('.auto-load').show();
+                }
+            })
+            .done(function (response) {
+                if (response.length == 0) {
+                    $('.auto-load').html("We don't have more data to display :(");
+                    return;
+                }
+                $('.auto-load').hide();
+                $("#data-wrapper").append(response);
+            })
+            .fail(function (jqXHR, ajaxOptions, thrownError) {
+                console.log('Server error occured');
+            });
+    }
+
+</script>
 @endsection

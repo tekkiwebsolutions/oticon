@@ -1,48 +1,7 @@
-<style>
-	#cookiePopup {
-		background: linear-gradient(to bottom,rgba(30,30,30,.95) 0,rgba(0,0,0,.95) 100%);
-		font-family: Arial,Helvetica,sans-serif;
-		font-size: 10pt;
-		left: 0;
-		line-height: 1.5;
-		margin: 0;
-		padding: 3px;
-		position: fixed;
-		width: 100%;
-		z-index: 9999;
-		bottom: 0px;
-		opacity: 1;
-	}
-	#cookiePopup p{
-        float: left;
-        margin: 4px 0 0 20px;
-        padding: 0;
-        color: #fff;
-	}
-	#cookiePopup button{
-		background-color: #36bf2d;
-		border-bottom: 1px solid #222;
-		border-radius: 5px;
-		color: #fff!important;
-		cursor: pointer;
-		display: inline-block;
-		float: right;
-		font-weight: 700;
-		line-height: 1;
-		margin-right: 20px;
-		margin-top: 2px;
-		padding: 5px 10px 6px;
-		position: relative;
-		text-decoration: none;
-		text-shadow: 0 -1px 1px #222;
-		border: 0;
-	}
-</style>
- 
 
 <div id="cookiePopup">
   <p>
-  Oticon uses cookies to provide necessary website functionality, improve your experience and analyze our traffic. By using our website, you agree to our <a href="#" style="color: #31a8f0;">Privacy Policy</a>  and our cookies usage.</p>
+  Oticon uses cookies to provide necessary website functionality, improve your experience and analyze our traffic. By using our website, you agree to our <a href="{{ route('policy') }}" style="color: #31a8f0;">Privacy Policy</a>  and our cookies usage.</p>
  <button id="acceptCookie">Agree!</button> 
 </div>
 
