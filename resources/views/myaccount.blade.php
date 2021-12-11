@@ -10,17 +10,23 @@
             <div class="col-lg-10 col-md-10 col-12 center-area side-content-account">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
+					@if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <h2 class="heading">My Account</h2>
                      <p class='profile'>Profile</p>
                      <div class='profile-name'>
-                         <h3>Lea Watkins</h3>
-                         <h4>Business Executive</h4>
-                         <span class='email'>lea@gmail.com</span>
+                         <h3>{{$data->first_name}} {{$data->last_name}}</h3>
+                         <h4>{{$data->occupation}}</h4>
+                         <span class='email'>{{$data->email}}</span>
                     </div>  
-                    <div class='address'><p>Address One, Torronto,<br> Canada</p></div> 
+                    <div class='address'>{{$data->location}}</div> 
                     <div class='my-account-button'>
-                        <p><a href='#' class='edit-profile'>Edit Profile</a></p>
-                        <p><a href='#' class='change-pass'>Change Password</a></p>
+                        <p><a href='{{route("myaccountEdit")}}' class='edit-profile'>Edit Profile</a></p>
+                        <p><a href='{{route("mypassword")}}' class='change-pass'>Change Password</a></p>
                     </div> 
                     <div class='notifiy'>
                     <p class='profile'>Notifications</p>

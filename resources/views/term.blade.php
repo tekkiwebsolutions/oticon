@@ -6,14 +6,13 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <div class="col-lg-1 col-md-1 col-12 "></div>
-            <div class="col-lg-9 col-md-9 col-12 center-area">
+            <div class="col-lg-12 col-md-12 col-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12"><h2 class="heading">Terms of Use</h2></div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
-                        <p>{{$site_data->terms_of_use}}</p>
+                    <div class="col-lg-12 col-md-12 col-12"> 
+                    {!! $site_data->terms_of_use !!}
                     </div>
                 </div>
             </div>

@@ -1,4 +1,7 @@
 @section('header')
+<?php use Illuminate\Support\Facades\DB; 
+$sitelogo = DB::select('select logo from site_settings ORDER BY ID ASC LIMIT 1')[0]->logo; 
+?>
 <div class="header-wrapper">
     <div class="container">
         <div class="row position-relative">
@@ -11,7 +14,7 @@
             </div>
             <div class="col-lg-12 col-md-12 col-12 text-center">
                 <a href="{{ route('ageGroup') }}">
-                    <img src="{{url('images/logo.svg')}}" class="img-fluid logo" alt="" title="Oticon">
+                    <img src="{{url($sitelogo)}}" class="img-fluid logo" alt="" title="Oticon">
                 </a>
             </div>
             <div class="login-btn-area position-absolute d-flex">

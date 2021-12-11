@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -75,7 +74,14 @@ Route::group(['middleware' => ['verified']], function() {
     Route::get('/delete_agendas/{id}', [App\Http\Controllers\HomeController::class, 'delete_agendas'])->name('delete_agendas');
 
     Route::get('/myaccount_media', [App\Http\Controllers\HomeController::class, 'myaccount_media'])->name('myaccount_media');
+    
     Route::get('/myaccount', [App\Http\Controllers\HomeController::class, 'myaccount'])->name('myaccount');
+    Route::get('/myaccountEdit', [App\Http\Controllers\HomeController::class, 'myaccountEdit'])->name('myaccountEdit');
+    Route::post('/myaccountUpdate', [App\Http\Controllers\HomeController::class, 'myaccountUpdate'])->name('myaccountUpdate');
+
+    Route::get('/mypassword', [App\Http\Controllers\HomeController::class, 'mypassword'])->name('mypassword');
+    Route::post('/mypassword', [App\Http\Controllers\HomeController::class, 'mypasswordUpdate'])->name('mypasswordUpdate');
+
     Route::get('/product_categories/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_categories'])->name('product_categories');
     Route::get('/product_listing/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
 });
@@ -110,5 +116,7 @@ Route::get('/term', [App\Http\Controllers\HomeController::class, 'term'])->name(
 Route::get('pagination', [App\Http\Controllers\CommonController::class, 'pagination'])->name('pagination');
 
 Route::get('generatepdf', [App\Http\Controllers\PDFController::class, 'generatePDF']);
+
+Route::get('/admin_index', [App\Http\Controllers\AdminDashController::class, 'admin_index'])->name('admin_index');
 
  

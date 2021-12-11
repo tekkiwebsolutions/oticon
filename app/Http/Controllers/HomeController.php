@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
+use App\Models\User;					
 use App\Models\Resource;
 use App\Models\Questionnairereply;
 use Illuminate\Support\Facades\Validator;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use PDF;
+use Illuminate\Support\Facades\Hash;
 class HomeController extends Controller
 {
     /**
@@ -133,10 +135,23 @@ class HomeController extends Controller
         return view('resources',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'reports','resources'=>$resources,'questionnaires'=>$questionnaires,'resource_id'=>$request->id]);
     }
     public function reports(Request $request)
-    {        
+    {  
         $resources =  Resource::select('resources.*')
         ->leftJoin('age_group', 'age_group.id', '=', 'resources.age_group_id')
-        ->where([['age_group.slug','LIKE',$request->ageCat]])->orderBy('id', 'DESC')->paginate(5);
+        ->where([['age_group.slug','LIKE',$request->ageCat]]);
+        if(isset($request->search)){
+            $searchData = $request->search; 
+            $resources = $resources->where('resources.description' , 'LIKE', '%' . $searchData . '%' )
+            ->orWhere('resources.title' , 'LIKE', '%' . $searchData . '%' );        
+        }
+
+        if(isset($request->order)){
+            $order = $request->order;
+            $resources = $resources->orderBy('resources.id' , $order );        
+        } else{
+            $resources = $resources->orderBy('resources.id', 'DESC');
+        }
+        $resources = $resources->paginate(5); 
 
         $artilces = '';
         if ($request->ajax()) {
@@ -155,7 +170,7 @@ class HomeController extends Controller
                 }
                 
                 if(isset($resource->url) && $resource->url !=""){
-                    $artilces.='<p><a href="'.$resource->url.'" class="read_more" target="_blank" ><span>Read More</span></a></p>';
+                    $artilces.='<p><a href="'.route('resources', [$request->ageCat, $resource->id]) .'"  class="read_more" target="_blank" ><span>Read More</span></a></p>';
                 }
                 $artilces.='</div>
             </div>';
@@ -191,6 +206,7 @@ class HomeController extends Controller
         $data = "";
         return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','data'=>$data]);
     }
+
     public function myaccount_agendas(Request $request){
         /*$agendas = DB::table('agendas')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();*/
 
@@ -271,9 +287,79 @@ class HomeController extends Controller
         
     }
     public function myaccount(){
-        $data = "";
+        $data = Auth::user();
         return view('myaccount',['curruntpage'=>'myaccount','data'=>$data]);
     }
+
+    public function myaccountEdit(){
+        $data = Auth::user();
+        return view('myaccountEdit',['curruntpage'=>'myaccount','data'=>$data]);
+    }
+
+    public function myaccountUpdate(Request $request){
+
+        $data = $request->input();
+        $rules = [
+			'first_name' => 'required',
+			'last_name' => 'required',
+			'email' => 'required|email',
+			'occupation' => 'required',
+			'location' => 'required'
+		];
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect()->back()
+			->withInput()
+			->withErrors($validator);
+		}
+        else{
+
+        $value = Auth::user();
+        $value->first_name = $request->input('first_name');
+        $value->last_name = $request->input('last_name');
+        $value->email = $request->input('email');
+        $value->occupation = $request->input('occupation');
+        $value->location = $request->input('location');
+
+        // dd($value);
+
+        $value->update();
+        
+        return redirect('myaccount')->with('success','Account updated successfully.');
+        }
+    }
+
+    public function mypassword(){
+        $data = Auth::user();
+        return view('mypassword',['curruntpage'=>'myaccount','data'=>$data]);
+    }
+
+    public function mypasswordUpdate(Request $request){
+        $data = Auth::user();
+
+        $rules = [
+			'password' => 'required|min:8',
+			'confirm_password' => 'required|same:password|min:8',
+		];
+		$validator = Validator::make($request->all(),$rules);
+		if ($validator->fails()) {
+			return redirect()->back()
+			->withInput()
+			->withErrors($validator);
+		}
+
+        $password = $request->password;
+        $confirm_password = $request->confirm_password;
+
+        if($password == $confirm_password){
+        $data->password = Hash::make($request->password);
+        $data->update();
+
+    }
+
+        return redirect('myaccount')->with('success','Password successfully changed.');
+    }
+
     public function product_categories(Request $request){
         $data = "";
         return view('product_categories',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','data'=>$data]);

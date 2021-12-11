@@ -2,8 +2,7 @@
 @include('layouts.header')
 
 @section('content')
-<style>
-</style>
+<?php $moreUrl =""; ?>
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
@@ -23,25 +22,33 @@
 
                     <div class="col-md-3">
                     <form action="">
-                        <select name="typeData" class="form-control" onchange = 'this.form.submit();'>
-                        <option value="DESC" <?php if ($_GET['typeData'] == 'DESC') { echo ' selected="selected"'; } ?>>Oldest</option>
-                            <option value="ASC" <?php if ($_GET['typeData'] == 'ASC') { echo ' selected="selected"'; } ?>>Newest</option>
+                        @if (isset($_GET['search']) && $_GET['search']!="") 
+                            <input type="hidden" name="search" value="{{trim($_GET['search'])}}" />
+                            <?php $moreUrl .="&search=".$_GET['search']; ?>
+                        @endif
+                        <select name="order" class="form-control" onchange = 'this.form.submit();'>
+                        <option value="DESC" @if (isset($_GET['order']) && $_GET['order'] == 'DESC') selected @endif >Oldest</option>
+                            <option value="ASC" @if (isset($_GET['order']) && $_GET['order'] == 'ASC') selected @endif >Newest</option>
                         </select>
                     </form>
                     </div>
                     <div class="col-md-4">
                     <form action="">
+                        @if (isset($_GET['order'])) 
+                            <input type="hidden" name="order" value="{{$_GET['order']}}"/>
+                            <?php $moreUrl .="&order=".$_GET['order']; ?>
+                        @endif
                         <div class="row">
                             <div class="col-md-10">
-                                <input type="text" name="searchData" value="<?php echo $_GET['searchData'] ?>" placeholder="Search here" class="form-control">
+                                <input type="text" name="search" value="@if (isset($_GET['search']) && $_GET['search'] !="" ){{trim($_GET['search']) }}@endif"  placeholder="Search here" class="form-control">
                             </div>
                             <div class="col-md-2">
-                                <input type="submit" class="btn btn-primary" value="Search"/>
+                                <input type="submit" class="read_more" value="Search"/>
                             </div>
                         </div>
                         </form>
                     </div>
-                </div>
+                </div> <br>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 pb-4" id="data-wrapper">
                         @if(!empty($resources) && $resources->count())
@@ -58,7 +65,7 @@
                                 @endif
                                 
                                 @if(isset($resource->url) && $resource->url !="")
-                                <p><a href='{{$resource->url}}' class='read_more' target="_blank" ><span>Read More</span></a></p>
+                                <p><a href="{{ route('resources', [$ageCatUrl, $resource->id]) }}" class='read_more' target="_blank" ><span>Read More</span></a></p>
                                 @endif
                                 </div>
                             </div>
@@ -95,7 +102,7 @@
 
     function infinteLoadMore(page) {
         $.ajax({
-                url: ENDPOINT + "/reports/{{$ageCatUrl}}/?page=" + page,
+                url: ENDPOINT + "/reports/{{$ageCatUrl}}/?page=" + page+"{{$moreUrl}}",
                 datatype: "html",
                 type: "get",
                 beforeSend: function () {

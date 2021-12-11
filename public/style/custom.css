@@ -1270,7 +1270,7 @@
     }
     .all-reports {
         border-bottom: solid 1px #e7e8eb;
-
+        padding-top: 30px;
     }
     .line {
         padding-top: 33px;
@@ -1888,11 +1888,11 @@ font-weight: 600;
         text-transform: uppercase;
         font-weight: 500;
     }
-    .col-lg-2.col-md-2.col-sm-2.col-12.noise-adjust {
+  .noise-adjust {
         width: 19%;
     }
     a.back_btn:hover:before {
-        background-image: url(/images/arrow-hover.png) !important;
+        background-image: url(../images/arrow-hover.png) !important;
     }
     .form-controls {
         padding: 20px 23px;
@@ -2615,6 +2615,12 @@ div#canvas_id{position: relative;}
     left: -184px;
 }
 
+   .shape-one, .shape-two{ transition: all 1s ease-in-out;
+}
+.shape-one:hover, .shape-two:hover {
+    transform: scale(1.05);
+}
+
 
 
 
@@ -2695,6 +2701,7 @@ div#canvas_id{position: relative;}
   }
 
   @media only screen and (min-width: 1420px) {
+   
     .about-hearing-large span, .brain_ad-large span {
         display: inline-block;
         width: 23px;
@@ -2764,12 +2771,27 @@ div#canvas_id{position: relative;}
 
 
   @media only screen and (max-width: 1400px) {
+    .myaccounts_reports_table tr th:nth-child(2) {
+    width: 20% !important
+  }
+     .myaccounts_reports_table tr th:nth-child(3) {
+    width: 30% !important;
+    }
+    .myaccounts_reports_table tr th:nth-child(4) {
+    width: 15% !important;
+    }
     .sidebar-wrapper {
     max-width: 320px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
+  .table-data tbody tr td a span {
+    padding: 10px 15px;
+  }
+  .myaccounts_reports_table tr th:nth-child(4) {
+    width: 20% !important;
+}
     .graph-col {
     width: calc(100% - 210px);
     }
@@ -3010,6 +3032,27 @@ div#canvas_id{position: relative;}
     
 
 }
+
+@media screen and (min-device-width: 1025px) and (max-device-width: 1370px) { 
+.style-detail-inner {
+    margin-top: -30px;
+}
+.style-detail-thumb{margin-top: 0px;}
+.color-thumb {
+    border-radius: 100%;
+    margin-left: 5px;
+    flex: none;
+}
+.style_row > .col-md-6 {
+        width: 100%;
+        padding-bottom: 20px;
+    }
+      .left-area {
+        width: 20%;
+    }
+    .center-area{width: 80%;}
+}
+
 
 @media screen and (min-device-width: 769px) and (max-device-width: 1024px) { 
     .style_row > .col-md-6 {
