@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
 use App\Models\User;					
+use App\Models\Site_setting;					
 use App\Models\Resource;
 use App\Models\Questionnairereply;
 use Illuminate\Support\Facades\Validator;
@@ -170,7 +171,7 @@ class HomeController extends Controller
                 }
                 
                 if(isset($resource->url) && $resource->url !=""){
-                    $artilces.='<p><a href="'.route('resources', [$request->ageCat, $resource->id]) .'"  class="read_more" target="_blank" ><span>Read More</span></a></p>';
+                    $artilces.='<p><a href="'.route('resources', [$request->ageCat, $resource->id]) .'"  class="read_more" ><span>Read More</span></a></p>';
                 }
                 $artilces.='</div>
             </div>';
@@ -203,15 +204,14 @@ class HomeController extends Controller
     }
 
     public function myaccounts_reports(){
-        $data = "";
-        return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','data'=>$data]);
+        $siteData = Site_setting::first();
+        return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','siteData'=>$siteData]);
     }
 
     public function myaccount_agendas(Request $request){
-        /*$agendas = DB::table('agendas')->where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get();*/
-
+        $siteData = Site_setting::first();
         $agendas = Agenda::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
-        return view('myaccount_agendas',['curruntpage'=>'myaccount_agendas','agendas'=>$agendas]);
+        return view('myaccount_agendas',['curruntpage'=>'myaccount_agendas','agendas'=>$agendas,'siteData'=>$siteData]);
     } 
 
      
@@ -282,8 +282,8 @@ class HomeController extends Controller
         return redirect('myaccount_agendas')->with('status',"Deleted successfully");
     }
     public function myaccount_media(){
-        $data = "";
-        return view('myaccount_media',['curruntpage'=>'myaccount_media','data'=>$data]);
+        $siteData = Site_setting::first();
+        return view('myaccount_media',['curruntpage'=>'myaccount_media','siteData'=>$siteData]);
         
     }
     public function myaccount(){
@@ -413,22 +413,22 @@ class HomeController extends Controller
     }
 
     public function about_us(){
-        $site_data = DB::table('site_settings')->first();
+        $site_data = DB::table('aboutpages')->first();
         return view('about_us',['site_data'=>$site_data]);
     }
 
     public function policy(){
-        $site_data = DB::table('site_settings')->first();
+        $site_data = DB::table('policypages')->first();
         return view('policy',['site_data'=>$site_data]);
     }
 
     public function contact(){
-        $site_data = DB::table('site_settings')->first();
+        $site_data = DB::table('contactpages')->first();
         return view('contact',['site_data'=>$site_data]);
     }
 
     public function term(){
-        $site_data = DB::table('site_settings')->first();
+        $site_data = DB::table('termpages')->first();
         return view('term',['site_data'=>$site_data]);
     }
 }

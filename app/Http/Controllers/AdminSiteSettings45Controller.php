@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminSiteSettingsController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminSiteSettings45Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -17,9 +17,9 @@
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
 			$this->button_action_style = "button_icon";
-			$this->button_add = true;
+			$this->button_add = false;
 			$this->button_edit = true;
-			$this->button_delete = true;
+			$this->button_delete = false;
 			$this->button_detail = true;
 			$this->button_show = true;
 			$this->button_filter = true;
@@ -30,34 +30,32 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"About Page","name"=>"about_page"];
-			$this->col[] = ["label"=>"Contact Page","name"=>"contact_page"];
-			$this->col[] = ["label"=>"Privacy Policy","name"=>"privacy_policy"];
+			$this->col[] = ["label"=>"Reports Expire","name"=>"reports_exp"];
+			$this->col[] = ["label"=>"Agendas Expire","name"=>"agendas_exp"];
+			$this->col[] = ["label"=>"Mp3 Expire","name"=>"mp3_exp"];
 			$this->col[] = ["label"=>"Logo","name"=>"logo","image"=>true];
-			$this->col[] = ["label"=>"Terms Of Use","name"=>"terms_of_use"];
+			$this->col[] = ["label"=>"Quick Links","name"=>"quick_links"];
 			$this->col[] = ["label"=>"Copyright","name"=>"copyright"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Reports Expire In days','name'=>'reports_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			$this->form[] = ['label'=>'Agendas Expire In days','name'=>'agendas_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			$this->form[] = ['label'=>'Mp3 Expire In days','name'=>'mp3_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'required','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'About Page','name'=>'about_page','type'=>'wysiwyg','validation'=>'string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Contact Page','name'=>'contact_page','type'=>'textarea','validation'=>'string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Privacy Policy','name'=>'privacy_policy','type'=>'textarea','validation'=>'string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'image','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Terms Of Use','name'=>'terms_of_use','type'=>'textarea','validation'=>'string','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Reports Exp','name'=>'reports_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			//$this->form[] = ['label'=>'Agendas Exp','name'=>'agendas_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			//$this->form[] = ['label'=>'Mp3 Exp','name'=>'mp3_exp','type'=>'number','validation'=>'integer','width'=>'col-sm-10','help'=>'In Days'];
+			//$this->form[] = ['label'=>'Logo','name'=>'logo','type'=>'upload','validation'=>'required','width'=>'col-sm-10','help'=>'File types support : JPG, JPEG, PNG, GIF, BMP'];
+			//$this->form[] = ['label'=>'Quick Links','name'=>'quick_links','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Copyright','name'=>'copyright','type'=>'text','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

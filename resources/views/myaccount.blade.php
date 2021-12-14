@@ -12,8 +12,8 @@
                     <div class="col-lg-12 col-md-12 col-12">
 					@if ($message = Session::get('success'))
                         <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
                             <strong>{{ $message }}</strong>
+                            <a href="javascript:voide(0)" onclick="$('#alert_msg').remove()" class="close" data-dismiss="alert" ><img src="images/close.png" class="img-fluid"></a>
                         </div>
                     @endif
                     <h2 class="heading">My Account</h2>

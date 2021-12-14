@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminCmspagesController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminPolicypagesController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,7 +25,7 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "aboutpages";
+			$this->table = "policypages";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
@@ -37,14 +37,13 @@
 			$this->col[] = ["label"=>"Meta Title","name"=>"meta_title"];
 			$this->col[] = ["label"=>"Meta Description","name"=>"meta_description"];
 			$this->col[] = ["label"=>"Meta Key","name"=>"meta_key"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:100','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'text','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Meta Title','name'=>'meta_title','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Meta Description','name'=>'meta_description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Meta Key','name'=>'meta_key','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
@@ -52,13 +51,13 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:100','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','width'=>'col-sm-9'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'wysiwyg','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Slug','name'=>'slug','type'=>'text','validation'=>'required|min:1|max:100','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Meta Title','name'=>'meta_title','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Meta Description','name'=>'meta_description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Meta Key','name'=>'meta_key','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

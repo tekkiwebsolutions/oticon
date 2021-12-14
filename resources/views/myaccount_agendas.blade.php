@@ -21,7 +21,7 @@ if(isset($_GET['page']) && $_GET['page']>1){
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est. Etiam sollicitudin sodales tellus, a interdum nisi lacinia id. Proin egestas volutpat dui nec auctor. Suspendisse non nibh imperdiet risus bibendum consequat sed vel leo. Phasellus sed tellus at mi facilisis efficitur. Nullam ac cursus urna. Aliquam vel nulla velit.</p>
                         <div class='reports-notifications' id="alert_msg">
                             <img src='images/notification-sign.png' class='img-fluid sign'/>
-                            <p>Agendas will expire within x-day</p>
+                            <p>Agendas will expire within {{$siteData->agendas_exp}} day(s)</p>
                             <a href="javascript:voide(0)" onclick="$('#alert_msg').remove()"><img src='images/close.png' class='img-fluid'/></a>
                         </div>
                         <div class='agendas'>

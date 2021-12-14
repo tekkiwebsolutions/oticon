@@ -7,7 +7,20 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if($site_data->meta_title)
+    <title>{{ $site_data->meta_title}}</title>
+    @else
     <title>{{ config('app.name', 'Laravel') }}</title>
+    @endif
+
+    @if($site_data->meta_description)
+    <meta name="description" content="{{$site_data->meta_description}}"/>
+    @endif
+    @if($site_data->meta_description)
+    <meta name="keywords" content="{{$site_data->meta_key}}"/>
+    @endif  
+
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

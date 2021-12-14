@@ -14,7 +14,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse nec sapien enim. In et suscipit libero, non molestie risus. Praesent in nunc et ligula molestie gravida rhoncus eget augue. Cras turpis libero, venenatis non nulla at, maximus vehicula est. Etiam sollicitudin sodales tellus, a interdum nisi lacinia id. Proin egestas volutpat dui nec auctor. Suspendisse non nibh imperdiet risus bibendum consequat sed vel leo. Phasellus sed tellus at mi facilisis efficitur. Nullam ac cursus urna. Aliquam vel nulla velit.</p>
                         <div class='reports-notifications' id="alert_msg" >
                             <img src='images/notification-sign.png' class='img-fluid sign'/>
-                            <p>Reports will expire within x-day</p>
+                            <p>Reports will expire within {{$siteData->reports_exp}} day(s)</p>
                             <a href="javascript:voide(0)" onclick="$('#alert_msg').remove()"><img src='images/close.png' class='img-fluid'/></a>
                         </div>
                         <table class="table table-reponsive table-data myaccounts_reports_table">

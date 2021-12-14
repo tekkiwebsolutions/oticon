@@ -36,6 +36,7 @@
 			$this->col[] = ["label"=>"Occupation","name"=>"occupation"];
 			$this->col[] = ["label"=>"Location","name"=>"location"];
 			$this->col[] = ["label"=>"Created At","name"=>"created_at"];
+			$this->col[] = ["label"=>"Status","name"=>"status"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -47,6 +48,7 @@
 			$this->form[] = ['label'=>'Occupation','name'=>'occupation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
 			$this->form[] = ['label'=>'Location','name'=>'location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Email Verified At','name'=>'email_verified_at','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-9','dataenum'=>'Enable;Disable'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -58,6 +60,7 @@
 			//$this->form[] = ['label'=>'Occupation','name'=>'occupation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
 			//$this->form[] = ['label'=>'Location','name'=>'location','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Email Verified At','name'=>'email_verified_at','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-9','dataenum'=>'Enable; Disable'];
 			# OLD END FORM
 
 			/* 

@@ -41,16 +41,28 @@
                     </div>
                     <div class="login-section">
                         <h1>Hi, Welcome Back !</h1>
+                        <strong>{{ $message }}</strong>
                         <p class="login-subheading">Single device to solve your hearing problem</p>
                         <form class="login-form" method="POST" action="{{ route('login') }}">
-                            @csrf
+                            @csrf 
+                            
                             <div class="col-lg-12 col-md-12 col-12 position-relative form-row">
-                                <input type="email" class="form-control textbox" id="email" placeholder="Enter Your Email Address" name="email">
+                                <input type="email" class="form-control textbox @error('email') is-invalid @enderror" id="email" placeholder="Enter Your Email Address" name="email">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/mail-icon.png"></span>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-lg-12 col-md-12 col-12 position-relative form-row">
-                                <input type="password" class="form-control textbox" id="password" placeholder="Enter Password" name="password">
+                                <input type="password" class="form-control textbox @error('password') is-invalid @enderror" id="password" placeholder="Enter Password" name="password">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/lock-icon.png"></span>
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <br>
                             <div class="form-group row">

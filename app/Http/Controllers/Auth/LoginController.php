@@ -57,11 +57,12 @@ class LoginController extends Controller
                 ?: redirect()->intended($this->redirectPath());
     }
 
-
-//     public function credentials(Request $request)
-//     {
-//        $credentials = $request->only($this->username(), 'password');
-//        $credentials = Arr::add($credentials, 'status', '1');
-//        return $credentials;
-//    }
+	public function credentials(Request $request)
+    {
+        $credentials = $request->only($this->username(), 'password');
+        $credentials = Arr::add($credentials, 'status', 'Enabled');
+        return $credentials;
+        // return response()->json(['success' => 'Your inquire is successfully sent.']);
+							  
+    }
 }

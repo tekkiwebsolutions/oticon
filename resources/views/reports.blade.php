@@ -65,7 +65,7 @@
                                 @endif
                                 
                                 @if(isset($resource->url) && $resource->url !="")
-                                <p><a href="{{ route('resources', [$ageCatUrl, $resource->id]) }}" class='read_more' target="_blank" ><span>Read More</span></a></p>
+                                <p><a href="{{ route('resources', [$ageCatUrl, $resource->id]) }}" class='read_more' ><span>Read More</span></a></p>
                                 @endif
                                 </div>
                             </div>

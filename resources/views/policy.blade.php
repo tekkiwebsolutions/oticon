@@ -8,11 +8,11 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-12">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12"><h2 class="heading">Privacy Policy</h2></div>
+                    <div class="col-lg-12 col-md-12 col-12"><h2 class="heading">{{$site_data->title}}</h2></div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
-                        {!! $site_data->privacy_policy !!}
+                        {!! $site_data->description !!}
                     </div>
                 </div>
             </div>

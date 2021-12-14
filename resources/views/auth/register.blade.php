@@ -150,7 +150,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "/unique_email",
+                        url: "unique_email",
                         type: "POST",
                         dataType: "JSON",
                         data:
