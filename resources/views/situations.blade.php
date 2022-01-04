@@ -8,13 +8,14 @@
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 main-banner-tech">
-                        <img alt="" class="img-fluid" id="situationsImage" src="{{ url('images/situations.jpg')}}">
+                        <img alt="" class="img-fluid" id="situationsImage" src="@if($sections[0]->Images) {{url($sections[0]->Images)}} @else {{ url('images/situations.jpg')}} @endif">
                         <div class="main-volume">
-                            <img src="{{ url('images/speaker.png')}}" class="img-fluid icon-large" onClick="playMyAudio()" id="playbutton" />
-                            <img src="{{ url('images/muted.png')}}" class="img-fluid icon-large" onClick="pauseMyAudio()" id="pausebutton" style="display: none;" />
+                            <img src="{{ url('images/muted.png')}}" class="img-fluid icon-large" onClick="playMyAudio()" id="playbutton" />
+                            <img src="{{ url('images/speaker.png')}}" class="img-fluid icon-large" onClick="pauseMyAudio()" id="pausebutton" style="display: none;" />
                         </div>
                     </div>
                 </div>
+                
                 <div class="row situtation-filter-row">
                     <div class="col-lg-3 col-md-3 col-sm-6 col-12">
                         <div class="custom-selectbox">
@@ -59,7 +60,10 @@
 
    <script>
        $("[name='hearing_impairment']").click(function(){
-        checkbackgroudPlay();
+            var myAudio = document.getElementById("withoutImpairment");
+            if (myAudio.duration > 0 && !myAudio.paused) {
+                checkbackgroudPlay();
+            }   
        });
        function checkbackgroudPlay(){
             var imairment = $("[name='hearing_impairment']:checked").val();
@@ -86,6 +90,7 @@
         $("#playbutton").show(); 
         $("#pausebutton").hide();
      }
+
      $("#section").change(function(){
         var section =  $(this).val();
         $.ajax({
@@ -98,7 +103,7 @@
             success: function(res) {
                 res = JSON.parse(res);
                 $("#subsection").html(res.html);
-                $("#situationsImage").html(res.image);
+                $("#situationsImage").attr('src',res.image);
                 $("#subsection").trigger("change");
             }
         });
@@ -121,6 +126,7 @@
             }
         });
      });
+     
    </script>
  </body>
 </html>

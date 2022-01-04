@@ -159,6 +159,30 @@
       font-size: 14px;
       font-weight: 400
   }
+  .social-icon-main a{ 
+    text-decoration: none;
+  }
+  .datalist_input{
+    padding: 20px 15px;
+    border-radius: 0;
+    border: solid 1px #d2d0ca;
+    font-family: 'OpenSans';
+    font-size: 14px;
+    width: 100%;
+  }
+  .social-icon-main { 
+    margin: 10px 0;
+  }
+    img.social-icon {
+        height: 35px;
+        padding: 5px;
+        filter: blur(0px) grayscale(100%);
+    }
+
+
+    img.social-icon:hover { 
+        filter: blur(0px) grayscale(0%);
+    }
 
   .login-section h1 {
       font-size:30px;
@@ -528,7 +552,7 @@
       width: calc(100% - 420px);
   }
 
-  a.cta-btn {
+  .cta-btn {
       display: inline-block;
       padding: 10px 25px;
       color: #fff;
@@ -541,20 +565,20 @@
       border:1px solid #c6168d;
   }
 
-        a.cta-btn:hover {
-            background-color: transparent;
-            border:1px solid #de22a1;
-            color: #de22a1;
-        }
-        a.icon-profile:hover img.on-hover {
-            display: none;
-        }
-        a.icon-profile:hover img.no-hover {
-            display: inline-block;
-        }
-        a.icon-profile img.no-hover {
-            display: none;
-        }
+    .cta-btn:hover {
+        background-color: transparent;
+        border:1px solid #de22a1;
+        color: #de22a1;
+    }
+    a.icon-profile:hover img.on-hover {
+        display: none;
+    }
+    a.icon-profile:hover img.no-hover {
+        display: inline-block;
+    }
+    a.icon-profile img.no-hover {
+        display: none;
+    }
   .heading {
       font-size: 30px;
       color: #000;
@@ -1444,7 +1468,7 @@
     }
     .main-volume img.icon-large{
         bottom: 38px;
-        left: 43px;
+        left: 43px;cursor: pointer;
     }
     .main-volume .icon-one {
         top: 39%;
@@ -1596,7 +1620,7 @@ font-weight: 600;
   .my-account-sidebar li {
     padding: 17px 0;
     /*! background-color: red; */
-    margin-bottom: 2px;
+    margin-bottom: 2px;cursor: pointer;
     border-right: 2px solid transparent;
   }
   .my-account-sidebar li a span {
@@ -1702,7 +1726,7 @@ font-weight: 600;
 }
 
 .table-data tbody tr td, .table-data tbody tr th {
-    padding: 22px 0px;
+    padding: 22px 5px;
   }
   .table-data tr td a {
     text-decoration: none;
@@ -1747,26 +1771,26 @@ font-weight: 600;
     text-decoration: none;
 }
 .product-listed-categories {
-
+padding: 10px;
     border: 1px solid #eeece9;
     text-align: center;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 5px; min-height: 270px;
     box-shadow: 0 0 3px #eeece9;
 }
 .product-listed-categories a h3 {
     color: #13203f;
     font-size: 15px;
-    padding: 0px 25px 16px;
-    font-weight: 600;
-    height: 130px;
+    padding: 0px 5px;
+    font-weight: 600;line-height: 1.3;
+				  
     width:100%;
   }
 
-  .product-listed-categories a img {
-
-    width: 100%;
-    padding-bottom: 20px;
+  .product-listed-categories a img, .product_list img {
+padding-bottom: 20px;
+    width: 150px;
+    object-fit: cover;
 
 }
   .product-listed-categories a {
@@ -1786,7 +1810,7 @@ font-weight: 600;
 
   .pagination-myaccount li {
     display: inline-block;
-    width: 40px;
+    width: 40px;cursor: pointer;
     height: 40px;
     text-align: center;
     line-height: 37px;
@@ -2625,8 +2649,83 @@ div#canvas_id{position: relative;}
     position: absolute;
     right: 10px;
 }
+.myaccount_agendas_cover {
+    margin-bottom: 30px;
+}
+span.form-check-label {
+ display: inline-block;
+    vertical-align: middle;
+    width: 27px;
+    height: 27px;
+    border-radius: 50%; 
+}
 
+.topful_banner {
+    display: inline-block;
+  width: 100%;
+  height: 300px;
+}
+.topful_banner img{object-fit: cover; width: 100%; height: 100%;}
+.breadcrumbs i {
+  font-size: 13px;
+  margin-right: 8px;
+}
+.breadcrumbs .fa-chevron-right {
+  font-size: 11px;
+}
+.breadcrumbs {
+  font-size: 13px;
+  font-weight: 600;
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+.breadcrumbs a i {
+  color: #c6168d;
+}
+.modal .close {
+    position: absolute;
+   top: 0;
+   right: 0;
+   width: 30px;
+   height: 30px;
+   border: 0;
+   background: #000;
+   font-size: 16px;
+   line-height: 30px;
+   color: #fff;
+}
+.modal .data_add{
+    position: absolute;
+    top: 17%;
+    color: #fff;
+    font-size: 17px;
+    z-index: 999999;
+    right: 15%;
+    left: unset;
+    font-weight: 600;
+    width: 20px;visibility: hidden;
+    height: 20px;
+    background: #c6168d;
+    text-align: center;
+    border-radius: 100%;
+    line-height: 20px;
+    cursor: pointer;
+}
+datalist#folderval {
+   padding: 0;
+   border: 0;
+}
+.custom-radio input {
+    position: relative !important;
+    left: 25px !important;
+    width: 24px;
+    height: 24px;
+    top: -2px;opacity: 0;
+}
 
+[name='hair_color']:checked + span {
+    border: 3px solid #c6168d;
+}
 
     /* media query */
 
@@ -2670,6 +2769,7 @@ div#canvas_id{position: relative;}
     }
 }
   @media only screen and (min-width: 1600px) {
+    .profile-name h4, .profile-name span.email{font-size: 14px;}
     .login-section {
         padding-top:24%;
         padding-bottom: 24%;
@@ -2775,6 +2875,14 @@ div#canvas_id{position: relative;}
 
 
   @media only screen and (max-width: 1400px) {
+	 .product-listed-categories{min-height: 250px;}
+    .product_list img {
+    padding-bottom: 20px;width: 150px;
+}
+     .product-listed-categories a h3 {
+    color: #13203f;
+    font-size: 14px;
+  }
     .myaccounts_reports_table tr th:nth-child(2) {
     width: 20% !important
   }
@@ -2789,255 +2897,10 @@ div#canvas_id{position: relative;}
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .table-data tbody tr td a span {
-    padding: 10px 15px;
-  }
-  .myaccounts_reports_table tr th:nth-child(4) {
-    width: 20% !important;
-}
-    .graph-col {
-    width: calc(100% - 210px);
-    }
-    .filters-col {
-    width: 200px;
-    padding: 10px 20px;
-    }
-    .sound-col .custom-radio{width: 50%}
-    .my_account_rep thead tr th:nth-child(4) {
-        width: 30% !important;
-    }
-    .my_account_rep thead tr th:nth-child(3) {
-        width: 20% !important;
-    }
-    .table-data.myaccount-agendas thead tr th:nth-last-child(6) {
-        width: 20% !important;
-    }
-    .dashboard-icons{padding: 50% 0;}
-    .sidebar-wrapper {
-        max-width: 250px;
-        padding: 30px 10px 30px 20px;
-    }
-    .content-wrapper {
-        width: calc(100% - 300px);
-    }
-    .navigation li .active:before{left: -70px;}
-    .center-area .img_area, .center-area .text_area {
-        width: 100%;
-    }
-    .center-area .text_area{
-    padding-top: 30px;
-    text-align: justify
-    }
-    .center-area .text_area a {
-        margin-bottom: 30px;
-    }
-    .center-area {
-        padding-right:50px;
-    }
-    .about-hearing-large img, .brain_ad-large img {
-        margin-top: 0;
-        max-width: 100%;
-    }
-    .hearing_icon_1 {
-        bottom: 4%;
-        left: 14%;
-    }
-    .hearing_icon_2 {
-        bottom: 25%;
-        left: 21%;
-    }
-    .hearing_icon_3 {
-        top: 24%;
-        left: 4%;
-    }
-    .hearing_icon_4 {
-        top: 10%;
-        left: 8%;
-    }
-    .hearing_icon_5 {
-        top: 27%;
-        left: 13%;
-    }
-    .hearing_icon_6 {
-        top: 23%;
-        left: 31%;
-    }
-    .hearing_icon_7 {
-        top: 48%;
-        left: 36%;
-    }
-    .hearing_icon_8 {
-        top: 57%;
-        left: 40%;
-    }
-    .hearing_icon_9 {
-        bottom: 17%;
-    left: 37%;
-    top: unset;
-    }
-    .hearing_icon_10 {
-        bottom: 5%;
-        left: 35%;
-        top: unset;
-    }
-    .hearing_icon_11 {
-        top: 30%;
-        left: 47%;
-    }
-    .hearing_icon_12 {
-        top: 38%;
-        left: 56%;
-    }
-    .hearing_icon_13 {
-        top: 34%;
-        left: 61%;
-    }
-    .hearing_icon_14 {
-        top: 28%;
-        left: 67%;
-    }
-    .hearing_icon_15 {
-        top: 42%;
-        left: 64%;
-    }
-    .hearing_icon_16 {
-        top: 49%;
-        left: 69%;
-    }
-    .hearing_icon_17 {
-        top: 56%;
-        left: 55%;
-    }
-    .hearing_icon_18 {
-        top: 62%;
-        left: 65%;
-    }
-    .hearing_icon_19 {
-        top: unset;
-        left: unset;
-        bottom: 16%;
-        right: 16%;
-    }
-    .hearing_icon_20 {
-        top: 37%;
-        left: 73%;
-    }
-    .hearing_icon_21 {
-        top: 40.5%;
-        left: unset;
-        right: 13%;
-    }
-    .hearing_icon_22 {
-        top: 26%;
-        right: 0%;
-    }
-    .brain_ad_1 {
-        bottom: 17%;
-        left: 26%;
-    }
-    .brain_ad_2 {
-        bottom: 25%;
-        left: 8%;
-    }
-    .brain_ad_3 {
-        bottom: 37%;
-        left: 31%;
-    }
-    .brain_ad_4 {
-        bottom: 45%;
-        left: 26%;
-    }
-    .brain_ad_5 {
-        top: 23%;
-        left: 18%;
-    }
-    .brain_ad_6 {
-        top: 31%;
-        left: 38%;
-    }
-    .brain_ad_7 {
-        top: 53%;
-        left: 46%;
-    }
-    .brain_ad_8 {
-        top: 64%;
-        left: 59%;
-    }
-    .brain_ad_9 {
-        top: 51%;
-        left: 65%;
-    }
-    .brain_ad_10 {
-        top: 44%;
-        left: 60%;
-    }
-    .brain_ad_11 {
-        top: 40%;
-        left: 50%;
-    }
-    .brain_ad_12 {
-        top: 36%;
-        left: 55%;
-    }
-    .brain_ad_13 {
-        top: 28%;
-        left: 63%;
-    }
-    .brain_ad_14 {
-        top: 40%;
-        left: 68%;
-    }
-    .brain_ad_15 {
-        top: 42%;
-        left: 81%;
-    }
-    .hearing_block {
-        padding-top: 20px;
-    }
-    .situtation-filter-row {
-        margin-top: 20px;
-        margin-bottom: 0px;
-    }
-    .situtation-filter-row .col-sm-6 {
-        width: 50%;
-    }
-    .heading {
-        font-size: 19px;
-    }
-    .tech_history .tech_img, .tech_history .tech-description {
-        width: 100%;
-    }
-    .tech_history .tech-description {
-        padding-top: 20px;
-    }
-    .navigation .sub-navigation li a:before {
-        left: -90px;
-    }
-    .style-image-row{position: relative;margin-top: 20px;}
-    .style-detail-thumb {
-        margin-top: 0;
-        display: flex;
-        align-items: center;
-        position: absolute;
-        left: 0;
-        bottom: unset;
-        float: left;
-        text-align: left;
-        width: 100%;
-        top: unset;
-    }
-    .noise-adjust {
-        width: 50%;
-        padding-top: 20px;
-    }
 
-    
-    
 
-}
-
-@media screen and (min-device-width: 1025px) and (max-device-width: 1370px) { 
+  @media only screen and (max-width: 1370px) {
+	 .drop-zone{margin-bottom: 20px;}								
 .style-detail-inner {
     margin-top: -30px;
 }
@@ -3051,26 +2914,774 @@ div#canvas_id{position: relative;}
         width: 100%;
         padding-bottom: 20px;
     }
-      .left-area {
-        width: 20%;
-    }
-    .center-area{width: 80%;}
+
 }
 
+@media only screen and (max-width: 1120px) {
+div#canvas_id {
+    overflow-y: unset;
+    overflow-x: scroll;
+}
+     .filter-text-col + .filter-text-col {
+    margin-top: 5px;
+}
+   .reset-btn .btn {
+    display: table;
+    width: auto;
+    margin: 20px auto;
+}
+  .justify-content-between a {
+    margin-left: 30px;
+}
+  .justify-content-between .custom-control.custom-checkbox {
+    float: left;
+}
+  canvas {
+    display: table;
+    margin: 0 auto;
+}
+    .justify-content-between {
+    width: 50% ;
+    float: left;display: inline-block !important;
+}
+      .order_graph {
+    display: contents;
+}
+    .filters-col{order: 0;width: 100%;}
+    .graph-col{order: 1;margin-top: 40px;}
+  .product-listed-categories a h3 {
+    color: #13203f;
+    font-size: 13px;
+  }
+  .product_category .product_category_inner {
+    max-width: 33.3%;
+    width: 100%;
+}
+  .left-area {
+    width: 20%;
+}
+  .sidebar-myaccount {
+    width: 20%;
+}
+     .main-volume img.icon-large {
+    bottom: 10px;
+    left: 20px;
+    cursor: pointer;
+}
+  .style-detail-inner {
+    margin-top: 0;
+}
+  .style-detail-thumb {
+    margin-top: 5%;
+  }
+    .navigation li .active:before, .navigation li a:hover:before{left: -70px;}
+    .sidebar-wrapper {
+        max-width: 250px;
+        padding: 30px 10px 30px 20px;
+    }
+    .content-wrapper {
+        width: calc(100% - 300px);
+    }
+    .center-area {
+        max-width: 75%;
+    }
+    .table-data tbody tr td a span {
+      padding: 10px 15px;font-size: 13px;
+    }
+    .myaccounts_reports_table tr th:nth-child(4) {
+      width: 20% !important;
+  }
+      .graph-col {
+      width: 100%;
+      }
+      .filters-col {
+      width: 100%;
+      padding: 10px 20px;
+      }
+      .sound-col .custom-radio{width: auto}
+      .my_account_rep thead tr th:nth-child(4) {
+          width: 30% !important;
+      }
+      .my_account_rep thead tr th:nth-child(3) {
+          width: 20% !important;
+      }
+      .table-data.myaccount-agendas thead tr th:nth-last-child(6) {
+          width: 20% !important;
+      }
+      .dashboard-icons{padding: 50% 0;}
+      .center-area .img_area, .center-area .text_area {
+          width: 100%;
+      }
+      .center-area .text_area{
+      padding-top: 30px;
+      text-align: justify
+      }
+      .center-area .text_area a {
+          margin-bottom: 30px;
+      }
+      .center-area {
+          padding-right:50px;
+      }
+      .about-hearing-large img, .brain_ad-large img {
+          margin-top: 0;
+          max-width: 100%;
+      }
+      .hearing_icon_1 {
+          bottom: 4%;
+          left: 14%;
+      }
+      .hearing_icon_2 {
+          bottom: 25%;
+          left: 21%;
+      }
+      .hearing_icon_3 {
+          top: 24%;
+          left: 4%;
+      }
+      .hearing_icon_4 {
+          top: 10%;
+          left: 8%;
+      }
+      .hearing_icon_5 {
+          top: 27%;
+          left: 13%;
+      }
+      .hearing_icon_6 {
+          top: 23%;
+          left: 31%;
+      }
+      .hearing_icon_7 {
+          top: 48%;
+          left: 36%;
+      }
+      .hearing_icon_8 {
+          top: 57%;
+          left: 40%;
+      }
+      .hearing_icon_9 {
+          bottom: 17%;
+      left: 37%;
+      top: unset;
+      }
+      .hearing_icon_10 {
+          bottom: 5%;
+          left: 35%;
+          top: unset;
+      }
+      .hearing_icon_11 {
+          top: 30%;
+          left: 47%;
+      }
+      .hearing_icon_12 {
+          top: 38%;
+          left: 56%;
+      }
+      .hearing_icon_13 {
+          top: 34%;
+          left: 61%;
+      }
+      .hearing_icon_14 {
+          top: 28%;
+          left: 67%;
+      }
+      .hearing_icon_15 {
+          top: 42%;
+          left: 64%;
+      }
+      .hearing_icon_16 {
+          top: 49%;
+          left: 69%;
+      }
+      .hearing_icon_17 {
+          top: 56%;
+          left: 55%;
+      }
+      .hearing_icon_18 {
+          top: 62%;
+          left: 65%;
+      }
+      .hearing_icon_19 {
+          top: unset;
+          left: unset;
+          bottom: 16%;
+          right: 16%;
+      }
+      .hearing_icon_20 {
+          top: 37%;
+          left: 73%;
+      }
+      .hearing_icon_21 {
+          top: 40.5%;
+          left: unset;
+          right: 13%;
+      }
+      .hearing_icon_22 {
+          top: 26%;
+          right: 0%;
+      }
+      .brain_ad_1 {
+          bottom: 17%;
+          left: 26%;
+      }
+      .brain_ad_2 {
+          bottom: 25%;
+          left: 8%;
+      }
+      .brain_ad_3 {
+          bottom: 37%;
+          left: 31%;
+      }
+      .brain_ad_4 {
+          bottom: 45%;
+          left: 26%;
+      }
+      .brain_ad_5 {
+          top: 23%;
+          left: 18%;
+      }
+      .brain_ad_6 {
+          top: 31%;
+          left: 38%;
+      }
+      .brain_ad_7 {
+          top: 53%;
+          left: 46%;
+      }
+      .brain_ad_8 {
+          top: 64%;
+          left: 59%;
+      }
+      .brain_ad_9 {
+          top: 51%;
+          left: 65%;
+      }
+      .brain_ad_10 {
+          top: 44%;
+          left: 60%;
+      }
+      .brain_ad_11 {
+          top: 40%;
+          left: 50%;
+      }
+      .brain_ad_12 {
+          top: 36%;
+          left: 55%;
+      }
+      .brain_ad_13 {
+          top: 28%;
+          left: 63%;
+      }
+      .brain_ad_14 {
+          top: 40%;
+          left: 68%;
+      }
+      .brain_ad_15 {
+          top: 42%;
+          left: 81%;
+      }
+      .hearing_block {
+          padding-top: 20px;
+      }
+      .situtation-filter-row {
+          margin-top: 20px;
+          margin-bottom: 0px;
+      }
+      .situtation-filter-row .col-sm-6 {
+          width: 50%;
+      }
+      .heading {
+          font-size: 19px;line-height: 25px;
+      }
+      .tech_history .tech_img, .tech_history .tech-description {
+          width: 100%;
+      }
+      .tech_history .tech-description {
+          padding-top: 20px;
+      }
+      .navigation .sub-navigation li a:before {
+          left: -90px;
+      }
+      .style-image-row{position: relative;margin-top: 20px;}
+      .style-detail-thumb {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          left: 0;
+          bottom: unset;
+          float: left;
+          text-align: left;
+          width: 100%;
+          top: unset;
+      }
+      .noise-adjust {
+          width: 50%;
+          padding-top: 20px;
+      }  
+  }
 
-@media screen and (min-device-width: 769px) and (max-device-width: 1024px) { 
-    .style_row > .col-md-6 {
-        width: 100%;
-        padding-bottom: 20px;
+  @media only screen and (max-width: 1090px) {
+	.product-listed-categories {
+    min-height: inherit;}			 
+    .dashboard-icons h3{font-size: 15px;}
+    .dashboard-icons {
+    padding: 30% 0;margin-bottom: 100px;
+}
+    .center-area {
+        padding-left: 20px;padding-right: 20px;
+    }  
+    .center-area {
+        padding-right: 30px;
+    }
+
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .left-area.sidebar-myaccount {
+    max-width: 20%;
+    width: 100%;
+}
+    .style-detail-thumb {
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+    .style-detail-inner {
+    margin-top: 5%;
+}
+    .style-image-col, .style-image-width {
+    width: 100%;    margin-bottom: 20px;
+}
+    .main-volume img.icon-large {
+    bottom: 10px;
+    left: 20px;
+}
+    .center-area {
+        padding-right: 0px;
+        max-width: 75%;
+    } 
+    .navigation li a, .navigation li a:hover {
+        font-size: 14px
+    }  
+    .navigation li {
+        margin-bottom: 20px;
+        line-height: 20px;
+    }  
+    .sidebar-wrapper {
+        max-width: 200px;
+    }        
+  .left-area {
+    width: auto;max-width: 25%;
+}
+  }
+
+  @media only screen and (max-width: 960px) {
+	 .filters-col {
+    width:90%;
+}
+.margin_b {
+    max-width: 50%;
+    width: auto;
+}
+    .remove_div {
+    display: none;
+}
+    .save-selection-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+
+}
+
+  @media only screen and (max-width: 910px) {
+    .justify-content-between {
+    width: 100%;
+    float: left;
+    display: flex !important;
+}
+    .product_category .product_category_inner {
+    max-width: 50%;
+    width: 100%;
+}
+    .table-data tbody tr td {
+    padding: 15px 5px;
+}
+    .create_agenda {
+    position: relative;
+    display: inline-block;
+    text-align: right;
+    margin: 0 auto 15px;
+    display: table;
+}
+    table tr th {
+    font-size: 12px;
+}
+    .myaccounts_reports_table tr th {
+    font-size: 12px;
+}
+    .table-data tbody tr td a img {
+    width: 12px;
+}
+    .table-data tbody tr td a span{font-size: 12px;}
+    .myaccounts_reports_table tr th:nth-child(3), .myaccounts_reports_table tr th:nth-child(4) {
+    width: 25% !important;
+}
+    .main-volume img.icon-large {
+        width: 60px;
+    }
+    .canvas_data {
+    border-bottom: 1px solid #cecece;
+    border-left: 0px;
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    margin-top: 10px;
+}
+.canvas_data span {
+    transform: unset;font-size: 13px;
+    top: 10px;left: 0px;
+    margin-left: 10px;
+  }
+  .canvas_data .noisy {
+    top: 10px;
+    margin-right: 10px;
+    float: right;left: 0;
+}
+  #canvas_id {
+    padding-top: 15px;
+}
+    .heading {
+    font-size: 15px;line-height: 20px;
+}
+    .sound-col div {
+    margin: 0 10px;
+}
+
+    .justify-content-between {
+    width: 50% !important;
+    float: left;
+}
+    .order_graph {
+    display: grid;
+}
+    .filters-col{order: 0;width: 100%;}
+    .graph-col{order: 1;margin-top: 40px;}
+    .sound-col .custom-radio {
+    width: auto;
+}
+    .graph-col {
+    width: 100%;
+}
+    .person-time span {
+    padding-left: 5px;
+    font-size: 14px;
+  }
+    .center-area {
+        max-width: 70%;
     }
     .left-area {
-        width: 25%;
+    max-width: 30%;
+}
+
+} 
+
+@media only screen and (max-width: 840px) { 
+  .search_box {
+    width: 100%;
+    margin: 15px 0px;
+}
+  .margin_b {
+    max-width: 100%;
+    width: 100%;
+  }
+.hair-color, .hair-color_btn {
+    width: 100%;
+}
+.save-selection-btn{float: left;margin-top: 20px;}
+}
+
+  
+@media only screen and (max-width: 768px) {
+  .order_graph .justify-content-between {
+    width: 50%; 
+    float: left;
+    display: flex !important;
+}
+ 
+  .filters-col {
+    width: 100%;margin: 15px;
+}
+  .my-account-button {
+    margin-bottom: 30px;
+  }
+  .notifiy {
+    min-height: inherit;padding-bottom: 50px;
+}
+  .custom-selectbox.email-select {
+    width: 50%;
+    margin: 20px auto;
+  }
+  .my-account-button p {
+    width: 100%;
+}
+  .account_block_row p {
+    text-align: center;margin-bottom: 10px;
+}
+  .my-account-sidebar li {
+    height: 110px;
+}
+  .my-account-sidebar li, .my-account-sidebar li.active, .my-account-sidebar li:hover{border: 0px;}
+  .my-account-sidebar li a span br {
+    display: none;
+}
+ .my-account-sidebar li {
+    width: 50%;
+    float: left;
+}
+  .left-area.sidebar-myaccount{width: 100%; max-width: 100%;}
+  .my-account-sidebar{margin-left: 0px; width: 100%;padding: 0;}
+  .dashboard-icons {
+    padding: 10% 0;
+    margin-bottom: 50px;
+}
+  .margin_b {
+    max-width: 50%;
+    width: 50%;
+}
+  .search_box {
+    width: 100%;
+    margin: 0;
+}
+  .all-reports-inner.highlighted {
+    border-left: 0;  padding-left: 0;
+}
+  .read_more_btn .read_more {
+    padding: 7px 30px;
+    float: left;
+    margin-top: 10px;
+}
+  .bg-noise {
+    text-align: left;
+}
+  .situtation-filter-row{margin-bottom: 20px;}
+  .hair-color {
+    text-align: left;
+}
+  .save-selection-btn {
+    float: right;
+    margin-top: 0;
+}
+ .hair-color, .hair-color_btn {
+    width: 50%;
+}
+  .navigation li .active:before, .navigation li a:hover:before {
+    top: 8px;
+}
+  .hearing_block{
+    text-align: left;
+    margin-bottom: 40px
+}
+  .tech-description {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .text-end {
+    text-align: center !important;
+    margin-bottom: 20px;
+}
+    .justify-content-between div, .justify-content-between a {
+    width: 100%;
+    text-align: left;
+}
+  .about-hearing-thumb {
+    float: none;cursor: pointer;
+    display: flex;
+    margin: 0 auto 30px;
+}
+  .about-hearing-large span, .brain_ad-large span{overflow: hidden;}
+  .center-area {
+    margin-top: 50px;text-align: center;
+}
+.side-content-account {
+    margin-top: 30px;
+}
+  .person-time span {
+    padding-left: 0;
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+  .person-time-active img {
+    margin-bottom: 15%;
+}
+  .left-area-inner:before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: 35%;
+    left: 88px;
+    bottom: 0;
+    width: 70%;
+    height: 2px;
+    border-top: 2px dotted #cacaca;
+  }
+  .person-time a{display: block;}
+  .person-time.d-flex {
+    display: inline-block !important;
+    width: 100%;
+    float: left;padding: 0px;
+  }
+  .person-time + .person-time {
+    margin-top: 0;
+}
+  .position-relative {
+    position: relative!important;
+    width: 100%;
+    display: flex;
+}
+  .center-area,  .left-area  {
+    max-width: 100%;width: 100%;
+    padding: 0 15px;
+  }
+  .content-wrapper {
+    width: 100%;
+}
+  .sidebar-wrapper {
+    max-width: 100%;
+    padding: 0;
+    text-align: center;
+    background: transparent;
+    margin: 0 auto;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 50px;
+    box-shadow: none;
+}
+  .sidebar-inner {
+       max-width: 95%;
+    margin: 0 auto;
+    background: #3d3d3d;
+    box-shadow: 0 10px 23px -7px rgb(0 0 0 / 40%);
+    padding: 30px 20px;
+}
+    .age-group-name a {
+        font-size: 22px;
     }
-    .center-area{width: 75%;}
+    .age-group-col .circle{
+        max-width: 35%;
+    }
+    .age_group_anchor {
+        padding-bottom: 90px;
+    }
+    .age-group-col .circle {
+        bottom: -7.2%;
+    }
+    .age-group-wrapper{padding-bottom: 0px;}
+    .footer-wrapper {
+        padding-bottom: 30px;
+    }
+    
+
+}
+
+  @media only screen and (max-width: 620px) {
+.myaccount_agendas_cover{   width: auto;
+    overflow-y: hidden;
+    overflow-x: auto;}
+.myaccount_agendas_cover table{width: 700px;
+    margin-bottom: 0;
+    max-width: none;}
+.style_head h2 {
+    margin-bottom: 0;
+}
+.styles-custom-selectbox select {
+    padding-left: 0;
+    text-align: center;
+}
+.style-image-col, .style-image-width {
+    width: 100%;
+}
+.save-selection-btn {
+    margin-top: 20px;
+}
 }
 
 
   @media only screen and (max-width: 575px) {
+    .graph-col {
+    overflow-y: unset;
+    overflow-x: scroll;
+}
+    .center-area .heading {
+    margin-bottom: 0;
+}
+    .product-listed-categories a h3 {
+    margin-bottom: 20px;
+}
+    .my-account-button p a {
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+    .create_agenda {
+    padding: 7px 10px;
+    font-size: 12px;
+}
+.table_cover_row{
+        width: auto;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  .table_cover_row table{
+  width: 500px;
+    margin-bottom: 0;
+    max-width: none;}
+     .dashboard-icons {
+    padding: 5% 0;
+    margin-bottom: 30px;
+}
+    .read_more_btn .read_more{margin-top: 0px;}
+    .read_more_btn {
+    margin-top: 20px;
+}
+    .margin_b {
+    margin-bottom: 20px;
+}
+    .noise-adjust {
+    width: 100%;}
+    .bg-noise {
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+}
+    .main-volume img.icon-large {
+    width: 50px;
+}
+    .situtation-filter-row .col-sm-6 {
+    width: 100%;
+    margin-bottom: 20px;
+}
+    .text-end {
+    margin-top: 20px;
+}
+    .left-area-inner:before{top: 30%}
+    .person-time-active img{margin-bottom: 20%;}
+    .age-group-col .arrow-icon {
+        max-width: 30px;
+    } 
+    .age-group-name a {
+        font-size: 15px;margin-bottom: 0;
+    }
+    img.logo {
+        max-width: 150px;
+    }
+    .age_group_anchor {
+        padding-bottom: 70px;
+    }
       .login-wrapper .row {
           margin-left: auto;
           margin-right: auto;
@@ -3089,4 +3700,208 @@ div#canvas_id{position: relative;}
       .last-name-col {
           margin-top: 20px;
       }
+  }
+
+ @media only screen and (max-width: 490px) {
+	.order_graph .justify-content-between{width: 100%;margin-bottom: 40px ;}
+  .about-hearing-large span .tooltiptext, .brain_ad-large span .tooltiptext {
+    padding: 7px 0;
+    left: -35px;
+    top: 15px;
+    min-width: 70px;
+    font-size: 12px;
+}
+  large span i, .brain_ad-large span i {
+    font-size: 7px;
+}
+  .about-hearing-large span, .brain_ad-large span {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #fff;
+    line-height: 7px;
+}
+  .product_category .heading {
+    margin-bottom: 5px;
+}
+  .product-listed-categories a img, .product_list img  {
+    width: auto;
+}
+  .product-listed-categories a h3{font-size: 15px;}
+  .product_category .product_category_inner {
+    max-width: 100%;
+    width: 100%;
+}
+    .tech-description p, .side-content-account p, .center-area .text_area {
+        text-align: center;
+    }
+    .hair-color .d-flex {
+        display: inline-block !important;
+       width: 100%;
+    }
+  .notifiy {
+    padding-bottom: 30px;
+}
+  .my-account-button {
+    margin-bottom: 20px;
+}
+  .my-account-button p a {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+  .my-account-button{display: inline-block;}
+  .pagination-myaccount {
+    padding: 20px 0;
+    padding-left: 0;
+}
+.previous-icon {
+    padding-right: 30px;
+}
+.next-icon{padding-left: 15px;}
+.pagination-myaccount li, .pagination-myaccount li.active, .pagination-myaccount li:hover {
+    width: 20px;line-height: 20px;
+    height: 20px;
+    font-size: 10px;
+}
+.previous-icon img, .next-icon img {
+    width: 20px;
+  }
+  .font-adj a:nth-of-type(3) {
+    width: 90px;
+}
+
+.font-adj a:nth-of-type(2) {
+    width: 80px;
+}
+  .header-wrapper {
+    padding: 25px 0;
+}
+  .login-btn-area img {
+    width: 30px;
+}
+  .font-adj {
+    top: 10px;
+    left: 0px;
+    width: 100%;
+    max-width: 82px;
+}
+
+  .login-btn-area {
+    right: 0;
+    padding: 0;
+}
+  .login-btn-area a{margin-right: 0px;}
+  .margin_b {
+    max-width: 100%;
+    width: 100%;
+}
+  .image-thumb{height: auto;}
+  .person-time.d-flex:last-child {
+    margin-bottom: 0;
+}
+  .person-time-active img {
+    margin-bottom: 0;
+}
+  .person-time span {
+    padding-left: 5px;
+    font-size: 14px;
+    position: relative;
+    bottom: unset;
+    left: unset;display: inline-block;
+    right: unset;width: 70px;
+}
+  .person-time.d-flex {
+    width: 100%;
+    float: none;
+    padding: 0;margin-bottom: 15%;
+}
+  .left-area-inner:before {
+  position: absolute;
+    content: "";
+    display: block;
+    top: 5%;
+    left: 42%;
+    bottom: 0;
+    width: 2px;
+    height: 75%;
+    border-left: 2px dotted #cacaca;
+}
+     .position-relative {
+    display: block;
+}
+
+ }
+
+  @media only screen and (max-width: 460px) {
+    .left-area-inner:before{left: 40%}
+
+  }
+
+  @media only screen and (max-width: 414px) {
+    .hair-color .mb-2{font-weight: bold;}
+    .hair-color {
+    text-align: center;
+}
+    .style-image-col, .style-image-width, .hair-color, .hair-color_btn {
+    width: 100%;
+}
+     .hair_row .row {
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+}
+  .justify-content-between {
+    width: 100% !important;
+}
+    .age-group-wrapper {
+        padding-top: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }    
+  img.logo {
+ max-width: 150px;
+    margin-left: 20px;
+}
+.choose-option {
+    font-size: 14px;
+}
+
+  }
+
+
+  @media only screen and (max-width: 375px) {
+    .footer-wrapper .nav li a {
+    line-height: 13px;
+}
+    .copyright {
+    margin-top: 15px;
+}
+    .navigation li .active:before, .navigation li a:hover:before {
+   left: -30px;
+    width: 20px;
+}
+    .left-area-inner:before{left: 38%;}
+    .font-adj {
+        top: 0;
+        left: 0px;
+    }   
+    .login-btn-area a{margin-right: 0px;}
+    .login-btn-area {
+        top: 0;
+        right: 0;
+    }    
+  .age-group-name a {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+  }
+
+
+  @media only screen and (max-width: 330px) {
+    img.logo {
+    max-width: 100px;
+    margin-left: 30px;
+}
+    .left-area-inner:before{left: 36%}
+
   }

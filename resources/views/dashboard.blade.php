@@ -6,7 +6,7 @@
 <div class="content-wrapper-oticon">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-12 ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <a href="{{ route('myaccounts_reports') }}" class='dashboard-section'>
               <div class='dashboard-icons'>
                   <img src='images/reports-icon.png'/>
@@ -14,7 +14,7 @@
               </div>
               </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-12 ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <a href="{{ route('myaccount_agendas') }}" class='dashboard-section'>
             <div class='dashboard-icons'>
                   <img src='images/agendas-icon.png'/>
@@ -22,7 +22,7 @@
               </div>
             </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-12 ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <a href="{{ route('myaccount_media') }}" class='dashboard-section'>
             <div class='dashboard-icons'>
                   <img src='images/media-icon.png'/>
@@ -30,7 +30,7 @@
               </div>
             </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-12 ">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
             <a href="{{ route('myaccount') }}" class='dashboard-section'>
             <div class='dashboard-icons'>
                   <img src='images/my-account-icon.png'/>

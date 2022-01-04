@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -63,6 +64,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+    public function showRegistrationForm()
+    {
+       $countries = DB::table('countries')->get();
+       return view('auth.register',compact('countries'));
+    }
+
     protected function create(array $data)
     {
         return User::create([
@@ -70,6 +78,7 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'occupation' => $data['occupation'],
+            'country_id' => $data['country_id'],
             'location' => $data['location'],
             'password' => Hash::make($data['password']),
         ]);

@@ -1,7 +1,7 @@
 
 <?php use Illuminate\Support\Facades\DB;
 $age_data = DB::select('select * from age_group ORDER BY ID ASC LIMIT 3'); ?>
-<div class="col-lg-2 col-md-2 col-12 left-area">
+<div class="col-lg-2 col-md-2 col-xs-12 col-sm-12 left-area">
     <div class="left-area-inner position-relative">
        
         

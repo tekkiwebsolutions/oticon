@@ -47,11 +47,12 @@ Route::group(['middleware' => ['verified']], function() {
     Route::get('/introduction/{ageCat}', [App\Http\Controllers\HomeController::class, 'introductionCat'])->name('introductionCat');
 
     Route::get('/situations/{ageCat}', [App\Http\Controllers\HomeController::class, 'situations'])->name('situations');
-    Route::get('/your_solution', [App\Http\Controllers\HomeController::class, 'yourSolution'])->name('yourSolution');
+    
 
     Route::get('/your_solution/{ageCat}', [App\Http\Controllers\HomeController::class, 'yourSolutionCat'])->name('yourSolutionCat');
 
-    Route::get('/styles/{ageCat}', [App\Http\Controllers\HomeController::class, 'styles'])->name('styles');
+    Route::get('/styles/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'styles'])->name('styles');
+     
     Route::get('/resources/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'resources'])->name('resources');
     
     Route::get('/reports/{ageCat}', [App\Http\Controllers\HomeController::class, 'reports'])->name('reports');
@@ -83,7 +84,12 @@ Route::group(['middleware' => ['verified']], function() {
     Route::post('/mypassword', [App\Http\Controllers\HomeController::class, 'mypasswordUpdate'])->name('mypasswordUpdate');
 
     Route::get('/product_categories/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_categories'])->name('product_categories');
-    Route::get('/product_listing/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
+    Route::get('/product_listing/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
+    Route::get('/your_hearing', [App\Http\Controllers\HomeController::class, 'yourHearing'])->name('yourHearing');
+
+    Route::post('/your_hearing/k', [App\Http\Controllers\HomeController::class, 'mediaupload'])->name('mediaupload');
+    Route::get('delete/{id}', [App\Http\Controllers\HomeController::class, 'mediadelete'])->name('mediadelete');
+
 });
 
 Auth::routes(['verify' => true]);
@@ -105,18 +111,55 @@ Route::post('getSectionDetail', [App\Http\Controllers\CommonController::class, '
 
 Route::post('getSubsectionDetail', [App\Http\Controllers\CommonController::class, 'getSubsectionDetail'])->name('getSubsectionDetail');
 
-Route::get('/about_us', [App\Http\Controllers\HomeController::class, 'about_us'])->name('about_us');
 
-Route::get('/policy', [App\Http\Controllers\HomeController::class, 'policy'])->name('policy');
+Route::post('getViewDetail', [App\Http\Controllers\CommonController::class, 'getViewDetail'])->name('getViewDetail');
 
-Route::get('/contact', [App\Http\Controllers\HomeController::class, 'contact'])->name('contact');
 
-Route::get('/term', [App\Http\Controllers\HomeController::class, 'term'])->name('term');
+Route::get('/about_us', [App\Http\Controllers\CommonController::class, 'about_us'])->name('about_us');
+
+Route::get('/policy', [App\Http\Controllers\CommonController::class, 'policy'])->name('policy');
+
+Route::get('/contact', [App\Http\Controllers\CommonController::class, 'contact'])->name('contact');
+
+Route::get('/term', [App\Http\Controllers\CommonController::class, 'term'])->name('term');
 
 Route::get('pagination', [App\Http\Controllers\CommonController::class, 'pagination'])->name('pagination');
+
+
 
 Route::get('generatepdf', [App\Http\Controllers\PDFController::class, 'generatePDF']);
 
 Route::get('/admin_index', [App\Http\Controllers\AdminDashController::class, 'admin_index'])->name('admin_index');
 
+Route::post('/adminstatus', [App\Http\Controllers\UserController::class, 'adminstatus'])->name('adminstatus');
  
+
+Route::post('/checkauthotp', [App\Http\Controllers\UserController::class, 'checkauthotp'])->name('checkauthotp');
+
+Route::post('/resendauthotp', [App\Http\Controllers\UserController::class, 'resendauthotp'])->name('resendauthotp');
+
+Route::post('change_product_color', [App\Http\Controllers\CommonController::class, 'change_product_color'])->name('change_product_color');
+
+Route::post('change_hair_color', [App\Http\Controllers\CommonController::class, 'change_hair_color'])->name('change_hair_color');
+ 
+Route::post('getModelDetail', [App\Http\Controllers\CommonController::class, 'getModelDetail'])->name('getModelDetail');
+
+Route::post('changeUserNotification', [App\Http\Controllers\CommonController::class, 'changeUserNotification'])->name('changeUserNotification');
+
+Route::post('getEnthencityDetail', [App\Http\Controllers\CommonController::class, 'getEnthencityDetail'])->name('getEnthencityDetail');
+
+
+Route::post('/save_xls', [App\Http\Controllers\HomeController::class, 'save_xls'])->name('save_xls');
+Route::get('/exceldelete/{id}', [App\Http\Controllers\HomeController::class, 'exceldelete'])->name('exceldelete');
+
+Route::get('expirynotificationagenda', [App\Http\Controllers\CommonController::class, 'expirynotificationagenda'])->name('expirynotificationagenda');
+
+Route::get('expirynotificationreport', [App\Http\Controllers\CommonController::class, 'expirynotificationreport'])->name('expirynotificationreport');
+
+Route::get('expirynotificationmedia', [App\Http\Controllers\CommonController::class, 'expirynotificationmedia'])->name('expirynotificationmedia');
+
+Route::get('delete_expired_notification', [App\Http\Controllers\CommonController::class, 'delete_expired_notification'])->name('delete_expired_notification');
+
+Route::get('/sendpdf/{id}', [App\Http\Controllers\HomeController::class, 'sendpdf'])->name('sendpdf');
+
+Route::post('/addFolder', [App\Http\Controllers\CommonController::class, 'addFolder'])->name('addFolder');

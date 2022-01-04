@@ -7,80 +7,27 @@
     <div class="container-fluid">
         <div class="row">
             @include('layouts.left_sidebar')
-            <div class="col-lg-10 col-md-10 col-12 center-area">
+            <div class="col-lg-10 col-md-10 col-12 center-area product_category">
                 <div class="row">
-                    <div class="col-lg-7 col-md-7 col-7">
+                    <div class="col-lg-7 col-md-7 col-sm-6">
                         <h2 class="heading">Receiver-in-the-Ear (RITE)</h2>
                     </div>
-                    <div class="col-lg-5 col-md-5 col-12 text-end">
-                       <a href="#" class="back_btn">Back</a>
+                    <div class="col-lg-5 col-md-5 col-sm-6 text-end">
+                       <a href="{{ route('product_categories', $ageCatUrl) }}" class="back_btn">Back</a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/design-right.png')}}"  class='img-fluid'/>
-                            <h3>designRITE</h3>
-                            </a>
+                    @foreach($product_Lists as $product_List)
+                        <div class='col-md-3 col-lg-3 col-12 product_category_inner'>
+                            <div class='product_list'>
+                            <a href="{{ route('styles', [$ageCatUrl, $product_List->id]) }}">
+                                <img src="{{url($product_List->image)}}"  class='img-fluid'/>
+                                <h3>{{$product_List->title}}</h3>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/mini-rite.png')}}"  class='img-fluid'/>
-                            <h3>miniRITE</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/rite.png' )}}"  class='img-fluid'/>
-                            <h3>RITE</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/mini-bite.png')}}"  class='img-fluid'/>
-                            <h3>miniBTE</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/bte.png')}}"  class='img-fluid'/>
-                            <h3>BTE</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/bte-plus-power.png')}}"   class='img-fluid'/>
-                            <h3>BTE Plus Power</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/IIC.png')}}"  class='img-fluid'/>
-                            <h3>IIC</h3>
-                            </a>
-                        </div>
-                    </div>
-                    <div class='col-md-3 col-lg-3 col-12'>
-                        <div class='product_list'>
-                            <a href='#'>
-                            <img src="{{url('images/cic.png')}}"  class='img-fluid'/>
-                            <h3>CIC</h3>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach 
+                    
                 </div>
 
 

@@ -1973,7 +1973,7 @@ font-weight: 600;
         border: 1px solid #f5f5f5;
     }
     .agenda-form{
-        margin: 0 auto;
+        margin: 0 auto 30px;
         max-width: 60%;
     }
     button.btn-common.save-template:hover {
@@ -2346,13 +2346,13 @@ top: 18%;
 .ms-selectable ul li span:after {
     content: '\f0fe';
     font-family: 'Font Awesome 5 Pro';
-    color: #c6168d;
+    color: #000;
     position: absolute;
     right: 0;
     font-size: 15px;
 }
 .ms-selectable ul li:hover span:after{
-  color: #000;
+  color: #c6168d;
 }
 .ms-selection {
     position: absolute;
@@ -2370,13 +2370,13 @@ top: 18%;
 .ms-selection ul li span:after{
 content: '\f410';
     font-family: 'Font Awesome 5 Pro';
-    color: #000;
+    color: #c6168d;
     position: absolute;
     right: 0;
     font-size: 15px;
 }
 .ms-selection ul li:hover span:after{
-  color: #c6168d;
+  color: #000;
 }
 .ms-selection ul li {
     width: 90%;
@@ -2620,8 +2620,19 @@ div#canvas_id{position: relative;}
 .shape-one:hover, .shape-two:hover {
     transform: scale(1.05);
 }
+.my_account .heading{margin-bottom: 15px;}
+.alert-block a {
+    position: absolute;
+    right: 10px;
+}
 
-
+span.form-check-label {
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
 
 
     /* media query */

@@ -60,12 +60,26 @@
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/occupation-icon.png"></span>
                             </div>
                         </div>
+
+
+                        <div class="row form-row">
+                            <div class="col-lg-12 col-md-12 col-12 position-relative">
+                               <select id="" class="form-control textbox" id="location" placeholder="Country" name="country_id">
+                               @foreach($countries as $country)
+                                   <option value="{{$country->id}}">{{$country->name}}</option>
+                               @endforeach
+                               </select>
+                               <span class="textbox-icon"><img alt="" class="img-fluid" src="images/location-icon.png"></span>
+                           </div>
+                        </div>
+
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
                                 <input type="text" class="form-control textbox" id="location" placeholder="Location" name="location">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/location-icon.png"></span>
                             </div>
                         </div>
+
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
                                 <input type="text" class="form-control textbox" id="email" placeholder="Email Address" name="email">
@@ -107,17 +121,7 @@
                     </form>
                 </div>
 
-                <!-- footer -->
-                <div class="footer-wrapper text-center">
-                    <ul class="nav">
-                        <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Privacy Policy</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Terms of Use</a></li>
-                    </ul>
-                    <div class="copyright">Copyright &#169; 2021. Oticon. All Rights Reserved. </div>
-                </div>
-                <!-- footer -->
+                @include('layouts.footer')
 
             </div>
         </div>

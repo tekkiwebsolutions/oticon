@@ -9,18 +9,18 @@
             @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
-                    <div class="col-lg-6 col-md-6 col-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 style_head">
                         <h2 class="heading">Styles</h2>
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12 text-end">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-end">
                        <a href="{{ route('reports', $ageCatUrl ) }}"  class="back_btn">Back</a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3 remove_div">
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-3 col-sm-6 margin_b">
                     <form action="">
                         @if (isset($_GET['search']) && $_GET['search']!="") 
                             <input type="hidden" name="search" value="{{trim($_GET['search'])}}" />
@@ -32,23 +32,23 @@
                         </select>
                     </form>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-5 col-sm-6 margin_b">
                     <form action="">
                         @if (isset($_GET['order'])) 
                             <input type="hidden" name="order" value="{{$_GET['order']}}"/>
                             <?php $moreUrl .="&order=".$_GET['order']; ?>
                         @endif
                         <div class="row">
-                            <div class="col-md-10">
+                            <div class="col-md-10 col-sm-8 search_box">
                                 <input type="text" name="search" value="@if (isset($_GET['search']) && $_GET['search'] !="" ){{trim($_GET['search']) }}@endif"  placeholder="Search here" class="form-control">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-2 col-sm-4 read_more_btn">
                                 <input type="submit" class="read_more" value="Search"/>
                             </div>
                         </div>
                         </form>
                     </div>
-                </div> <br>
+                </div> 
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12 pb-4" id="data-wrapper">
                         @if(!empty($resources) && $resources->count())

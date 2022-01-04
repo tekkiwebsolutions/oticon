@@ -37,6 +37,7 @@
 			$this->col[] = ["label"=>"Meta Title","name"=>"meta_title"];
 			$this->col[] = ["label"=>"Meta Description","name"=>"meta_description"];
 			$this->col[] = ["label"=>"Meta Key","name"=>"meta_key"];
+			$this->col[] = ["label"=>"Breadcrumbs","name"=>"breadcrumbs"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -47,13 +48,13 @@
 			$this->form[] = ['label'=>'Meta Title','name'=>'meta_title','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Meta Description','name'=>'meta_description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Meta Key','name'=>'meta_key','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Breadcrumbs','name'=>'breadcrumbs','type'=>'radio','validation'=>'required','width'=>'col-sm-9','dataenum'=>'Enabled;Disabled'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Slug','name'=>'slug','type'=>'text','validation'=>'required|min:1|max:100','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'text','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'text','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Meta Title','name'=>'meta_title','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Meta Description','name'=>'meta_description','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];

@@ -3,17 +3,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Agenda;
-use App\Models\User;					
+use App\Models\User;				
+use App\Models\UploadMedia;				
 use App\Models\Site_setting;					
 use App\Models\Resource;
 use App\Models\Questionnairereply;
+use App\Models\Technologyhistory;
+use App\Models\Saved_styles;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Str;
 use PDF;
+use Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
+
 class HomeController extends Controller
 {
     /**
@@ -67,13 +76,47 @@ class HomeController extends Controller
         return view('your_hearing');
     }
 
+    public function mediaupload(Request $request)
+    {
+        $siteData = Site_setting::first();
+        if($siteData['agendas_exp']){
+            $end_date= date('Y-m-d',strtotime('+'.$siteData['mp3_exp'].' day'));
+        } else{
+            $end_date= date('Y-m-d',strtotime('+9 year'));
+        }
+       $media = new UploadMedia;       
+       $nameid =  $request->user_id;
+       if ($request->file('media_name')) {
+           $imagePath = $request->file('media_name');
+           $imageName = $nameid.'_'.$imagePath->getClientOriginalName();
+
+           $path = $request->file('media_name')->storeAs('media/mp3', $imageName, 'public');
+       }
+
+       $media->media_name = $imageName;
+       $media->media_path = $path;
+       $media->user_id = $request->user_id;
+       $media->user_name = $request->user_name;
+       $media->end_date = $end_date;
+       $media->save();
+       return redirect()->back();
+   }
+
+   public function mediadelete($id)
+   {
+        $media = UploadMedia::find($id);
+        $path= storage_path('app/public/'.$media->media_path);
+        unlink($path);
+        UploadMedia::where('id' , $id)->delete();
+        return redirect()->back();
+   }
+
     public function yourHearingCat(Request $request)
     { 
-        $data = "";        
-        return view('your_hearing',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'your_hearing','data'=>$data]);
-    }
-
-    
+        $hearing_sound = DB::table('hearing_sound')->orderBy('id', 'ASC')->get();
+        $hearing_gender = DB::table('hearing_gender')->orderBy('id', 'ASC')->get();      
+        return view('your_hearing',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'your_hearing','hearing_sound'=>$hearing_sound,'hearing_gender'=>$hearing_gender]);
+    }   
 
     public function introduction(){
         return view('introduction');
@@ -124,8 +167,33 @@ class HomeController extends Controller
     
     public function styles(Request $request)
     {
-        $data = "";        
-        return view('styles',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'styles','data'=>$data]);
+        $models = DB::table('models as m')
+        ->select('m.*')    
+        ->leftJoin('preferred_models as pm', 'm.id', '=', 'pm.models_id')     
+        ->where([['m.product_listing_id',$request->id]])
+        ->where([['pm.id','>=',1]])
+        ->orderBy('m.id', 'ASC')
+        ->groupBy('m.id')
+        ->get();   
+
+        if(isset($models[0]->id) && $models[0]->id >0){
+            $preferred_models = DB::table('preferred_models')->where('models_id', $models[0]->id)->get(); 
+        } else{
+            $preferred_models = DB::table('preferred_models')->get(); 
+        }
+
+        if(isset($preferred_models[0]->id) && $preferred_models[0]->id >0){
+            $style_colors = DB::table('style_colors')->where('preferred_models_id', $preferred_models[0]->id)->get(); 
+
+            $styles_product = DB::table('styles_product')->where('preferred_models_id', $preferred_models[0]->id)->get(); 
+
+        } else{
+            $style_colors = DB::table('style_colors')->get(); 
+            $styles_product = DB::table('styles_product')->get(); 
+        } 
+        $folders = DB::table('saved_styles')->select("client_folder","id")->where('user_id', Auth::user()->id)->groupBy("client_folder")->get(); 
+
+        return view('styles',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','models'=>$models,'preferred_models'=>$preferred_models,'style_colors'=>$style_colors,'styles_product'=>$styles_product,'folders'=>$folders],['ageCatUrl'=>$request->ageCat,'product_id'=>$request->id]);
         
     }
 
@@ -186,11 +254,30 @@ class HomeController extends Controller
     
     public function technologyHistory(Request $request)
     {
-        $data = "";        
-        return view('technologyhistory',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'technologyhistory','data'=>$data]);
+        $data = DB::table('technologyhistories as i')
+        ->select('i.*')
+        ->leftJoin('age_group as a', 'a.id', '=', 'i.age_group_id')       
+        ->where([['a.slug','LIKE',$request->ageCat]])
+        ->orderBy('i.id', 'desc')
+        ->first();
+        return view('technologyhistory',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'technology_history','data'=>$data]);
     }
     
+
     public function todayTechnology(Request $request)
+    {
+        $data = DB::table('todaytehcnologies as s')
+        ->select('s.*')
+        ->leftJoin('age_group as a', 'a.id', '=', 's.age_group_id')   
+        ->where([['a.slug','LIKE',$request->ageCat]])
+        ->orderBy('s.id', 'ASC')
+        ->get();
+                
+        return view('today_technology',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'today_technology','data'=>$data]);
+        //return view('situations');
+    }
+
+    public function todayTechnologyOld(Request $request)
     {
         $data = "";        
         return view('today_technology',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'today_technology','data'=>$data]);
@@ -202,12 +289,102 @@ class HomeController extends Controller
     public function dashboard(){
         return view('dashboard');
     }
+ 
 
     public function myaccounts_reports(){
         $siteData = Site_setting::first();
-        return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','siteData'=>$siteData]);
-    }
+       $excelData = Saved_styles::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
+       return view('myaccounts_reports',['curruntpage'=>'myaccounts_reports','siteData'=>$siteData,'excelData'=> $excelData]);
+   }
 
+   public function save_xls(Request $request)
+   {
+      $siteData = Site_setting::first();
+      if ($siteData['agendas_exp']) {
+          $end_date = date('Y-m-d', strtotime('+' . $siteData['reports_exp'] . ' day'));
+      } else {
+          $end_date = date('Y-m-d', strtotime('+9 year'));
+      }
+
+      $data = Saved_styles::create([
+          'user_id' => Auth::user()->id,
+          'models_id' => $request->model,
+          'preferred_models_id' => $request->preferred_model,
+          'style_colors_id' => $request->hair_color,
+          'product_listing_id' => $request->product_id,
+          'client_folder' => $request->folder,
+          'end_date' => $end_date,
+      ]);
+
+      $id = $data->id;
+      $name = $id . '_oticon.xlsx';
+      $excelpath = 'storage/' . $name;
+
+      $pdffilename = "oticonstyle_" . $id . '.pdf';
+      $pdfpath = 'storage/' . $pdffilename;
+
+
+      $datapdf = DB::table('saved_styles as s')
+          ->select('u.email', 'm.title as model', 'pm.name', 'sc.color_title', 'pl.title', 's.client_folder', 's.end_date','s.created_at')
+          ->leftJoin('users as u', 'u.id', '=', 's.user_id')
+          ->leftJoin('models as m', 'm.id', '=', 's.models_id')
+          ->leftJoin('preferred_models as pm', 'pm.id', '=', 's.preferred_models_id')
+          ->leftJoin('style_colors as sc', 'sc.id', '=', 's.style_colors_id')
+          ->leftJoin('product_listing as pl', 'pl.id', '=', 's.product_listing_id')
+          ->where('s.id', $id)
+          ->first();
+
+      $pdf = PDF::loadView('pdf.stylespdf', ['datapdf' => $datapdf])->save($pdfpath);
+
+      Excel::store(new UsersExport($id), $name, 'public');
+      Saved_styles::where('id', '=', $id)->update([
+          'excel_path' => $excelpath, 'file_name' => $name, 'pdf_path' => $pdfpath, 'pdf_name' => $pdffilename
+      ]);
+      return redirect("myaccounts_reports")->with('success', 'File has been saved');
+    }
+   
+    public function exceldelete($id)
+    {
+       $pdffilename = "oticonstyle_" . $id . '.pdf';
+       $pdfpath = 'storage/' . $pdffilename;
+       $name = $id . '_oticon.xlsx';
+       $excelpath = 'storage/' . $name;       
+       unlink($excelpath);
+       unlink($pdfpath);
+       Saved_styles::where('id', $id)->delete();
+       return redirect()->back();
+    }
+    public function sendpdf($id)
+   {
+       $notifyData = 'other_notifications';
+       $value = DB::table('email_notifications')->select('*')->where('email_template', $notifyData)->get();
+
+       $datapdf = DB::table('saved_styles as s')
+           ->select('u.email', 'm.title', 'pm.name', 'sc.color_title', 'pl.title', 's.end_date')
+           ->leftJoin('users as u', 'u.id', '=', 's.user_id')
+           ->leftJoin('models as m', 'm.id', '=', 's.models_id')
+           ->leftJoin('preferred_models as pm', 'pm.id', '=', 's.preferred_models_id')
+           ->leftJoin('style_colors as sc', 'sc.id', '=', 's.style_colors_id')
+           ->leftJoin('product_listing as pl', 'pl.id', '=', 's.product_listing_id')
+           ->where('s.id', $id)
+           ->first();
+
+       $data['email'] = $datapdf->email;
+       $data['title'] = $datapdf->title;
+       $data['name'] = $datapdf->name;
+       $data['color_title'] = $datapdf->color_title;
+       $data['end_date'] = $datapdf->end_date;
+
+       $pdf = PDF::loadView('pdf.sendpdf', $data);
+
+       Mail::send('notification.emailnotification', ['value' => $value, $data], function ($message) use ($data, $pdf, $id) {
+           $message->to(Auth::user()->email, $data["email"])
+               ->subject('My Accoount Report')
+               ->attachData($pdf->output(), "oticonstyle_" . $id . ".pdf");
+       });
+
+       return redirect()->back();
+   }
     public function myaccount_agendas(Request $request){
         $siteData = Site_setting::first();
         $agendas = Agenda::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(10);
@@ -235,11 +412,18 @@ class HomeController extends Controller
                     ->update(['title' => $data['title'],'client_name' => $data['client_name'],'description' => $data['description'],'sectionss' => implode(",", $data['selections'])]);
                     $lastInsertedId= $data['agenda_id'];
                 } else{
+                    $siteData = Site_setting::first();
+                    if($siteData['agendas_exp']){
+                        $end_date= date('Y-m-d',strtotime('+'.$siteData['agendas_exp'].' day'));
+                    } else{
+                        $end_date= date('Y-m-d',strtotime('+9 year'));
+                    }
                     $agenda = new Agenda;
                     $agenda->user_id = Auth::user()->id ;
                     $agenda->title = $data['title'];
                     $agenda->client_name = $data['client_name'];
                     $agenda->description = $data['description'];
+                    $agenda->end_date = $end_date;
                     $agenda->sectionss = implode(",", $data['selections']);
                     $agenda->save();
                     $lastInsertedId= $agenda->id;
@@ -262,7 +446,7 @@ class HomeController extends Controller
                     File::makeDirectory($path, $mode = 0755, true, true);
 
                 } 
-                $pdf = PDF::loadView('pdf.agendapdf', $data)->save(''.$path.'/'.$filename.'.pdf');              ;
+                $pdf = PDF::loadView('pdf.agendapdf', $data)->save(''.$path.'/'.$filename.'.pdf');              
 
                 $pdf->download(''.$filename.'.pdf');
 
@@ -278,13 +462,18 @@ class HomeController extends Controller
     }
     
     public function delete_agendas(Request $request){
+        $agenda = Agenda::where('id',$request->id)->first();        
+        // $pathFile =  dirname(__DIR__,3).'/storage/app/'.$agenda->pdf;
+        $pathFile =  $path = storage_path('app/'.$agenda->pdf);
+        unlink($pathFile);  
         Agenda::where('id',$request->id)->delete();
         return redirect('myaccount_agendas')->with('status',"Deleted successfully");
     }
     public function myaccount_media(){
         $siteData = Site_setting::first();
-        return view('myaccount_media',['curruntpage'=>'myaccount_media','siteData'=>$siteData]);
-        
+        $mediaData = UploadMedia::where('user_id',Auth::user()->id)->paginate(10);
+        return view('myaccount_media',['curruntpage'=>'myaccount_media','siteData'=>$siteData,'mediaData'=>$mediaData]);
+       
     }
     public function myaccount(){
         $data = Auth::user();
@@ -352,22 +541,26 @@ class HomeController extends Controller
         $confirm_password = $request->confirm_password;
 
         if($password == $confirm_password){
-        $data->password = Hash::make($request->password);
-        $data->update();
+            $data->password = Hash::make($request->password);
+            $data->update();
 
-    }
+        }
 
         return redirect('myaccount')->with('success','Password successfully changed.');
     }
 
     public function product_categories(Request $request){
-        $data = "";
-        return view('product_categories',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','data'=>$data]);
+        $product_categories = DB::table('product_category as c')
+        ->select('c.*')
+        ->leftJoin('age_group as a', 'a.id', '=', 'c.age_group_id')           
+        ->where([['a.slug','LIKE',$request->ageCat]])
+        ->orderBy('c.id', 'ASC')
+        ->get();   
+        return view('product_categories',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','product_categories'=>$product_categories]);
     }
     public function product_listing(Request $request){
-        $data = "";
-        return view('product_listing',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_listing','data'=>$data]);
-
+        $product_Lists = DB::table('product_listing')->where('product_category_id',$request->id)->orderBy('id', 'DESC')->get();
+        return view('product_listing',['ageCatUrl'=>$request->ageCat,'curruntpage'=>'product_categories','product_Lists'=>$product_Lists]);
     }
     public function myaccount_agendas_create(){
         $data = "";
@@ -412,23 +605,5 @@ class HomeController extends Controller
 		}
     }
 
-    public function about_us(){
-        $site_data = DB::table('aboutpages')->first();
-        return view('about_us',['site_data'=>$site_data]);
-    }
 
-    public function policy(){
-        $site_data = DB::table('policypages')->first();
-        return view('policy',['site_data'=>$site_data]);
-    }
-
-    public function contact(){
-        $site_data = DB::table('contactpages')->first();
-        return view('contact',['site_data'=>$site_data]);
-    }
-
-    public function term(){
-        $site_data = DB::table('termpages')->first();
-        return view('term',['site_data'=>$site_data]);
-    }
 }

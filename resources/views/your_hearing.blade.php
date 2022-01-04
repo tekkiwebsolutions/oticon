@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @include('layouts.header')
-
 @section('content')
 
 <div class="content-wrapper">
@@ -9,98 +8,228 @@
             @include('layouts.left_sidebar')
             <div class="col-lg-10 col-md-10 col-12 center-area">
                 <div class="row">
-                    <div class="col-lg-12 col-md-12 col-12">
+                    <div class="col-lg-12 col-md-12 col-12 order_graph">
                         <div class="graph-col">
-                            <img alt="" class="img-fluid" src="{{ url('images/graph.jpg')}}">
+                            <!--start-->
+                            <table id="01496673" data-appointment="10041362"  data-audiogram="new">
+                                <thead>
+                                    <tr>
+                                        <th>Frequency</th>
+                                        <th>Right Air Threshold</th>
+                                        <th>Right Bone Threshold</th>
+                                        <th>Left Air Threshold</th>
+                                        <th>Left Bone Threshold</th>
+                                        <th>Sound Field Unaided</th>
+                                        <th>Sound Field Aided</th>
+                                        <th>Cochlear Implant</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>t125</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t180</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t250</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t375</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t500</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t750</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t1k</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t1500</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t2k</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t3k</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t4k</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t6k</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t8k</td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td>0</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>t12k</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+                            <!-----end------>
                         </div>
                         <div class="filters-col">
                             <label class="filer-label">Ear Position</label>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-between align-items-center filter-text-col position-relative">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckBox1">
-                                        <label class="custom-control-label" for="customCheckBox1">Left</label>
+                                        <input type="checkbox" class="custom-control-input" name="leftRight" id="button_left">
+                                        <label class="custom-control-label" for="button_left">Left</label>
                                     </div>
                                     <a href="#" class="edit"><img alt="" class="img-fluid" src="{{ url('images/edit-icon.png')}}"></a>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-12 d-flex justify-content-between align-items-center filter-text-col position-relative">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="customCheckBox2">
-                                        <label class="custom-control-label" for="customCheckBox2">Right</label>
+                                        <input type="checkbox" class="custom-control-input" name="leftRight" id="button_right" >
+                                        <label class="custom-control-label" for="button_right">Right</label>
                                     </div>
                                     <a href="#" class="edit"><img alt="" class="img-fluid" src="{{ url('images/edit-icon.png')}}"></a>
                                 </div>
                             </div>
                             <label class="filer-label mt-4">Choose any sound</label>
                             <div class="col-lg-12 col-md-12 col-12 d-flex sound-col">
-                                <div class="form-check custom-radio pet-icon">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        <img alt="" class="img-fluid" src="{{ url('images/pet-icon-selected.png')}}">
+                                @foreach($hearing_sound as $sound)
+                                <div class="form-check custom-radio ">
+                                    <input class="form-check-input" type="radio" name="audio_radio" id="audio_id_{{$sound->id}}" value="audio_val_{{$sound->id}}" >
+                                    <label class="form-check-label" for="audio_id_{{$sound->id}}">
+                                        <img alt="" class="img-fluid" src="{{ url($sound->image)}}">
                                     </label>
                                 </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        <img alt="" class="img-fluid" src="{{ url('images/bus-icon.png')}}">
-                                    </label>
-                                </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-                                    <label class="form-check-label" for="flexRadioDefault3">
-                                        <img alt="" class="img-fluid" src="{{ url('images/bird-icon.png')}}">
-                                    </label>
-                                </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4">
-                                    <label class="form-check-label" for="flexRadioDefault4">
-                                        <img alt="" class="img-fluid" src="{{ url('images/bird-icon.png')}}">
-                                    </label>
-                                </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5">
-                                    <label class="form-check-label" for="flexRadioDefault5">
-                                        <img alt="" class="img-fluid" src="{{ url('images/phone-icon.png')}}" >
-                                    </label>
-                                </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault6">
-                                    <label class="form-check-label" for="flexRadioDefault6">
-                                        <img alt="" class="img-fluid" src="{{ url('images/tap-icon.png')}}">
-                                    </label>
-                                </div>
+                                <audio src="{{url($sound->sound)}}" id="audio_val_{{$sound->id}}" loop ></audio> 
+                                @endforeach                               
+                                
                             </div>
 
                             <label class="filer-label gender-label">Choose gender</label>
                             <div class="col-lg-12 col-md-12 col-12 d-flex sound-col">
+                                @foreach($hearing_gender as $gender)
                                 <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault7">
-                                    <label class="form-check-label" for="flexRadioDefault7">
-                                        <img alt="" class="img-fluid" src="{{ url('images/male-icon.png')}}">
+                                    <input class="form-check-input" type="radio" name="audio_radio" id="audio_id_gen{{$gender->id}}" value="audio_val_gen{{$gender->id}}">
+                                    <label class="form-check-label" for="audio_id_gen{{$gender->id}}">
+                                        <img alt="" class="img-fluid" src="{{ url($gender->image)}}">
                                     </label>
                                 </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault8">
-                                    <label class="form-check-label" for="flexRadioDefault8">
-                                        <img alt="" class="img-fluid" src="{{ url('images/female-icon.png')}}">
-                                    </label>
-                                </div>
-                                <div class="form-check custom-radio">
-                                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault9">
-                                    <label class="form-check-label" for="flexRadioDefault9">
-                                        <img alt="" class="img-fluid" src="{{ url('images/kid-icon.png')}}">
-                                    </label>
-                                </div>
+                                <audio src="{{url($gender->sound)}}" id="audio_val_gen{{$gender->id}}" loop ></audio> 
+                                @endforeach                                  
                             </div>
 
                             <label class="filer-label gender-label">Upload Audio</label>
 
-                            <div class="drop-zone">
-                                <span class="drop-zone__prompt">Choose File</span>
-                                <input type="file" name="myFile" class="drop-zone__input">
-                            </div>
+							<form action="{{route('mediaupload')}}" method="post" id="cform" class="contact-form" enctype="multipart/form-data">
+                                @csrf
+                                <div class="drop-zone">
+                                    <span class="drop-zone__prompt">Choose File</span>
+                                    <input type="file" name="media_name" accept=".mp3,audio/*" class="drop-zone__input " id="media_name" onchange="event.preventDefault();
+                                                     document.getElementById('cform').submit();">
+                                    <input type="hidden" name="user_id" class="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="user_name" class="user_name" value="{{ auth()->user()->email }}">
+                                </div>
+                            </form>
 
-                            <div class="reset-btn"><button type="button" class="btn">Reset all</button></div>
+                            <div class="reset-btn"><button type="button" class="btn" onclick="window.location.reload()">Reset all</button></div>
 
 
                         </div>
@@ -113,7 +242,7 @@
         </div>
     </div>
 </div>
-
+  
 <script>
         document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
         const dropZoneElement = inputElement.closest(".drop-zone");
@@ -190,5 +319,36 @@
 
 @include('layouts.right_sidebar')
 @include('layouts.footer')
+<script type="text/javascript" src="{{ asset('js/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/ba-debug.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.audiogram.js') }}"></script>
+<script type="text/javascript">
+    $('#01496673').audiogram({
+        editable : true,
+        fill: true
+    });
+    
+    $('#button_save').button({
+        text : true,
+        icons : {
+            primary : "ui-icon-check"
+        }
+    });
+    $('.radioSetSelector, .tympanometry_right, .tympanometry_left, .reliability').buttonset();
 
+    function playAudio(vol){
+        $("[name='audio_radio']").each(function(){
+            var audio_id = $(this).val();
+            var audio = document.getElementById(audio_id);
+            audio.pause();
+        }); 
+        var id = $("[name='audio_radio']:checked").val();
+        if(id){
+            var audio = document.getElementById(id);
+            audio.play();
+            audio.volume = "0."+vol;
+        }  
+    }
+</script>
 @endsection
