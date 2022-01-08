@@ -37,8 +37,29 @@
                                 @if($errors->has('email'))<span style="color:red;"><div class="error">{{ $errors->first('email') }}</div></span>@endif
                             </div>
                             <div class="form-group">
-                                <label for="location">Location:</label>
-                                <input type="text" class="form-controls" name="location" value="{{$data->location}}">
+                                <label for="location">Country:</label>
+                                <select class="form-controls" id="country" name="country_id" aria-invalid="false">
+                                    @foreach($countries as $country)
+                                    <option value="{{$country->id}}"
+                                        @if($data->country_id == $country->id)
+                                            selected
+                                        @endif
+                                    >{{$country->name}}</option>
+                                     @endforeach
+                                </select>
+                                @if($errors->has('country_id'))<span style="color:red;"><div class="error">{{ $errors->first('country_id') }}</div></span>@endif
+                            </div>
+                            <div class="form-group">
+                                <label for="location">State/Province:</label>
+                                <select class="form-controls" id="location" name="location" aria-invalid="false">
+                                    @foreach($states as $state)
+                                    <option value="{{$state->id}}"
+                                        @if($data->location == $state->id)
+                                            selected
+                                        @endif
+                                    >{{$state->name}}</option>
+                                     @endforeach
+                                </select>
                                 @if($errors->has('location'))<span style="color:red;"><div class="error">{{ $errors->first('location') }}</div></span>@endif
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -60,5 +81,21 @@
 
 
 @include('layouts.footer')
-
+<script>
+    $("#country").change(function(){
+        var country =  $(this).val();
+        $.ajax({
+            type: "POST", 
+            url: "{{ route('getStates') }}",
+            data: { country_id: country},
+            headers: {
+                'X-CSRF-TOKEN': "{{ csrf_token() }}"
+            },
+            success: function(res) {
+                res = JSON.parse(res);
+                $("#location").html(res.html);
+            }
+        });
+    });
+</script>
 @endsection

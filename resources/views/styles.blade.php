@@ -3,7 +3,7 @@
 
 @section('content')
 <?php
-$i = 1;
+$i = 1; $pi = 1;
 ?>
 <style>
     .hair-color [type='radio']:checked+.form-check-label::before {
@@ -32,7 +32,7 @@ $i = 1;
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-12 style-image-width">
                                     <div class="custom-selectbox styles-custom-selectbox position-relative">
-                                        <span><img alt="" class="img-fluid" src="{{ url('images/male-thumb.jpg')}}"></span>
+                                        <span><img alt="" id="model_img" class="img-fluid" src="{{ url('images/male-thumb.jpg')}}"></span>
                                         <select class="form-select" aria-label="Default select" name="model" id="model">
                                             @foreach($models as $model)
                                             <option value="{{$model->id}}">{{$model->title}}</option>
@@ -42,7 +42,7 @@ $i = 1;
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-12 style-image-width">
                                     <div class="custom-selectbox styles-custom-selectbox position-relative">
-                                        <span><img alt="" class="img-fluid" src="{{ url('images/female-thumb.jpg')}}"></span>
+                                        <span><img id="preferred_model_img"  class="img-fluid" src="{{ url('images/female-thumb.jpg')}}"></span>
                                         <select class="form-select" aria-label="Default select" name="preferred_model" id="preferred_model">
                                             @foreach($preferred_models as $preferred_model)
                                             <option value="{{$preferred_model->id}}">{{$preferred_model->name}}</option>
@@ -64,12 +64,7 @@ $i = 1;
                                             {{$color->color_title}}
                                         </div>
                                         <?php $i++; ?>
-                                        @endforeach
-
-                                        <!--<div class="form-check custom-radio">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked="">
-                                        <label class="form-check-label" for="flexRadioDefault2">Brown</label>
-                                    </div> -->
+                                        @endforeach 
 
                                     </div>
                                 </div>
@@ -79,6 +74,7 @@ $i = 1;
                     </div>
                     <div class="row style-image-row">
                         <div class="col-lg-6 col-md-6 col-12 style-image-col">
+                            @if(count($style_colors)>0)
                             <div id="circlr">
                                 <img data-src="{{url($style_colors[0]->image)}}" id="image0">
                                 <img data-src="{{url($style_colors[0]->image_2)}}" id="image1">
@@ -95,6 +91,7 @@ $i = 1;
                             <div class="custom-range-slider">
                                 <input type="range" class="form-range" id="my_range" min="0" max="9" value="1">
                             </div>
+                            @endif
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 style-image-width">
                             <div class="style-detail-col">
@@ -105,10 +102,18 @@ $i = 1;
                                 </div>
                                 <div class="style-detail-thumb">
                                     <span class="image-thumb">
+                                        @if(count($styles_product)>0)
                                         <img alt="" class="img-fluid" src="{{ url($styles_product[0]->image)}}" id="product_image">
+                                        @endif
                                     </span>
                                     @foreach($styles_product as $product)
-                                    <a href="javascript:void(0)" class="color-thumb black-color" style="background-color:{{$product->color_code}}" onclick="change_product_color({{$product->id}})"></a>
+                                    <!-- <a href="javascript:void(0)" class="color-thumb black-color" style="background-color:{{$product->color_code}}" onclick="change_product_color({{$product->id}})"></a> -->
+                                  
+                                    <div class="image-thumb-box">
+										<input type='radio' name='style_image_clr' class='color-thumb black-color' onclick="change_product_color({{$product->id}})" value="{{$product->id}}" <?php if ($pi == 1) echo 'checked=""'; ?> >
+										<span role="button" class="form-check-label color-thumb" style="background-color:{{$product->color_code}}" name="styles_product_id" ></span>
+									</div>
+									<?php $pi++; ?>
                                     @endforeach
                                 </div>
                             </div>
@@ -228,29 +233,33 @@ $i = 1;
                 res = JSON.parse(res);
                 console.log(res.html);
                 $("#preferred_model").html(res.html);
+                $("#model_img").attr('src',res.image);
             }
         });
     });
 
     $("#preferred_model").change(function() {
         var enthencityModel = $(this).val();
-        $.ajax({
-            type: "POST",
-            url: "{{ route('getEnthencityDetail') }}",
-            data: {
-                enthencityModel: enthencityModel
-            },
-            headers: {
-                'X-CSRF-TOKEN': "{{ csrf_token() }}"
-            },
-            success: function(res) {
-                res = JSON.parse(res);
-                $("#brand").html(res.brand);
-                $("#title").html(res.title);
-                $("#description").html(res.description);
-                $("#hair_color").html(res.html);
-            }
-        });
+        if(enthencityModel>0) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('getEnthencityDetail') }}",
+                data: {
+                    enthencityModel: enthencityModel
+                },
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    res = JSON.parse(res);
+                    $("#brand").html(res.brand);
+                    $("#title").html(res.title);
+                    $("#description").html(res.description);
+                    $("#hair_color").html(res.html);
+                    $("#preferred_model_img").attr('src',res.icon_image);
+                }
+            });
+        }
     });
     /*$("input.datalist_input").focus(function(){
         $(".modal .data_add").css("visibility", "visible"); 

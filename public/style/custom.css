@@ -718,6 +718,7 @@
   [type="radio"]:checked, [type="radio"]:not(:checked) {
     position: absolute;
     left: -9999px;
+    cursor: pointer;
   }
 
   [type="radio"]:checked + label,
@@ -877,7 +878,7 @@
         text-decoration: none;
         color: #fff;
         top: 89%;
-        left: 10%;
+        left: 8%;
         line-height: 1.2;
     }
     .category-col:first-of-type .category-name, .category-col:nth-of-type(2) .category-name {
@@ -1089,6 +1090,8 @@
         overflow: hidden;
         border: solid 5px #fff;
         box-shadow: 0 0 10px #ccc;
+        height: 180px;
+        width: 180px;
     }
 
     .style-detail-thumb {
@@ -2268,6 +2271,9 @@ top: 18%;
  top: 3%;
     right: 25%;
 }
+.brain_ad {
+    position: absolute; 
+}
 .brain_ad_1 {
  position: absolute;
  bottom: 22%;
@@ -2726,6 +2732,25 @@ datalist#folderval {
 [name='hair_color']:checked + span {
     border: 3px solid #c6168d;
 }
+.image-thumb-box input {
+    position: relative !important;
+   left: 0px !important;
+   z-index: 99999;
+   opacity: 0;top: 1px;
+}
+.image-thumb-box span.form-check-label {
+   display: inline-block;
+   vertical-align: middle;
+   width: 27px;
+   height: 27px;
+   border-radius: 50%;
+   background: #000;
+   position: absolute;
+   top: 0;
+   left: 0px;
+}
+.image-thumb-box{position: relative;}
+
 
     /* media query */
 
@@ -2737,6 +2762,7 @@ datalist#folderval {
         width: 20%;
     }
     .multi-selected select {
+        display:none;
         overflow: auto;
         height: 100%;
         margin-bottom: 0;
@@ -2795,7 +2821,7 @@ datalist#folderval {
     .category-name {
         font-size: 20px;
         top: 89%;
-        left: 17%;
+        left: 10%;
     }
 
     .center-area {

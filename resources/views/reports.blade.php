@@ -36,7 +36,7 @@
                     <form action="">
                         @if (isset($_GET['order'])) 
                             <input type="hidden" name="order" value="{{$_GET['order']}}"/>
-                            <?php $moreUrl .="&order=".$_GET['order']; ?>
+                            <?php $moreUrl .='&order='.$_GET['order']; ?>
                         @endif
                         <div class="row">
                             <div class="col-md-10 col-sm-8 search_box">
@@ -102,9 +102,9 @@
 
     function infinteLoadMore(page) {
         $.ajax({
-                url: ENDPOINT + "/reports/{{$ageCatUrl}}/?page=" + page+"{{$moreUrl}}",
+                url: ENDPOINT + "/reports/{{$ageCatUrl}}/?page=" + page+"<?=$moreUrl?>",
                 datatype: "html",
-                type: "get",
+                type: "GET",
                 beforeSend: function () {
                     $('.auto-load').show();
                 }

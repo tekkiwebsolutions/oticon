@@ -5,12 +5,12 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminUsers40Controller extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAboutHearing64Controller extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "first_name";
+			$this->title_field = "title";
 			$this->limit = "20";
 			$this->orderby = "id,desc";
 			$this->global_privilege = false;
@@ -25,45 +25,34 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "users";
+			$this->table = "about_hearing";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"First Name","name"=>"first_name"];
-			$this->col[] = ["label"=>"Last Name","name"=>"last_name"];
-			$this->col[] = ["label"=>"Email","name"=>"email"];
-			$this->col[] = ["label"=>"Occupation","name"=>"occupation"];
-			$this->col[] = ["label"=>"Country","name"=>"country_id","join"=>"countries,name"];
-			$this->col[] = ["label"=>"Location","name"=>"location","join"=>"states,name"];
-			$this->col[] = ["label"=>"Created At","name"=>"created_at"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
+			$this->col[] = ["label"=>"Age Group Id","name"=>"age_group_id","join"=>"age_group,title"];
+			$this->col[] = ["label"=>"Pid","name"=>"pid","join"=>"about_hearing,title"];
+			$this->col[] = ["label"=>"Images","name"=>"images","image"=>true];
+			$this->col[] = ["label"=>"Small Image","name"=>"small_image","image"=>true];
+			$this->col[] = ["label"=>"Title","name"=>"title"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'First Name','name'=>'first_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Last Name','name'=>'last_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:8|max:32','width'=>'col-sm-10','help'=>'Minimum 8 characters. Please leave empty if you did not change the password.'];
-			$this->form[] = ['label'=>'Occupation','name'=>'occupation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
-			$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select','validation'=>'required','width'=>'col-sm-9','datatable'=>'countries,name'];
-			$this->form[] = ['label'=>'Location','name'=>'location','type'=>'select','validation'=>'required','width'=>'col-sm-10','datatable'=>'states,name','parent_select'=>'country_id'];
-			$this->form[] = ['label'=>'Email Verified At','name'=>'email_verified_at','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-9','dataenum'=>'Enabled;Disabled'];
+			$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
+			$this->form[] = ['label'=>'Pid','name'=>'pid','type'=>'select2','width'=>'col-sm-10','datatable'=>'about_hearing,title'];
+			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Small Image','name'=>'small_image','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'First Name','name'=>'first_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Last Name','name'=>'last_name','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:8|max:32','width'=>'col-sm-10','help'=>'Minimum 8 characters. Please leave empty if you did not change the password.'];
-			//$this->form[] = ['label'=>'Occupation','name'=>'occupation','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10','placeholder'=>'Please enter a valid email address'];
-			//$this->form[] = ['label'=>'Country','name'=>'country_id','type'=>'select','validation'=>'required','width'=>'col-sm-9','datatable'=>'countries,name'];
-			//$this->form[] = ['label'=>'Location','name'=>'location','type'=>'select','validation'=>'required','width'=>'col-sm-10','datatable'=>'states,name','parent_select'=>'country_id'];
-			//$this->form[] = ['label'=>'Email Verified At','name'=>'email_verified_at','type'=>'datetime','validation'=>'required|date_format:Y-m-d H:i:s','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
+			//$this->form[] = ['label'=>'Pid','name'=>'pid','type'=>'select2','width'=>'col-sm-10','datatable'=>'about_hearing,title'];
+			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Small Image','name'=>'small_image','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			# OLD END FORM
 
 			/* 

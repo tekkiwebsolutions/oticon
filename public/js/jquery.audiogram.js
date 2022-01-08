@@ -833,7 +833,8 @@
 			return {
 				bind : function() {
 					// Click event handler
-					/*$(canvas).bind('click', function(e) {
+					// Click event handler
+					$(canvas).bind('click', function(e) {
 						// (x, y) of mouse cursor at click; compensated to get coordinates relative to canvas's (0, 0)
 						var x = e.clientX - canvas.offsetLeft - canvas.offsetParent.offsetLeft + window.pageXOffset,
 							y = e.clientY - canvas.offsetTop  - canvas.offsetParent.offsetTop + window.pageYOffset; 
@@ -850,7 +851,20 @@
 							// Record and draw the data
 							Data.plot(x, y);
 						}
-					}); */					
+
+						if(selection.ear == 'left'){
+							var aud = audiometricData.left.air;
+						} else{
+							var aud = audiometricData.right.air;
+						}								
+						vol = 0;
+						jQuery.each(aud, function(i, val) {
+							if(vol<val){
+								vol = val;
+							}
+						});
+						playAudio(vol);
+					}); 				
 					
 					var pressed ;
 					$(canvas).bind({

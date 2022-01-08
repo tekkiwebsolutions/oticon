@@ -217,6 +217,19 @@
                             </div>
 
                             <label class="filer-label gender-label">Upload Audio</label>
+                            @if ($message = Session::get('success'))
+                                <div class="alert alert-success alert-block" id="success_msg">
+                                    <strong>{{ $message }}</strong>
+                                    <a href="javascript:voide(0)" onclick="$('#success_msg').remove()" class="close" data-dismiss="alert" ><img src="{{url('images/close.png')}}" class="img-fluid"></a>
+                                </div>
+                            @endif
+
+                            @if ($message = Session::get('error'))
+                                <div class="alert alert-danger alert-block" id="error_msg">
+                                    <strong>{{ $message }}</strong>
+                                    <a href="javascript:voide(0)" onclick="$('#error_msg').remove()" class="close" data-dismiss="alert" ><img src="{{url('images/close.png')}}" class="img-fluid"></a>
+                                </div>
+                            @endif
 
 							<form action="{{route('mediaupload')}}" method="post" id="cform" class="contact-form" enctype="multipart/form-data">
                                 @csrf
@@ -345,9 +358,11 @@
         }); 
         var id = $("[name='audio_radio']:checked").val();
         if(id){
+            var vol=vol/100;            
+            if(vol > 1){  vol = 1;  }
             var audio = document.getElementById(id);
             audio.play();
-            audio.volume = "0."+vol;
+            audio.volume = vol;
         }  
     }
 </script>

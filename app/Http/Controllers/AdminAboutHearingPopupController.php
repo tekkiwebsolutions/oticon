@@ -5,7 +5,7 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminAboutHearingController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAboutHearingPopupController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -25,40 +25,31 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "about_hearing";
+			$this->table = "about_hearing_popup";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Pid","name"=>"pid","join"=>"about_hearing,title"];
-			$this->col[] = ["label"=>"Age Group Id","name"=>"age_group_id","join"=>"age_group,title"];
-			$this->col[] = ["label"=>"Small Image","name"=>"small_image"];
-			$this->col[] = ["label"=>"Images","name"=>"images","image"=>true];
+			$this->col[] = ["label"=>"About Hearing Id","name"=>"about_hearing_id","join"=>"about_hearing,title"];
 			$this->col[] = ["label"=>"Title","name"=>"title"];
-			$this->col[] = ["label"=>"Description","name"=>"description"];
-			$this->col[] = ["label"=>"Status","name"=>"status"];
+			$this->col[] = ["label"=>"Left Position","name"=>"left_position"];
+			$this->col[] = ["label"=>"Top Position","name"=>"top_position"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
-			$this->form[] = ['label'=>'Pid','name'=>'pid','type'=>'select2','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required||image','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Small Image','name'=>'small_image','type'=>'upload','validation'=>'required|image','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Active; Inactive'];
+			$this->form[] = ['label'=>'About Hearing Id','name'=>'about_hearing_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'about_hearing,title'];
+			$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Left Position','name'=>'left_position','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Top Position','name'=>'top_position','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Age Group Id','name'=>'age_group_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'age_group,title'];
-			//$this->form[] = ['label'=>'Pid','name'=>'pid','type'=>'select2','validation'=>'required|integer','width'=>'col-sm-9'];
-			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Images','name'=>'images','type'=>'upload','validation'=>'required||image','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Small Image','name'=>'small_image','type'=>'upload','validation'=>'required|image','width'=>'col-sm-9'];
-			//$this->form[] = ['label'=>'Description','name'=>'description','type'=>'textarea','validation'=>'required|string|min:5|max:5000','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Status','name'=>'status','type'=>'radio','validation'=>'required','width'=>'col-sm-10','dataenum'=>'Active; Inactive'];
+			//$this->form[] = ['label'=>'About Hearing Id','name'=>'about_hearing_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'about_hearing,title'];
+			//$this->form[] = ['label'=>'Title','name'=>'title','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Left Position','name'=>'left_position','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Top Position','name'=>'top_position','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

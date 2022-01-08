@@ -17,15 +17,16 @@
                     </div>
                 </div> 
                 <div class='row'>
+                @if(count($data)>0)
                 <div class="row pr-0">
                     <div class="col-lg-12 col-md-12 col-12 main-banner-tech">
                         <img alt="" class="img-fluid" src="{{url($data[0]->image)}}" with="100%" id="backgroundImage">
                         <div class="main-volume">
                             <img src="{{ url('images/muted.png')}}" class="img-fluid icon-large" onClick="playMyAudio()" id="playbutton" />
                             <img src="{{ url('images/speaker.png')}}" class="img-fluid icon-large" onClick="pauseMyAudio()" id="pausebutton" style="display: none;" />
-                            <img src="{{ url('images/speaker-icon-one.png')}}" class="img-fluid icon-one" />
+                            <!--<img src="{{ url('images/speaker-icon-one.png')}}" class="img-fluid icon-one" />
                             <img src="{{ url('images/icon-second.png')}}" class="img-fluid icon-second" />
-                            <img src="{{ url('images/speaker-third.png')}}" class="img-fluid icon-third" />
+                            <img src="{{ url('images/speaker-third.png')}}" class="img-fluid icon-third" />-->
                         </div>
                     </div>
                 </div>
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 </div>
 
 
@@ -73,8 +75,10 @@
 
 @include('layouts.right_sidebar')
 @include('layouts.footer')
+@if(count($data)>0)
 <audio src="{{url($data[0]->background_sound)}}" id="withImpairment" loop ></audio>
 <audio src="{{url($data[0]->sound)}}" id="withoutImpairment" loop ></audio>   
+@endif
 <script>
        $("[name='backgroundplay']").click(function(){
             var myAudio = document.getElementById("withoutImpairment");

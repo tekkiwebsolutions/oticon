@@ -103,4 +103,8 @@ class UserController extends Controller
 		return '1';
 	}
 	
+	public function home()
+    {
+        return redirect('login')->with('success', 'Account Registred successfully, Please vefiry now !');
+    }
 }

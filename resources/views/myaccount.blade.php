@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
 					@if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
+                        <div class="alert alert-success alert-block" id="alert_msg">
                             <strong>{{ $message }}</strong>
                             <a href="javascript:voide(0)" onclick="$('#alert_msg').remove()" class="close" data-dismiss="alert" ><img src="images/close.png" class="img-fluid"></a>
                         </div>
@@ -22,8 +22,9 @@
                          <h3>{{$data->first_name}} {{$data->last_name}}</h3>
                          <h4>{{$data->occupation}}</h4>
                          <span class='email'>{{$data->email}}</span>
-                    </div>  
-                    <div class='address'>{{$data->location}}</div> 
+                    </div>   
+                    <div class='address'><b>Country:</b> {{$data->country_name}}</div> 
+                    <div class='address'><b>State/Province:</b> {{$data->state_name}}</div> 
                     <div class='my-account-button'>
                         <p><a href='{{route("myaccountEdit")}}' class='edit-profile'>Edit Profile</a></p>
                         <p><a href='{{route("mypassword")}}' class='change-pass'>Change Password</a></p>

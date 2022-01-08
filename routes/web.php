@@ -33,17 +33,18 @@ Route::get('/', function () {
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['verified']], function() {
     Route::get('/age_group', [App\Http\Controllers\HomeController::class, 'ageGroup'])->name('ageGroup');
+
+    
     Route::get('/about_hearing/{ageCat}', [App\Http\Controllers\HomeController::class, 'aboutHearing'])->name('aboutHearing');
+
+    Route::get('/about_hearing_cat/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'aboutHearing'])->name('aboutHearing_cat');
 
     Route::get('/about_hearing_brain/{ageCat}', [App\Http\Controllers\HomeController::class, 'aboutHearingBrain'])->name('aboutHearingBrain');
 
     Route::get('/about_hearing_ear/{ageCat}', [App\Http\Controllers\HomeController::class, 'aboutHearingEar'])->name('aboutHearingEar');
 
-    Route::get('/your_hearing', [App\Http\Controllers\HomeController::class, 'yourHearing'])->name('yourHearing');
-
     Route::get('/your_hearing/{ageCat}', [App\Http\Controllers\HomeController::class, 'yourHearingCat'])->name('yourHearingCat');
     
-    Route::get('/introduction', [App\Http\Controllers\HomeController::class, 'introduction'])->name('introduction');
     Route::get('/introduction/{ageCat}', [App\Http\Controllers\HomeController::class, 'introductionCat'])->name('introductionCat');
 
     Route::get('/situations/{ageCat}', [App\Http\Controllers\HomeController::class, 'situations'])->name('situations');
@@ -85,9 +86,8 @@ Route::group(['middleware' => ['verified']], function() {
 
     Route::get('/product_categories/{ageCat}', [App\Http\Controllers\HomeController::class, 'product_categories'])->name('product_categories');
     Route::get('/product_listing/{ageCat}/{id}', [App\Http\Controllers\HomeController::class, 'product_listing'])->name('product_listing');
-    Route::get('/your_hearing', [App\Http\Controllers\HomeController::class, 'yourHearing'])->name('yourHearing');
 
-    Route::post('/your_hearing/k', [App\Http\Controllers\HomeController::class, 'mediaupload'])->name('mediaupload');
+    Route::post('/mediaupload', [App\Http\Controllers\HomeController::class, 'mediaupload'])->name('mediaupload');
     Route::get('delete/{id}', [App\Http\Controllers\HomeController::class, 'mediadelete'])->name('mediadelete');
 
 });
@@ -161,5 +161,10 @@ Route::get('expirynotificationmedia', [App\Http\Controllers\CommonController::cl
 Route::get('delete_expired_notification', [App\Http\Controllers\CommonController::class, 'delete_expired_notification'])->name('delete_expired_notification');
 
 Route::get('/sendpdf/{id}', [App\Http\Controllers\HomeController::class, 'sendpdf'])->name('sendpdf');
+Route::get('/countryColorUpdate', [App\Http\Controllers\CommonController::class, 'countryColorUpdate'])->name('countryColorUpdate');
 
 Route::post('/addFolder', [App\Http\Controllers\CommonController::class, 'addFolder'])->name('addFolder');
+
+Route::post('getStates', [App\Http\Controllers\CommonController::class, 'getStates'])->name('getStates');
+
+Route::get('/home', [App\Http\Controllers\UserController::class, 'home']);

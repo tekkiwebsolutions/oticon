@@ -64,7 +64,8 @@
 
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
-                               <select id="" class="form-control textbox" id="location" placeholder="Country" name="country_id">
+                               <select class="form-control textbox" id="country" name="country_id">
+                               <option >Select Country</option>
                                @foreach($countries as $country)
                                    <option value="{{$country->id}}">{{$country->name}}</option>
                                @endforeach
@@ -75,10 +76,19 @@
 
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
+                               <select class="form-control textbox" id="location" name="location">
+                               <option >Select country first</option>
+                               </select>
+                               <span class="textbox-icon"><img alt="" class="img-fluid" src="images/location-icon.png"></span>
+                           </div>
+                        </div>
+
+                        <!--<div class="row form-row">
+                            <div class="col-lg-12 col-md-12 col-12 position-relative">
                                 <input type="text" class="form-control textbox" id="location" placeholder="Location" name="location">
                                 <span class="textbox-icon"><img alt="" class="img-fluid" src="images/location-icon.png"></span>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row form-row">
                             <div class="col-lg-12 col-md-12 col-12 position-relative">
@@ -114,7 +124,7 @@
 
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-login">Login</button>
+                        <button type="submit" class="btn btn-login">Register</button>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-12 text-center create-account">Already have an account? <a href="{{ route('login') }}">Login</a></div>
                         </div>
@@ -215,6 +225,21 @@
                     required: "Please check Terms of Use"
                 }
             }
+        });
+        $("#country").change(function(){
+            var country =  $(this).val();
+            $.ajax({
+                type: "POST", 
+                url: "{{ route('getStates') }}",
+                data: { country_id: country},
+                headers: {
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                success: function(res) {
+                    res = JSON.parse(res);
+                    $("#location").html(res.html);
+                }
+            });
         });
     </script>
 @endsection

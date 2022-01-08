@@ -76,7 +76,7 @@ class CommonController extends Controller
         $data['sections'] = $sections;
         $data['sub_sections'] = $sub_sections;
         $data['html'] = $html;
-        $data['image'] = $sections->Images;
+        $data['image'] = url($sections->Images);
         return json_encode($data);
     }
 
@@ -137,7 +137,7 @@ class CommonController extends Controller
         $data['model'] = $sections;
         $data['sub_model'] = $sub_sections;
         $data['html'] = $html;
-        $data['image'] = $sections->image;
+        $data['image'] = url($sections->image);
         return json_encode($data);
     }
 
@@ -148,13 +148,15 @@ class CommonController extends Controller
         $sub_sections = DB::table('preferred_models')->where('id', $request->enthencityModel)->first();
 
         $colors = DB::table('style_colors')->where('preferred_models_id', $request->enthencityModel)->get();
-        
+        $i=1;
         foreach($colors as $color ){
-            $html .= '<div class="form-check custom-radio" onclick="change_hair_color('.$color->id.')">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault'.$color->id.'" >
+            if($i==1){  $check = 'checked'; } else{ $check = '';  }
+            $html .= '<div class="form-check custom-radio">
+                <input class="form-check-input" type="radio" name="hair_color" id="flexRadioDefault'.$color->id.'"  value="'.$color->id.'" '.$check.'  onclick="change_hair_color('.$color->id.')" >
                 <span class="form-check-label" style="background-color:'.$color->color_code.' "></span>
                 '.$color->color_title.' 
             </div>';
+            $i++;
         }
 
 
@@ -286,4 +288,23 @@ class CommonController extends Controller
         return json_encode($data); 
     }
    
+    public function getStates(Request $request)
+    {
+        $data = array();
+        $html = "<option>Select State/Province</option>"; 
+        $states = DB::table('states')->where('country_id', $request->country_id)->get();
+        foreach($states as $state ){
+            $html .= '<option value="'.$state->id.'">'.$state->name.'</option>';
+        }  
+        $data['html'] = $html; 
+        return json_encode($data);
+    }
+
+   /* public function countryColorUpdate()  {
+       $countries =  DB::table('countries')->get();        
+        foreach($countries as $country){
+            $color =  '#' . str_pad(dechex(mt_rand(0, 0xFFFFFF)), 6, '0', STR_PAD_LEFT);
+            DB::table('countries')->where('id', $country->id)->update(['color' => $color]);
+        }
+    } */
 }
